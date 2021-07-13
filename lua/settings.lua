@@ -10,6 +10,9 @@ vim.o.timeoutlen = 500
 vim.o.undofile = true
 vim.cmd 'set clipboard+=unnamedplus'
 
+-- colorscheme
+require('onedark').setup()
+
 -- snippets
 require('luasnip/loaders/from_vscode').lazy_load {
   paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' },

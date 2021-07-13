@@ -34,6 +34,14 @@ return require('packer').startup(function()
   use 'glepnir/galaxyline.nvim'
   use 'romgrk/barbar.nvim'
 
+  -- Which Key
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require 'plugins.configs.which-key'
+    end,
+  }
+
   -- Snippets
   use 'L3MON4D3/Luasnip'
   use 'rafamadriz/friendly-snippets'

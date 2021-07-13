@@ -47,6 +47,12 @@ local on_attach = function(client, bufnr)
       false
     )
   end
+  require "lsp_signature".on_attach({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+      handler_opts = {
+        border = "none"
+      }
+    })  -- Note: add in lsp client on-attach
 end
 
 -- config that activates keymaps and enables snippet support

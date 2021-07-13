@@ -18,6 +18,7 @@ return require('packer').startup(function()
 
   -- Autocompletion
   use 'hrsh7th/nvim-compe'
+  use 'ray-x/lsp_signature.nvim'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'

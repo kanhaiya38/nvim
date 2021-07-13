@@ -19,5 +19,8 @@ return require('packer').startup(function()
   -- Autocompletion
   use 'hrsh7th/nvim-compe'
 
+  -- Snippets
+  use 'L3MON4D3/Luasnip'
+  use 'rafamadriz/friendly-snippets'
 end)
 

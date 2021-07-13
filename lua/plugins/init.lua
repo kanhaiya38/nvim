@@ -58,6 +58,9 @@ return require('packer').startup(function()
   -- Colorschemes
   use 'navarasu/onedark.nvim'
 
+  -- Dashboard
+  use 'glepnir/dashboard-nvim'
+
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
 

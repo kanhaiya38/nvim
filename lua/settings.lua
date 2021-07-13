@@ -27,3 +27,6 @@ require('nvim-autopairs.completion.compe').setup {
 
 -- surround.nvim
 vim.g.surround_mappings_style = 'surround'
+
+-- dashboard
+vim.g.dashboard_default_executive = 'telescope'

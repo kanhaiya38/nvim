@@ -19,11 +19,18 @@ return require('packer').startup(function()
   -- Autocompletion
   use 'hrsh7th/nvim-compe'
 
+  -- Statusline and Bufferline
+  use 'glepnir/galaxyline.nvim'
+  use 'romgrk/barbar.nvim'
+
   -- Snippets
   use 'L3MON4D3/Luasnip'
   use 'rafamadriz/friendly-snippets'
-  
+ 
   -- Colorschemes
   use 'navarasu/onedark.nvim'
+
+  -- Icons
+  use 'kyazdani42/nvim-web-devicons'
 end)
 

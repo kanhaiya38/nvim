@@ -19,6 +19,9 @@ return require('packer').startup(function()
   -- Autocompletion
   use 'hrsh7th/nvim-compe'
 
+  -- Telescope
+  use 'nvim-telescope/telescope.nvim'
+
   -- Statusline and Bufferline
   use 'glepnir/galaxyline.nvim'
   use 'romgrk/barbar.nvim'
@@ -32,5 +35,9 @@ return require('packer').startup(function()
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
+
+  -- Utils
+  use 'nvim-lua/popup.nvim' 
+  use 'nvim-lua/plenary.nvim'
 end)
 

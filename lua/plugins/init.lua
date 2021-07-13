@@ -38,6 +38,14 @@ return require('packer').startup(function()
   use 'L3MON4D3/Luasnip'
   use 'rafamadriz/friendly-snippets'
 
+  -- Comments
+  use {
+    'terrortylor/nvim-comment',
+    config = function()
+      require('nvim_comment').setup()
+    end,
+  }
+
   -- Surroundings
   use {
     'blackCauldron7/surround.nvim',

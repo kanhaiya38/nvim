@@ -29,6 +29,15 @@ return require('packer').startup(function()
   -- Snippets
   use 'L3MON4D3/Luasnip'
   use 'rafamadriz/friendly-snippets'
+
+  -- Surroundings
+  use {
+    'blackCauldron7/surround.nvim',
+    config = function()
+      require('surround').setup {}
+    end,
+  }
+  use 'windwp/nvim-autopairs'
  
   -- Colorschemes
   use 'navarasu/onedark.nvim'

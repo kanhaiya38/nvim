@@ -46,6 +46,9 @@ return require('packer').startup(function()
     end,
   }
 
+  -- Formatter
+  use 'mhartington/formatter.nvim'
+
   -- Surroundings
   use {
     'blackCauldron7/surround.nvim',
@@ -57,6 +60,9 @@ return require('packer').startup(function()
  
   -- Colorschemes
   use 'navarasu/onedark.nvim'
+
+  -- Tree Explorer
+  use 'kyazdani42/nvim-tree.lua'
 
   -- Dashboard
   use 'glepnir/dashboard-nvim'

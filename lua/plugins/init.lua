@@ -65,7 +65,7 @@ return require('packer').startup(function()
     end,
   }
   use 'windwp/nvim-autopairs'
- 
+
   -- Colorschemes
   use 'navarasu/onedark.nvim'
 
@@ -82,7 +82,6 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   -- Utils
-  use 'nvim-lua/popup.nvim' 
+  use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
 end)
-

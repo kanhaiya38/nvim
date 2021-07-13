@@ -84,6 +84,6 @@ require('lspinstall').post_install_hook = function()
   vim.cmd 'bufdo e'
 end
 
-require('lsp.show_source')
-require('lsp.diagnostic_symbols')
-require('lsp.completion_kinds')
+require 'lsp.show_source'
+require 'lsp.diagnostic_symbols'
+require 'lsp.completion_kinds'

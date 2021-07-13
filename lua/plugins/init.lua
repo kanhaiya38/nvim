@@ -22,6 +22,9 @@ return require('packer').startup(function()
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
 
+  -- Terminal
+  use 'akinsho/nvim-toggleterm.lua'
+
   -- Git
   use {
     'lewis6991/gitsigns.nvim',

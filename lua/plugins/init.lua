@@ -11,5 +11,13 @@ end
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
+  -- Setting up LSP
+  use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
+
+  -- Autocompletion
+  use 'hrsh7th/nvim-compe'
+
 end)
 

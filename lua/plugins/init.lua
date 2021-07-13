@@ -88,4 +88,10 @@ return require('packer').startup(function()
   -- Utils
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use {
+    'ahmedkhalf/lsp-rooter.nvim',
+    config = function()
+      require('lsp-rooter').setup {}
+    end,
+  }
 end)

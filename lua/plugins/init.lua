@@ -61,6 +61,9 @@ return require('packer').startup(function()
   -- Dashboard
   use 'glepnir/dashboard-nvim'
 
+  -- Indent
+  use 'lukas-reineke/indent-blankline.nvim'
+
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
 

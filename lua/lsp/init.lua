@@ -85,3 +85,4 @@ require('lspinstall').post_install_hook = function()
 end
 
 require('lsp.diagnostic_symbols')
+require('lsp.completion_kinds')

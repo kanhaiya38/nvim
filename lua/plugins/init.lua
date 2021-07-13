@@ -22,6 +22,14 @@ return require('packer').startup(function()
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
 
+  -- Git
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end,
+  }
+
   -- Statusline and Bufferline
   use 'glepnir/galaxyline.nvim'
   use 'romgrk/barbar.nvim'

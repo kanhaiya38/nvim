@@ -98,4 +98,11 @@ return require('packer').startup(function()
       require('lsp-rooter').setup {}
     end,
   }
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = function()
+      fn['mkdp#util#install']()
+    end,
+    cmd = 'MarkdownPreview',
+  }
 end)

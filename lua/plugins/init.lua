@@ -86,6 +86,10 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   -- Utils
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  }
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use {

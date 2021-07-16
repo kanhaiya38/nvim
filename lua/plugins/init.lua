@@ -74,7 +74,12 @@ return require('packer').startup(function()
   use 'navarasu/onedark.nvim'
 
   -- Tree Explorer
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('plugins.configs.nvim-tree').setup()
+    end,
+  }
 
   -- Dashboard
   use 'glepnir/dashboard-nvim'

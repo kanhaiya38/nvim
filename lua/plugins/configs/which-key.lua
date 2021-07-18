@@ -84,6 +84,11 @@ wk.register {
     u = { '<cmd>PackerUpdate<CR>', 'update' },
   },
 
+  ['<leader>t'] = {
+    name = '+terminal',
+    l = { '<cmd>lua require("plugins.configs.toggleterm").toggle("lazygit")<CR>', 'lazygit' },
+  },
+
   ['<leader>h'] = {
     name = '+gitsigns',
     s = 'stage hunk',

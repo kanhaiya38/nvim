@@ -7,6 +7,8 @@ map('i', 'jj', '<Esc>', opts)
 map('i', 'jk', '<Esc>', opts)
 map('i', 'kj', '<Esc>', opts)
 
+-- Windows
+map('n', '<C-q>', '<C-w>q', opts)
 map('n', '<C-J>', '<C-w>j', opts)
 map('n', '<C-K>', '<C-w>k', opts)
 map('n', '<C-H>', '<C-w>h', opts)

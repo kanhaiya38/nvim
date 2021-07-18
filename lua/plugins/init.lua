@@ -8,6 +8,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
+-- automatically run :PackerCompile whenever plugins.lua is updated
+vim.cmd [[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]]
+
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'

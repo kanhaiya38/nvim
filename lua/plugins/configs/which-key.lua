@@ -78,4 +78,16 @@ wk.register {
     s = { '<cmd>PackerSync<CR>', 'sync' },
     u = { '<cmd>PackerUpdate<CR>', 'update' },
   },
+
+  ['<leader>h'] = {
+    name = '+gitsigns',
+    s = 'stage hunk',
+    S = 'stage buffer',
+    u = 'undo stage hunk',
+    U = 'reset buffer index',
+    r = 'reset hunk',
+    R = 'rest buffer',
+    p = 'preview hunk',
+    b = 'blame line',
+  },
 }

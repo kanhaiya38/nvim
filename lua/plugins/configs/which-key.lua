@@ -7,6 +7,11 @@ require('which-key').setup {
 local wk = require 'which-key'
 
 wk.register {
+  ['<leader>a'] = {
+    name = '+actions',
+    f = { '<cmd>Format<CR>', 'format' },
+  },
+
   ['<leader>b'] = {
     name = '+buffer',
     c = { '<cmd>BufferClose<CR>', 'close' },

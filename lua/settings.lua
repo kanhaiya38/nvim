@@ -12,6 +12,14 @@ vim.cmd 'set clipboard+=unnamedplus'
 
 -- colorscheme
 require('onedark').setup()
+O.kinds = {
+  lsp = {
+    hint = '',
+    info = '',
+    warning = '',
+    error = '',
+  },
+}
 
 -- snippets
 require('luasnip/loaders/from_vscode').lazy_load {

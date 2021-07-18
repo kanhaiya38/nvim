@@ -61,12 +61,7 @@ M.setup = function()
       symlink = '',
       symlink_open = '',
     },
-    lsp = {
-      hint = '',
-      info = '',
-      warning = '',
-      error = '',
-    },
+    lsp = O.kinds.lsp
   }
 end
 

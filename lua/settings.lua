@@ -10,6 +10,8 @@ vim.o.timeoutlen = 500
 vim.o.undofile = true
 vim.cmd 'set clipboard+=unnamedplus'
 
+vim.g.mapleader = ' '
+
 -- colorscheme
 require('onedark').setup()
 O.kinds = {

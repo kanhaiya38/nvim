@@ -23,8 +23,8 @@ map('n', '<A-c>', ':BufferClose<CR>', opts)
 -- Magic buffer-picking mode
 map('n', '<C-p>', ':BufferPick<CR>', opts)
 -- Sort automatically by...
-map('n', '<Space>bd', ':BufferOrderByDirectory<CR>', opts)
-map('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
+-- map('n', '<Space>bd', ':BufferOrderByDirectory<CR>', opts)
+-- map('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
 
 vim.g.bufferline = {
   -- Enable/disable animations

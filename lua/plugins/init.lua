@@ -24,7 +24,12 @@ return require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
 
   -- Telescope
-  use 'nvim-telescope/telescope.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    config = function()
+      require 'plugins.configs.telescope'
+    end,
+  }
 
   -- Terminal
   use 'akinsho/nvim-toggleterm.lua'

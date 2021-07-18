@@ -68,7 +68,12 @@ return require('packer').startup(function()
       require('surround').setup {}
     end,
   }
-  use 'windwp/nvim-autopairs'
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require 'plugins.configs.autopairs'
+    end,
+  }
 
   -- Colorschemes
   use 'navarasu/onedark.nvim'

@@ -26,13 +26,6 @@ require('luasnip/loaders/from_vscode').lazy_load {
   paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' },
 }
 
--- autopairs
-require('nvim-autopairs').setup()
-require('nvim-autopairs.completion.compe').setup {
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` after select function or method item
-}
-
 -- surround.nvim
 vim.g.surround_mappings_style = 'surround'
 

@@ -15,13 +15,13 @@ require('compe').setup {
   documentation = true,
 
   source = {
-    buffer = { kind = " " },
-    path = { kind = " " },
-    calc = { kind = " " },
-    nvim_lsp = { kind = " " },
+    buffer = { kind = ' ' },
+    path = { kind = ' ' },
+    calc = { kind = ' ' },
+    nvim_lsp = { kind = ' ' },
     nvim_lua = true,
-    luasnip = { kind = " " },
-    emoji = { kind = " ﲃ", filetypes = { "markdown", "text" } },
+    luasnip = { kind = ' ' },
+    emoji = { kind = ' ﲃ', filetypes = { 'markdown', 'text' } },
   },
 }
 

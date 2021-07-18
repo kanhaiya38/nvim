@@ -34,10 +34,12 @@ end
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
 M.diagnostics_symbols = function()
-  local signs = { Error = O.kinds.lsp.error,
-  Warning = O.kinds.lsp.warning,
-  Hint = O.kinds.lsp.warning,
-  Information = O.kinds.info }
+  local signs = {
+    Error = O.kinds.lsp.error,
+    Warning = O.kinds.lsp.warning,
+    Hint = O.kinds.lsp.warning,
+    Information = O.kinds.info,
+  }
 
   for type, icon in pairs(signs) do
     local hl = 'LspDiagnosticsSign' .. type

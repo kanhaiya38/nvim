@@ -61,7 +61,7 @@ M.setup = function()
       symlink = '',
       symlink_open = '',
     },
-    lsp = O.kinds.lsp
+    lsp = O.kinds.lsp,
   }
 end
 

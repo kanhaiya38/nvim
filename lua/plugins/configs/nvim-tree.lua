@@ -6,6 +6,9 @@ M.setup = function()
   g.nvim_tree_bindings = {
     { key = 'l', cb = tree_cb 'edit' },
     { key = 'h', cb = tree_cb 'close_node' },
+    { key = 's', cb = tree_cb 'split' },
+    { key = 'v', cb = tree_cb 'vsplit' },
+    { key = 't', cb = tree_cb 'tabnew' },
   }
   g.nvim_tree_auto_open = 1
   g.nvim_tree_auto_close = 1

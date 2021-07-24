@@ -71,6 +71,14 @@ return require('packer').startup(function()
   -- Formatter
   use 'mhartington/formatter.nvim'
 
+  -- Linter
+  use {
+    'mfussenegger/nvim-lint',
+    config = function()
+      require 'plugins.configs.linter'
+    end,
+  }
+
   -- Surroundings
   use {
     'blackCauldron7/surround.nvim',

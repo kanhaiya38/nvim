@@ -134,4 +134,7 @@ return require('packer').startup(function()
     end,
     cmd = 'MarkdownPreview',
   }
+
+  -- Language Specific
+  use 'simrat39/rust-tools.nvim'
 end)

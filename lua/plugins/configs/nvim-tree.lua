@@ -1,5 +1,13 @@
 local M = {}
 
+M.NvimTreeOSOpen = function()
+  local lib = require 'nvim-tree.lib'
+  local node = lib.get_node_at_cursor()
+  if node then
+    vim.fn.jobstart({ 'xdg-open', node.absolute_path }, { detach = true })
+  end
+end
+
 M.setup = function()
   local g = vim.g
   local tree_cb = require('nvim-tree.config').nvim_tree_callback
@@ -9,6 +17,7 @@ M.setup = function()
     { key = 'v', cb = tree_cb 'vsplit' },
     { key = 's', cb = tree_cb 'split' },
     { key = 't', cb = tree_cb 'tabnew' },
+    { key = 'o', cb = '<cmd>lua require("plugins.configs.nvim-tree").NvimTreeOSOpen()<CR>' },
     { key = '<', cb = tree_cb 'prev_sibling' },
     { key = '>', cb = tree_cb 'next_sibling' },
     { key = 'P', cb = tree_cb 'parent_node' },

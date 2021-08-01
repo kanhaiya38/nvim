@@ -10,6 +10,7 @@ wk.register {
   ['<leader>a'] = {
     name = '+actions',
     f = { '<cmd>Format<CR>', 'format' },
+    g = { '<cmd>Glow<CR>', 'glow' },
   },
 
   ['<leader>b'] = {

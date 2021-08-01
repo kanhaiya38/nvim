@@ -136,5 +136,6 @@ return require('packer').startup(function()
   }
 
   -- Language Specific
+  use { 'npxbr/glow.nvim', run = 'GlowInstall' }
   use 'simrat39/rust-tools.nvim'
 end)

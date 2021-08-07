@@ -64,7 +64,7 @@ local function setup_servers()
   -- get all installed servers
   local servers = require('lspinstall').installed_servers()
   -- add manually installed servers
-  -- table.insert(servers, "clangd")
+  table.insert(servers, 'clangd')
 
   for _, server in pairs(servers) do
     local config = make_config()

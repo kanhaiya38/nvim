@@ -21,7 +21,12 @@ return require('packer').startup(function(use)
 
   -- Autocompletion
   use 'hrsh7th/nvim-compe'
-  use 'ray-x/lsp_signature.nvim'
+  use {
+    'ray-x/lsp_signature.nvim',
+    config = function()
+      require('lsp_signature').setup()
+    end,
+  }
 
   -- Telescope
   use {

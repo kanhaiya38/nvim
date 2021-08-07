@@ -139,6 +139,12 @@ return require('packer').startup(function(use)
   }
   use { 'michaelb/sniprun', run = 'bash ./install.sh' }
   use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
+  use {
+    'onsails/lspkind-nvim',
+    config = function()
+      require('lspkind').init {}
+    end,
+  }
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use {

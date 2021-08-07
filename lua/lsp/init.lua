@@ -82,4 +82,3 @@ end
 
 require('lsp.utils').show_source()
 require('lsp.utils').diagnostics_symbols()
-require('lsp.utils').completion_kinds()

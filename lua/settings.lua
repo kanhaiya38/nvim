@@ -48,6 +48,16 @@ vim.g.indent_blankline_show_current_context = true
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- treesitter
+-- for neorg
+local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/vhyrro/tree-sitter-norg",
+        files = { "src/parser.c" },
+        branch = "main"
+    },
+}
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'maintained', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing

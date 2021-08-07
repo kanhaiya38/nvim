@@ -20,6 +20,7 @@ require('compe').setup {
     calc = { kind = ' ' },
     nvim_lsp = { kind = ' ' },
     nvim_lua = true,
+    neorg = true,
     luasnip = { kind = ' ' },
     emoji = { kind = ' ﲃ', filetypes = { 'markdown', 'text' } },
   },

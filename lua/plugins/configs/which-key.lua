@@ -9,7 +9,7 @@ local wk = require 'which-key'
 wk.register {
   ['<leader>a'] = {
     name = '+actions',
-    f = { '<cmd>Format<CR>', 'format' },
+    f  = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "format"},
     g = { '<cmd>Glow<CR>', 'glow' },
   },
 
@@ -59,6 +59,7 @@ wk.register {
     d = { '<cmd>Telescope lsp_document_diagnostics<CR>', 'document diagnostic' },
     i = { '<cmd>Telescope lsp_implementations<CR>', 'implementations' },
     D = { '<cmd>Telescope lsp_definitions<CR>', 'definitions' },
+    f  = {'<cmd>lua vim.lsp.buf.range_formatting()<CR>', "format"}
   },
 
   ['<leader>w'] = {

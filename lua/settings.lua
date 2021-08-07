@@ -72,4 +72,4 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-vim.cmd [[ au TextChanged <buffer> lua require('lint').try_lint() ]]
+-- vim.cmd [[ au TextChanged <buffer> lua require('lint').try_lint() ]]

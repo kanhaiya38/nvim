@@ -84,14 +84,17 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Formatter
-  use 'mhartington/formatter.nvim'
-
-  -- Linter
+  -- Formatting and Linting
   use {
-    'mfussenegger/nvim-lint',
+    'jose-elias-alvarez/null-ls.nvim',
     config = function()
-      require 'plugins.configs.linter'
+      require('null-ls').config {
+        sources = {
+          require('null-ls').builtins.formatting.stylua,
+          require('null-ls').builtins.formatting.prettier,
+        },
+      }
+      require('lspconfig')['null-ls'].setup {}
     end,
   }
 

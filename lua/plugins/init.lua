@@ -11,7 +11,7 @@ end
 -- automatically run :PackerCompile whenever plugins.lua is updated
 vim.cmd [[autocmd BufWritePost ~/.config/nvim/lua/plugins/init.lua source <afile> | PackerCompile]]
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 

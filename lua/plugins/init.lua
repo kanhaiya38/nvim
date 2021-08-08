@@ -139,6 +139,9 @@ return require('packer').startup(function(use)
   -- Utils
   use {
     'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require 'plugins.configs.treesitter'
+    end,
     run = ':TSUpdate',
   }
   use { 'michaelb/sniprun', run = 'bash ./install.sh' }

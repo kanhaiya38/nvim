@@ -1,7 +1,7 @@
 O = {}
 require 'keymaps'
-require 'plugins'
 require 'settings'
+require 'plugins'
 require 'plugins.configs.compe'
 require 'lsp'
 require 'plugins.configs.statusline'

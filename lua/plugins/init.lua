@@ -88,13 +88,7 @@ return require('packer').startup(function(use)
   use {
     'jose-elias-alvarez/null-ls.nvim',
     config = function()
-      require('null-ls').config {
-        sources = {
-          require('null-ls').builtins.formatting.stylua,
-          require('null-ls').builtins.formatting.prettier,
-        },
-      }
-      require('lspconfig')['null-ls'].setup {}
+      require 'plugins.configs.null-ls'
     end,
   }
 

@@ -48,7 +48,12 @@ return require('packer').startup(function(use)
     end,
   }
   -- Terminal
-  use 'akinsho/nvim-toggleterm.lua'
+  use {
+    'akinsho/nvim-toggleterm.lua',
+    config = function()
+      require('plugins.configs.toggleterm').setup()
+    end,
+  }
 
   -- Git
   use {

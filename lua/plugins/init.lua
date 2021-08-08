@@ -187,6 +187,7 @@ return require('packer').startup(function(use)
       }
     end,
   }
+  use 'dstein64/vim-startuptime'
 
   -- Language Specific
   use { 'npxbr/glow.nvim', run = 'GlowInstall' }

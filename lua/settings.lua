@@ -24,6 +24,9 @@ O.kinds = {
   },
 }
 
+-- startuptime
+vim.g.startuptime_tries = 5
+
 -- surround.nvim
 vim.g.surround_mappings_style = 'surround'
 

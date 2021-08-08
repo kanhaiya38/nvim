@@ -9,7 +9,7 @@ local wk = require 'which-key'
 wk.register {
   ['<leader>a'] = {
     name = '+actions',
-    f  = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "format"},
+    f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
     g = { '<cmd>Glow<CR>', 'glow' },
   },
 
@@ -59,7 +59,7 @@ wk.register {
     d = { '<cmd>Telescope lsp_document_diagnostics<CR>', 'document diagnostic' },
     i = { '<cmd>Telescope lsp_implementations<CR>', 'implementations' },
     D = { '<cmd>Telescope lsp_definitions<CR>', 'definitions' },
-    f  = {'<cmd>lua vim.lsp.buf.range_formatting()<CR>', "format"}
+    f = { '<cmd>lua vim.lsp.buf.range_formatting()<CR>', 'format' },
   },
 
   ['<leader>w'] = {
@@ -105,10 +105,16 @@ wk.register {
 
   ['<leader>x'] = {
     name = '+leetcode',
-    a = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r") .. " --solution")<CR>', 'solution'},
-    s = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r"))<CR>', 'show'},
-    S = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode submit " .. vim.fn.expand("%"))<CR>', 'submit'},
-    t = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%") .. " --local")<CR>', 'local test'},
-    T = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%"))<CR>', 'test'},
-  }
+    a = {
+      '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r") .. " --solution")<CR>',
+      'solution',
+    },
+    s = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r"))<CR>', 'show' },
+    S = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode submit " .. vim.fn.expand("%"))<CR>', 'submit' },
+    t = {
+      '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%") .. " --local")<CR>',
+      'local test',
+    },
+    T = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%"))<CR>', 'test' },
+  },
 }

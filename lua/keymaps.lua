@@ -15,8 +15,7 @@ map('i', '<C-h>', '<C-\\><C-n><C-w>h', opts)
 map('i', '<C-l>', '<C-\\><C-n><C-w>l', opts)
 
 -- Terminal
-map('t', 'jk', '<C-\\><C-n>', opts)
-map('t', 'kj', '<C-\\><C-n>', opts)
+map('t', '<Esc>', '<C-\\><C-n>', opts)
 map('t', '<C-j>', '<C-\\><C-n><C-w>j', opts)
 map('t', '<C-k>', '<C-\\><C-n><C-w>k', opts)
 map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)

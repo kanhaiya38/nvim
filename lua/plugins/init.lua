@@ -27,12 +27,31 @@ return require('packer').startup(function(use)
   -- Autocompletion
   use {
     'hrsh7th/nvim-compe',
+    event = 'InsertEnter',
     config = function()
       require 'plugins.configs.compe'
+    end,
+    requires = 'Luasnip',
+  }
+  -- Snippets
+  use {
+    'L3MON4D3/Luasnip',
+    event = 'InsertEnter',
+    config = function()
+      require 'plugins.configs.snippets'
+    end,
+    requires = 'rafamadriz/friendly-snippets',
+  }
+  use {
+    'onsails/lspkind-nvim',
+    after = 'nvim-compe',
+    config = function()
+      require('lspkind').init {}
     end,
   }
   use {
     'ray-x/lsp_signature.nvim',
+    event = 'InsertEnter',
     config = function()
       require('lsp_signature').setup()
     end,
@@ -109,15 +128,6 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Snippets
-  use {
-    'L3MON4D3/Luasnip',
-    config = function()
-      require 'plugins.configs.snippets'
-    end,
-  }
-  use 'rafamadriz/friendly-snippets'
-
   -- Comments
   use {
     'terrortylor/nvim-comment',
@@ -172,12 +182,6 @@ return require('packer').startup(function(use)
   }
   use { 'michaelb/sniprun', run = 'bash ./install.sh' }
   use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
-  use {
-    'onsails/lspkind-nvim',
-    config = function()
-      require('lspkind').init {}
-    end,
-  }
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use {

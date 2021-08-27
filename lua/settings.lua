@@ -12,9 +12,6 @@ vim.cmd 'set clipboard+=unnamedplus'
 
 vim.g.mapleader = ' '
 
--- colorscheme
-require('onedark').setup()
-
 O.kinds = {
   lsp = {
     hint = '',

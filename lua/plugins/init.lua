@@ -16,11 +16,21 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Setting up LSP
-  use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require 'lsp'
+    end,
+  }
 
   -- Autocompletion
-  use 'hrsh7th/nvim-compe'
+  use {
+    'hrsh7th/nvim-compe',
+    config = function()
+      require 'plugins.configs.compe'
+    end,
+  }
   use {
     'ray-x/lsp_signature.nvim',
     config = function()
@@ -65,9 +75,31 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- Colorschemes
+  use {
+    'navarasu/onedark.nvim',
+    as = 'theme',
+    config = function()
+      require('onedark').setup()
+    end,
+  }
   -- Statusline and Bufferline
-  use 'glepnir/galaxyline.nvim'
-  use 'romgrk/barbar.nvim'
+  use {
+    'glepnir/galaxyline.nvim',
+    after = 'theme',
+    config = function()
+      require 'plugins.configs.statusline'
+    end,
+  }
+  use {
+    'romgrk/barbar.nvim',
+    after = 'theme',
+    config = function()
+      require 'plugins.configs.barbar'
+    end,
+  }
+  -- Indent
+  use { 'lukas-reineke/indent-blankline.nvim', after = 'theme' }
 
   -- Which Key
   use {
@@ -116,9 +148,6 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Colorschemes
-  use 'navarasu/onedark.nvim'
-
   -- Tree Explorer
   use {
     'kyazdani42/nvim-tree.lua',
@@ -129,9 +158,6 @@ return require('packer').startup(function(use)
 
   -- Dashboard
   use 'glepnir/dashboard-nvim'
-
-  -- Indent
-  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'

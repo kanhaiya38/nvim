@@ -192,11 +192,12 @@ return require('packer').startup(function(use)
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use {
-    'ahmedkhalf/lsp-rooter.nvim',
+    'ahmedkhalf/project.nvim',
     config = function()
-      require('lsp-rooter').setup {}
+      require 'plugins.configs.project'
     end,
   }
+
   use {
     'iamcco/markdown-preview.nvim',
     run = function()

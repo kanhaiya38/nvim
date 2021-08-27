@@ -23,6 +23,13 @@ return require('packer').startup(function(use)
       require 'lsp'
     end,
   }
+  -- Formatting and Linting
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require 'plugins.configs.null-ls'
+    end,
+  }
 
   -- Autocompletion
   use {
@@ -56,6 +63,19 @@ return require('packer').startup(function(use)
       require('lsp_signature').setup()
     end,
   }
+  -- Surroundings
+  use {
+    'blackCauldron7/surround.nvim',
+    config = function()
+      require('surround').setup {}
+    end,
+  }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require 'plugins.configs.autopairs'
+    end,
+  }
 
   -- Telescope
   use {
@@ -69,11 +89,7 @@ return require('packer').startup(function(use)
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require('trouble').setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require('trouble').setup {}
     end,
   }
   -- Terminal
@@ -94,6 +110,15 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- Comments
+  use {
+    'terrortylor/nvim-comment',
+    config = function()
+      require('nvim_comment').setup()
+    end,
+  }
+
+  -- UI
   -- Colorschemes
   use {
     'navarasu/onedark.nvim',
@@ -117,53 +142,10 @@ return require('packer').startup(function(use)
       require 'plugins.configs.bufferline'
     end,
   }
-  -- use {
-  --   'romgrk/barbar.nvim',
-  --   after = 'theme',
-  --   config = function()
-  --     require 'plugins.configs.barbar'
-  --   end,
-  -- }
-  -- Indent
   use { 'lukas-reineke/indent-blankline.nvim', after = 'theme' }
 
-  -- Which Key
-  use {
-    'folke/which-key.nvim',
-    config = function()
-      require 'plugins.configs.which-key'
-    end,
-  }
-
-  -- Comments
-  use {
-    'terrortylor/nvim-comment',
-    config = function()
-      require('nvim_comment').setup()
-    end,
-  }
-
-  -- Formatting and Linting
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require 'plugins.configs.null-ls'
-    end,
-  }
-
-  -- Surroundings
-  use {
-    'blackCauldron7/surround.nvim',
-    config = function()
-      require('surround').setup {}
-    end,
-  }
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require 'plugins.configs.autopairs'
-    end,
-  }
+  -- Dashboard
+  use 'glepnir/dashboard-nvim'
 
   -- Tree Explorer
   use {
@@ -173,13 +155,14 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Dashboard
-  use 'glepnir/dashboard-nvim'
+  -- Which Key
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require 'plugins.configs.which-key'
+    end,
+  }
 
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
-
-  -- Utils
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -187,22 +170,22 @@ return require('packer').startup(function(use)
     end,
     run = ':TSUpdate',
   }
-  use { 'michaelb/sniprun', run = 'bash ./install.sh' }
-  use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
   use {
     'ahmedkhalf/project.nvim',
     config = function()
       require 'plugins.configs.project'
     end,
   }
+  use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
+  use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+  use 'dstein64/vim-startuptime'
 
+  -- Language Specific
+  use { 'npxbr/glow.nvim', run = 'GlowInstall' }
+  use 'simrat39/rust-tools.nvim'
   use {
     'iamcco/markdown-preview.nvim',
-    run = function()
-      fn['mkdp#util#install']()
-    end,
+    run = 'cd app && yarn install',
     cmd = 'MarkdownPreview',
   }
   use {
@@ -224,9 +207,9 @@ return require('packer').startup(function(use)
       }
     end,
   }
-  use 'dstein64/vim-startuptime'
 
-  -- Language Specific
-  use { 'npxbr/glow.nvim', run = 'GlowInstall' }
-  use 'simrat39/rust-tools.nvim'
+  -- Utils
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'kyazdani42/nvim-web-devicons'
 end)

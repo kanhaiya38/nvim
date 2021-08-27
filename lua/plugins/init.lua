@@ -181,8 +181,8 @@ return require('packer').startup(function(use)
   use 'dstein64/vim-startuptime'
 
   -- Language Specific
-  use { 'npxbr/glow.nvim', run = 'GlowInstall' }
   use 'simrat39/rust-tools.nvim'
+  use { 'npxbr/glow.nvim', run = 'paru -S glow-bin' }
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',

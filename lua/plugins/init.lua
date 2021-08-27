@@ -121,7 +121,7 @@ return require('packer').startup(function(use)
   -- UI
   -- Colorschemes
   use {
-    'navarasu/onedark.nvim',
+    'ful1e5/onedark.nvim',
     as = 'theme',
     config = function()
       require('onedark').setup()
@@ -129,7 +129,7 @@ return require('packer').startup(function(use)
   }
   -- Statusline and Bufferline
   use {
-    'glepnir/galaxyline.nvim',
+    'hoob3rt/lualine.nvim',
     after = 'theme',
     config = function()
       require 'plugins.configs.statusline'

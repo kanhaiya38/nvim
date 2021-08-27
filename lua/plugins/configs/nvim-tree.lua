@@ -104,15 +104,4 @@ M.setup = function()
   }
 end
 
-M.toggle = function()
-  local view = require 'nvim-tree.view'
-  if view.win_open() then
-    require('nvim-tree').close()
-    require('bufferline.state').set_offset(0)
-  else
-    require('bufferline.state').set_offset(31, 'EXPLORER')
-    require('nvim-tree').find_file(true)
-  end
-end
-
 return M

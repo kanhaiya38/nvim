@@ -111,12 +111,19 @@ return require('packer').startup(function(use)
     end,
   }
   use {
-    'romgrk/barbar.nvim',
+    'akinsho/bufferline.nvim',
     after = 'theme',
     config = function()
-      require 'plugins.configs.barbar'
+      require 'plugins.configs.bufferline'
     end,
   }
+  -- use {
+  --   'romgrk/barbar.nvim',
+  --   after = 'theme',
+  --   config = function()
+  --     require 'plugins.configs.barbar'
+  --   end,
+  -- }
   -- Indent
   use { 'lukas-reineke/indent-blankline.nvim', after = 'theme' }
 

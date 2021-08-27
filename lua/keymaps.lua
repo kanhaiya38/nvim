@@ -22,6 +22,6 @@ map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)
 map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
 
 opts = { noremap = true, silent = true }
-map('n', '<C-n>', ':lua require("plugins.configs.nvim-tree").toggle()<CR>', opts)
+map('n', '<C-n>', '<Cmd>NvimTreeToggle<CR>', opts)
 map('n', '<leader>r', ':NvimTreeRefresh<CR>', opts)
 map('n', '<leader>n', ':NvimTreeFindFile<CR>', opts)

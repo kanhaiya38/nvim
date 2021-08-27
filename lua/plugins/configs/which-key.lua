@@ -27,10 +27,10 @@ wk.register {
 
   ['<leader>f'] = {
     name = '+file',
-    d = { '<cmd>Telescope find_files<CR>', 'find files' },
-    f = { '<cmd>Telescope git_files<CR>', 'git files' },
+    f = { '<cmd>Telescope find_files<CR>', 'find files' },
+    g = { '<cmd>Telescope git_files<CR>', 'git files' },
     s = { '<cmd>Telescope grep_string<CR>', 'grep string' },
-    g = { '<cmd>Telescope live_grep<CR>', 'live grep' },
+    z = { '<cmd>Telescope live_grep<CR>', 'live grep' },
     b = { '<cmd>Telescope file_browser<CR>', 'file browser' },
   },
 

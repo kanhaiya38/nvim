@@ -197,7 +197,6 @@ return require('packer').startup(function(use)
       require('lsp-rooter').setup {}
     end,
   }
-  use 'tjdevries/astronauta.nvim'
   use {
     'iamcco/markdown-preview.nvim',
     run = function()

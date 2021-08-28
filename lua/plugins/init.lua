@@ -80,6 +80,7 @@ return require('packer').startup(function(use)
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
     config = function()
       require 'plugins.configs.telescope'
     end,
@@ -87,6 +88,7 @@ return require('packer').startup(function(use)
 
   use {
     'folke/trouble.nvim',
+    cmd = 'Trouble',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require('trouble').setup {}
@@ -95,6 +97,7 @@ return require('packer').startup(function(use)
   -- Terminal
   use {
     'akinsho/nvim-toggleterm.lua',
+    cmd = 'ToggleTerm',
     config = function()
       require('plugins.configs.toggleterm').setup()
     end,

@@ -38,12 +38,10 @@ return require('packer').startup(function(use)
     config = function()
       require 'plugins.configs.compe'
     end,
-    requires = 'Luasnip',
   }
   -- Snippets
   use {
     'L3MON4D3/Luasnip',
-    event = 'InsertEnter',
     config = function()
       require 'plugins.configs.snippets'
     end,

@@ -20,6 +20,9 @@ local sources = {
 
   -- markdown
   diagnostics.markdownlint,
+  diagnostics.vale.with {
+    extra_args = { '--config', vim.fn.expand '~/.config/vale/vale.ini' },
+  },
 
   -- shell scripts
   formatting.shfmt,

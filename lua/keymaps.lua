@@ -29,3 +29,5 @@ map('n', '<leader>n', ':NvimTreeFindFile<CR>', opts)
 -- ToggleTerm
 opts = { noremap = true, silent = true, nowait = true }
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', opts)
+
+map('n', '<C-y>', 'ggVG"+y', opts)

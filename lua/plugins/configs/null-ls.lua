@@ -16,7 +16,9 @@ local sources = {
   formatting.isort,
 
   -- c/c++
-  formatting.clang_format,
+  formatting.clang_format.with {
+    extra_args = { '-style=file', '--fallback-style=Google' },
+  },
 
   -- markdown
   diagnostics.markdownlint,

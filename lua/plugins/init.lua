@@ -62,12 +62,7 @@ return require('packer').startup(function(use)
     end,
   }
   -- Surroundings
-  use {
-    'blackCauldron7/surround.nvim',
-    config = function()
-      require('surround').setup {}
-    end,
-  }
+  use { 'tpope/vim-surround' }
   use {
     'windwp/nvim-autopairs',
     config = function()

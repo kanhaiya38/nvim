@@ -168,6 +168,7 @@ return require('packer').startup(function(use)
     end,
     run = ':TSUpdate',
   }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' }
   use {
     'ahmedkhalf/project.nvim',
     config = function()

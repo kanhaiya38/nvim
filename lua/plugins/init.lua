@@ -14,7 +14,7 @@ vim.cmd [[autocmd BufWritePost ~/.config/nvim/lua/plugins/init.lua source <afile
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
+  use 'lewis6991/impatient.nvim'
   -- Setting up LSP
   use 'kabouzeid/nvim-lspinstall'
   use {

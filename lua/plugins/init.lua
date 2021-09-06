@@ -65,6 +65,7 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-surround' }
   use {
     'windwp/nvim-autopairs',
+    event = 'InsertEnter',
     config = function()
       require 'plugins.configs.autopairs'
     end,
@@ -146,6 +147,7 @@ return require('packer').startup(function(use)
   -- Tree Explorer
   use {
     'kyazdani42/nvim-tree.lua',
+    cmd = 'NvimTreeToggle',
     config = function()
       require('plugins.configs.nvim-tree').setup()
     end,
@@ -173,7 +175,7 @@ return require('packer').startup(function(use)
     end,
   }
   use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
-  use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+  use { 'michaelb/sniprun', cmd = 'SnipRun', run = 'bash ./install.sh' }
   use 'dstein64/vim-startuptime'
 
   -- Language Specific

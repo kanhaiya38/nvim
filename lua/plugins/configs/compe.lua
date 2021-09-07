@@ -1,76 +1,90 @@
-vim.o.completeopt = 'menuone,noselect'
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
 
-require('compe').setup {
-  enabled = true,
-  autocomplete = true,
-  debug = false,
-  min_length = 1,
-  preselect = 'enable',
-  throttle_time = 80,
-  source_timeout = 200,
-  incomplete_delay = 400,
-  max_abbr_width = 100,
-  max_kind_width = 100,
-  max_menu_width = 100,
-  documentation = true,
-
-  source = {
-    buffer = { kind = ' ' },
-    path = { kind = ' ' },
-    calc = { kind = ' ' },
-    nvim_lsp = { kind = ' ' },
-    nvim_lua = true,
-    neorg = true,
-    luasnip = { kind = ' ' },
-    emoji = { kind = ' ﲃ', filetypes = { 'markdown', 'text' } },
-  },
-}
+local check_back_space = function()
+  local col = vim.fn.col '.' - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+end
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local check_back_space = function()
-  local col = vim.fn.col '.' - 1
-  if col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' then
-    return true
-  else
-    return false
-  end
-end
-
 -- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
+-- move to prev/next item in completion menuone
+-- jump to prev/next snippet's placeholder
+local tab_complete = function(fallback)
   if vim.fn.pumvisible() == 1 then
-    return t '<C-n>'
-  elseif require('luasnip').expand_or_jumpable() then
-    return t '<Plug>luasnip-expand-or-jump'
+    vim.fn.feedkeys(t '<C-n>', 'n')
+  elseif luasnip.expand_or_jumpable() then
+    vim.fn.feedkeys(t '<Plug>luasnip-expand-or-jump', '')
   elseif check_back_space() then
-    return t '<Tab>'
+    vim.fn.feedkeys(t '<Tab>', 'n')
   else
-    return vim.fn['compe#complete']()
+    fallback()
   end
 end
 
-_G.s_tab_complete = function()
+local s_tab_complete = function(fallback)
   if vim.fn.pumvisible() == 1 then
-    return t '<C-p>'
-  elseif require('luasnip').jumpable(-1) then
-    return t '<Plug>luasnip-jump-prev'
+    vim.fn.feedkeys(t '<C-p>', 'n')
+  elseif luasnip.jumpable(-1) then
+    vim.fn.feedkeys(t '<Plug>luasnip-jump-prev', '')
   else
-    return t '<S-Tab>'
+    fallback()
   end
 end
 
-vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'calc' },
+    { name = 'emoji' },
+    -- TODO: neorg
+  },
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-y>'] = cmp.mapping.confirm { select = true },
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(tab_complete, {
+      'i',
+      's',
+    }),
+    ['<S-Tab>'] = cmp.mapping(s_tab_complete, {
+      'i',
+      's',
+    }),
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      -- fancy icons and a name of kind
+      vim_item.kind = require('lspkind').presets.default[vim_item.kind] .. ' ' .. vim_item.kind
 
-vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<CR>', "compe#confirm('<CR>')", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<C-e>', "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<C-f>', "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
-vim.api.nvim_set_keymap('i', '<C-d>', "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })
+      -- set a name for each source
+      vim_item.menu = ({
+        nvim_lsp = '[LSP]',
+        buffer = '[Buffer]',
+        luasnip = '[LuaSnip]',
+        path = '[Path]',
+        calc = '[Calc]',
+        emoji = '[Emoji]',
+      })[entry.source.name]
+      return vim_item
+    end,
+  },
+}

@@ -33,11 +33,19 @@ return require('packer').startup(function(use)
 
   -- Autocompletion
   use {
-    'hrsh7th/nvim-compe',
-    event = 'InsertEnter',
+    'hrsh7th/nvim-cmp',
+    -- event = 'InsertEnter',
     config = function()
       require 'plugins.configs.compe'
     end,
+    requires = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-emoji',
+    },
   }
   -- Snippets
   use {
@@ -49,7 +57,7 @@ return require('packer').startup(function(use)
   }
   use {
     'onsails/lspkind-nvim',
-    after = 'nvim-compe',
+    after = 'nvim-cmp',
     config = function()
       require('lspkind').init {}
     end,

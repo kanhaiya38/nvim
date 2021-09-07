@@ -3,6 +3,8 @@ local M = {}
 M.default_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
   -- enable snippet support
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   return capabilities

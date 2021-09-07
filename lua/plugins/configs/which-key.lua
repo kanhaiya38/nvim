@@ -32,6 +32,7 @@ wk.register {
     s = { '<cmd>Telescope grep_string<CR>', 'grep string' },
     z = { '<cmd>Telescope live_grep<CR>', 'live grep' },
     b = { '<cmd>Telescope file_browser<CR>', 'file browser' },
+    p = { '<cmd>Telescope projects<CR>', 'projects' },
   },
 
   ['<leader>s'] = {

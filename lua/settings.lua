@@ -22,6 +22,9 @@ O.kinds = {
   },
 }
 
+-- glow
+vim.g.glow_binary_path = '/usr/bin'
+
 -- startuptime
 vim.g.startuptime_tries = 5
 

@@ -32,7 +32,7 @@ local sources = {
   formatting.fish_indent,
 
   -- rust
-  formatting.rustfmt,
+  -- formatting.rustfmt, // use rust-tools
 
   -- git
   code_actions.gitsigns,

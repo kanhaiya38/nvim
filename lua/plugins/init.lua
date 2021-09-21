@@ -189,7 +189,13 @@ return require('packer').startup(function(use)
 
   -- Language Specific
   use { 'npxbr/glow.nvim', cmd = 'Glow' }
-  use { 'simrat39/rust-tools.nvim', ft = 'rust' }
+  use {
+    'simrat39/rust-tools.nvim',
+    config = function()
+      require('rust-tools').setup {}
+    end,
+    ft = 'rust',
+  }
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',

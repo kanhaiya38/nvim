@@ -101,7 +101,7 @@ M.show_source = function()
     for i, v in pairs(diagnostics) do
       prefixed_diagnostics[i].message = string.format('%s: %s', v.source, v.message)
     end
-    vim.lsp.diagnostic.display(prefixed_diagnostics, bufnr, client_id, config)
+    vim.lsp.diagnostic.save(prefixed_diagnostics, bufnr, client_id, config)
   end
 end
 return M

@@ -151,6 +151,20 @@ return require('packer').startup {
     use {
       'lukas-reineke/indent-blankline.nvim',
       after = 'theme',
+      config = function()
+        require('indent_blankline').setup {
+          filetype_exclude = {
+            'help',
+            'terminal',
+            'dashboard',
+          },
+          buftype_exclude = { 'terminal' },
+          char_list = { '|', '¦', '┆', '┊' },
+          space_char_blankline = ' ',
+          show_first_indent_level = false,
+          show_current_context = true,
+        }
+      end,
     }
 
     -- Dashboard

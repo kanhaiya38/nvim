@@ -3,7 +3,7 @@ require('project_nvim').setup {
 
   patterns = { '>codechef', '>codeforces', '>atcoder' },
 
-  ignore_lsp = { 'null-ls' },
+  ignore_lsp = { 'null-ls', 'html' },
 
-  silent_chdir = true,
+  silent_chdir = false,
 }

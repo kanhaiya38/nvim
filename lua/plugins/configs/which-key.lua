@@ -11,6 +11,7 @@ wk.register {
     name = '+actions',
     f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
     g = { '<cmd>Glow<CR>', 'glow' },
+    m = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
   },
 
   ['<leader>b'] = {

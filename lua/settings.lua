@@ -25,6 +25,9 @@ O.kinds = {
 -- glow
 vim.g.glow_binary_path = '/usr/bin'
 
+-- markdown preview
+vim.g.mkdp_browser = 'qutebrowser'
+
 -- startuptime
 vim.g.startuptime_tries = 5
 

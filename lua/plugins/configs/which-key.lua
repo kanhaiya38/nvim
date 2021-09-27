@@ -12,6 +12,7 @@ wk.register {
     f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
     g = { '<cmd>Glow<CR>', 'glow' },
     m = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
+    p = { '<cmd>PasteImg<CR>', 'paste image' },
   },
 
   ['<leader>b'] = {

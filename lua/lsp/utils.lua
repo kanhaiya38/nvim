@@ -78,30 +78,10 @@ end
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
 M.show_source = function()
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = function(_, result, context, config)
-    local client_id = context.client_id
-    local uri = result.uri
-    local bufnr = vim.uri_to_bufnr(uri)
-
-    if not bufnr then
-      return
-    end
-
-    local diagnostics = result.diagnostics
-
-    vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
-
-    if not vim.api.nvim_buf_is_loaded(bufnr) then
-      return
-    end
-
-    -- don't mutate the original diagnostic because it would interfere with
-    -- code action (and probably other stuff, too)
-    local prefixed_diagnostics = vim.deepcopy(diagnostics)
-    for i, v in pairs(diagnostics) do
-      prefixed_diagnostics[i].message = string.format('%s: %s', v.source, v.message)
-    end
-    vim.lsp.diagnostic.save(prefixed_diagnostics, bufnr, client_id, config)
-  end
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      source = 'always', -- Or "if_many"
+    },
+  })
 end
 return M

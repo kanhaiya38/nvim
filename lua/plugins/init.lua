@@ -72,6 +72,7 @@ return require('packer').startup {
     }
     -- Surroundings
     use { 'tpope/vim-surround' }
+    use { 'tpope/vim-repeat' }
     use {
       'windwp/nvim-autopairs',
       event = 'InsertEnter',

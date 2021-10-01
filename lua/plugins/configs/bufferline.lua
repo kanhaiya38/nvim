@@ -4,8 +4,8 @@ local nnoremap = function(key, map)
 end
 
 nnoremap('gb', '<Cmd>BufferLinePick<CR>')
-nnoremap('[b', '<Cmd>BufferLineCycleNext<CR>')
-nnoremap('b]', '<Cmd>BufferLineCyclePrev<CR>')
+-- nnoremap('[b', '<Cmd>BufferLineCycleNext<CR>')
+-- nnoremap('b]', '<Cmd>BufferLineCyclePrev<CR>')
 nnoremap('<A-1>', '<Cmd>BufferLineGoToBuffer 1<CR>')
 nnoremap('<A-2>', '<Cmd>BufferLineGoToBuffer 2<CR>')
 nnoremap('<A-3>', '<Cmd>BufferLineGoToBuffer 3<CR>')

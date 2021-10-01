@@ -28,7 +28,7 @@ M.setup = function()
         term.bufnr,
         'i',
         '<C-c>',
-        '<cmd>require("plugins.configs.toggleterm").toggle("lazygit")<CR>',
+        '<cmd>require("configs.toggleterm").toggle("lazygit")<CR>',
         { noremap = true, silent = true }
       )
     end,

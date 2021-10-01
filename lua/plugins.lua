@@ -28,7 +28,7 @@ return require('packer').startup {
     use {
       'jose-elias-alvarez/null-ls.nvim',
       config = function()
-        require 'plugins.configs.null-ls'
+        require 'configs.null-ls'
       end,
     }
 
@@ -37,7 +37,7 @@ return require('packer').startup {
       'hrsh7th/nvim-cmp',
       -- event = 'InsertEnter',
       config = function()
-        require 'plugins.configs.compe'
+        require 'configs.compe'
       end,
       requires = {
         'hrsh7th/cmp-buffer',
@@ -52,13 +52,13 @@ return require('packer').startup {
     use {
       'L3MON4D3/Luasnip',
       config = function()
-        require 'plugins.configs.snippets'
+        require 'configs.snippets'
       end,
       requires = 'rafamadriz/friendly-snippets',
     }
     use {
       'onsails/lspkind-nvim',
-      after = 'nvim-cmp',
+      -- after = 'nvim-cmp',
       config = function()
         require('lspkind').init {}
       end,
@@ -77,7 +77,7 @@ return require('packer').startup {
       'windwp/nvim-autopairs',
       event = 'InsertEnter',
       config = function()
-        require 'plugins.configs.autopairs'
+        require 'configs.autopairs'
       end,
     }
 
@@ -86,7 +86,7 @@ return require('packer').startup {
       'nvim-telescope/telescope.nvim',
       cmd = 'Telescope',
       config = function()
-        require 'plugins.configs.telescope'
+        require 'configs.telescope'
       end,
     }
 
@@ -103,7 +103,7 @@ return require('packer').startup {
       'akinsho/nvim-toggleterm.lua',
       cmd = 'ToggleTerm',
       config = function()
-        require('plugins.configs.toggleterm').setup()
+        require('configs.toggleterm').setup()
       end,
     }
 
@@ -139,14 +139,14 @@ return require('packer').startup {
       'hoob3rt/lualine.nvim',
       after = 'theme',
       config = function()
-        require 'plugins.configs.statusline'
+        require 'configs.statusline'
       end,
     }
     use {
       'akinsho/bufferline.nvim',
       after = 'theme',
       config = function()
-        require 'plugins.configs.bufferline'
+        require 'configs.bufferline'
       end,
     }
     use {
@@ -176,7 +176,7 @@ return require('packer').startup {
       'kyazdani42/nvim-tree.lua',
       cmd = 'NvimTreeToggle',
       config = function()
-        require('plugins.configs.nvim-tree').setup()
+        require('configs.nvim-tree').setup()
       end,
     }
 
@@ -184,14 +184,14 @@ return require('packer').startup {
     use {
       'folke/which-key.nvim',
       config = function()
-        require 'plugins.configs.which-key'
+        require 'configs.which-key'
       end,
     }
 
     use {
       'nvim-treesitter/nvim-treesitter',
       config = function()
-        require 'plugins.configs.treesitter'
+        require 'configs.treesitter'
       end,
       run = ':TSUpdate',
     }
@@ -199,7 +199,7 @@ return require('packer').startup {
     use {
       'ahmedkhalf/project.nvim',
       config = function()
-        require 'plugins.configs.project'
+        require 'configs.project'
       end,
     }
     use { 'jdhao/better-escape.vim', event = 'InsertEnter' }

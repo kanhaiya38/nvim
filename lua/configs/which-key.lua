@@ -90,7 +90,7 @@ wk.register {
 
   ['<leader>t'] = {
     name = '+terminal',
-    l = { '<cmd>lua require("plugins.configs.toggleterm").toggle("lazygit")<CR>', 'lazygit' },
+    l = { '<cmd>lua require("configs.toggleterm").toggle("lazygit")<CR>', 'lazygit' },
   },
 
   ['<leader>h'] = {
@@ -108,15 +108,15 @@ wk.register {
   ['<leader>x'] = {
     name = '+leetcode',
     a = {
-      '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r") .. " --solution")<CR>',
+      '<cmd>lua require("configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r") .. " --solution")<CR>',
       'solution',
     },
-    s = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r"))<CR>', 'show' },
-    S = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode submit " .. vim.fn.expand("%"))<CR>', 'submit' },
+    s = { '<cmd>lua require("configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r"))<CR>', 'show' },
+    S = { '<cmd>lua require("configs.toggleterm").exec("leetcode submit " .. vim.fn.expand("%"))<CR>', 'submit' },
     t = {
-      '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%") .. " --local")<CR>',
+      '<cmd>lua require("configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%") .. " --local")<CR>',
       'local test',
     },
-    T = { '<cmd>lua require("plugins.configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%"))<CR>', 'test' },
+    T = { '<cmd>lua require("configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%"))<CR>', 'test' },
   },
 }

@@ -174,7 +174,7 @@ return require('packer').startup {
     -- Tree Explorer
     use {
       'kyazdani42/nvim-tree.lua',
-      -- cmd = 'NvimTreeToggle',
+      cmd = 'NvimTreeToggle',
       config = function()
         require('configs.nvim-tree').setup()
       end,

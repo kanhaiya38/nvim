@@ -11,7 +11,7 @@ end
 M.setup = function()
   local g = vim.g
   local tree_cb = require('nvim-tree.config').nvim_tree_callback
-  g.nvim_tree_bindings = {
+  local list = {
     { key = { 'l' }, cb = tree_cb 'edit' },
     { key = { '<CR>' }, cb = tree_cb 'cd' },
     { key = 'v', cb = tree_cb 'vsplit' },
@@ -45,20 +45,13 @@ M.setup = function()
     { key = 'q', cb = tree_cb 'close' },
     { key = 'g?', cb = tree_cb 'toggle_help' },
   }
-  g.nvim_tree_disable_default_keybindings = 1
-  g.nvim_tree_auto_open = 1
-  g.nvim_tree_auto_close = 1
   g.nvim_tree_auto_ignore_ft = { 'dashboard' }
-  g.nvim_tree_follow = 1 -- 0 by default, this option allows the cursor to be updated when entering a buffer
   g.nvim_tree_git_hl = 1
   g.nvim_tree_highlight_opened_files = 1
   g.nvim_tree_root_folder_modifier = ':~' -- This is the default. See :help filename-modifiers for more options
-  g.nvim_tree_tab_open = 1
   g.nvim_tree_group_empty = 1
-  g.nvim_tree_lsp_diagnostics = 1
   g.nvim_tree_disable_window_picker = 0 -- 0 by default, will disable the window picker.
   g.nvim_tree_icon_padding = ' '
-  g.nvim_tree_update_cwd = 1 -- 0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
   g.nvim_tree_window_picker_exclude = {
     filetype = {
       'packer',
@@ -101,6 +94,21 @@ M.setup = function()
       symlink_open = '',
     },
     lsp = O.kinds.lsp,
+  }
+
+  require('nvim-tree').setup {
+    open_on_setup = true,
+    auto_close = true,
+    tab_open = true,
+    update_cwd = true,
+    update_focused_file = { enable = true },
+    lsp_diagnostics = true,
+    view = {
+      mappings = {
+        custom_only = true,
+        list = list,
+      },
+    },
   }
 end
 

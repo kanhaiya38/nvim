@@ -119,9 +119,11 @@ return require('packer').startup {
 
     -- Comments
     use {
-      'terrortylor/nvim-comment',
+      'numToStr/Comment.nvim',
       config = function()
-        require('nvim_comment').setup()
+        require('Comment').setup()
+        local lang = require 'Comment.lang'
+        lang.set('fish', '#%s')
       end,
     }
 

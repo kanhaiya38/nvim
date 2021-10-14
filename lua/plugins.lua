@@ -202,7 +202,13 @@ return require('packer').startup {
         require 'configs.project'
       end,
     }
-    use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
+    use {
+      'max397574/better-escape.nvim',
+      event = 'InsertEnter',
+      config = function()
+        require('better_escape').setup()
+      end,
+    }
     use { 'michaelb/sniprun', cmd = 'SnipRun', run = 'bash ./install.sh' }
     use 'dstein64/vim-startuptime'
 

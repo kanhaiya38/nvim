@@ -35,6 +35,7 @@ local function setup_servers()
 
   local server_configs = {}
   server_configs.lua = require 'lsp.servers.lua'
+  server_configs.typescript = require 'lsp.servers.typescript'
 
   for _, server in pairs(servers) do
     local config = make_config(server_configs[server])

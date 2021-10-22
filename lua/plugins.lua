@@ -223,6 +223,7 @@ return require('packer').startup {
       end,
       ft = 'rust',
     }
+    use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
     use {
       'iamcco/markdown-preview.nvim',
       run = 'cd app && yarn install',

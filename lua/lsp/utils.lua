@@ -45,6 +45,7 @@ M.default_on_attach = function(client, bufnr)
 
   -- Disable language server formatting
   client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then

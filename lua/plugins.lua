@@ -138,7 +138,7 @@ return require('packer').startup {
     }
     -- Statusline and Bufferline
     use {
-      'hoob3rt/lualine.nvim',
+      'nvim-lualine/lualine.nvim',
       after = 'theme',
       config = function()
         require 'configs.statusline'

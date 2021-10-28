@@ -113,6 +113,13 @@ return require('packer').startup {
       end,
     }
 
+    use {
+      'beauwilliams/focus.nvim',
+      config = function()
+        require('focus').setup()
+      end,
+    }
+
     -- Git
     use {
       'lewis6991/gitsigns.nvim',

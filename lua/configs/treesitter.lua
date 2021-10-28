@@ -20,6 +20,10 @@ require('nvim-treesitter.configs').setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   incremental_selection = {
     enable = true,
     keymaps = {

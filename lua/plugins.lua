@@ -121,8 +121,12 @@ return require('packer').startup {
     use {
       'numToStr/Comment.nvim',
       config = function()
-        require('Comment').setup()
-        local lang = require 'Comment.lang'
+        require('Comment').setup {
+          pre_hook = function(_)
+            return require('ts_context_commentstring.internal').calculate_commentstring()
+          end,
+        }
+        local lang = require 'Comment.ft'
         lang.set('fish', '#%s')
       end,
     }
@@ -224,6 +228,7 @@ return require('packer').startup {
       ft = 'rust',
     }
     use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
+    use { 'JoosepAlviste/nvim-ts-context-commentstring' }
     use {
       'iamcco/markdown-preview.nvim',
       run = 'cd app && yarn install',

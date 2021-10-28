@@ -80,6 +80,12 @@ return require('packer').startup {
         require 'configs.autopairs'
       end,
     }
+    use {
+      'windwp/nvim-ts-autotag',
+      config = function()
+        require('nvim-ts-autotag').setup()
+      end,
+    }
 
     -- Telescope
     use {

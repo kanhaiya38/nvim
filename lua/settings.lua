@@ -13,6 +13,8 @@ vim.o.shell = '/usr/bin/fish'
 
 vim.g.mapleader = ' '
 
+O = {}
+
 O.kinds = {
   lsp = {
     hint = '',

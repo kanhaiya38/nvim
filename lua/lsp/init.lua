@@ -10,6 +10,8 @@ local function make_config(server)
   local config = {}
   if server == 'tsserver' then
     config = require 'lsp.servers.typescript'
+  elseif server == 'sumneko_lua' then
+    config = require 'lsp.servers.lua'
   end
 
   return {

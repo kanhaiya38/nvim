@@ -186,6 +186,7 @@ return require('packer').startup {
         }
       end,
     }
+    use 'rcarriga/nvim-notify'
 
     -- Dashboard
     use 'glepnir/dashboard-nvim'

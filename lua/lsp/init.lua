@@ -8,7 +8,7 @@ local function make_config(server)
   local default_on_attach = utils.default_on_attach
 
   local config = {}
-  if server.name == 'tsserver' then
+  if server == 'tsserver' then
     config = require 'lsp.servers.typescript'
   end
 

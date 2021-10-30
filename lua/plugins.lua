@@ -92,7 +92,7 @@ return require('packer').startup {
       'nvim-telescope/telescope.nvim',
       cmd = 'Telescope',
       config = function()
-        require 'configs.telescope'
+        require('configs.telescope').setup()
       end,
     }
 

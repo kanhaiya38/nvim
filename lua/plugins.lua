@@ -17,12 +17,12 @@ return require('packer').startup {
     use 'wbthomason/packer.nvim'
     use 'lewis6991/impatient.nvim'
     -- Setting up LSP
-    use 'williamboman/nvim-lsp-installer'
     use {
       'neovim/nvim-lspconfig',
       config = function()
         require('lsp').setup()
       end,
+      requires = 'williamboman/nvim-lsp-installer',
     }
     -- Formatting and Linting
     use {

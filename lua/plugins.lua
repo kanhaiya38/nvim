@@ -21,7 +21,7 @@ return require('packer').startup {
     use {
       'neovim/nvim-lspconfig',
       config = function()
-        require 'lsp'
+        require('lsp').setup()
       end,
     }
     -- Formatting and Linting

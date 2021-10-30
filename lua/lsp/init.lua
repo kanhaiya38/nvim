@@ -33,8 +33,6 @@ local function install_servers()
   end
 end
 
-install_servers()
-
 local function setup_servers()
   lsp_installer.on_server_ready(function(server)
     local config = make_config(server.name)
@@ -42,7 +40,14 @@ local function setup_servers()
     vim.cmd [[ do User LspAttachBuffers ]]
   end)
 end
-setup_servers()
 
-utils.show_source()
-utils.diagnostics_symbols()
+local M = {}
+
+M.setup = function()
+  install_servers()
+  setup_servers()
+  utils.show_source()
+  utils.diagnostics_symbols()
+end
+
+return M

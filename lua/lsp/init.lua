@@ -1,55 +1,46 @@
 local utils = require 'lsp.utils'
+local lsp_installer = require 'nvim-lsp-installer'
+local lsp_installer_servers = require 'nvim-lsp-installer.servers'
 
 -- config that activates keymaps and enables snippet support
 local function make_config(server)
-  local default_config = {
-    capabilities = require('lsp.utils').default_capabilities(),
-    settings = nil,
-    on_attach = require('lsp.utils').default_on_attach,
+  local default_capabilities = require('lsp.utils').default_capabilities()
+  local default_on_attach = require('lsp.utils').default_on_attach
+
+  local config = {}
+  if server.name == 'tsserver' then
+    config = require 'lsp.servers.typescript'
+  end
+
+  return {
+    capabilities = config.capabilities or default_capabilities,
+    settings = config.settings,
+    on_attach = config.on_attach or default_on_attach,
   }
-
-  if server == nil then
-    server = default_config
-  end
-  if server.capabilities == nil then
-    server.capabilities = default_config.capabilities
-  end
-  if server.settings == nil then
-    server.settings = default_config.settings
-  end
-  if server.on_attach == nil then
-    server.on_attach = default_config.on_attach
-  end
-
-  return server
 end
 
--- lsp-install
+local function install_servers()
+  for _, server in ipairs(O.servers) do
+    local ok, server_analyzer = lsp_installer_servers.get_server(server)
+    if ok then
+      if not server_analyzer:is_installed() then
+        -- server_analyzer:install(server) -- will install in background
+        lsp_installer.install(server) -- install window will popup
+      end
+    end
+  end
+end
+
+install_servers()
+
 local function setup_servers()
-  require('lspinstall').setup()
-
-  -- get all installed servers
-  local servers = require('lspinstall').installed_servers()
-  -- add manually installed servers
-  table.insert(servers, 'clangd')
-
-  local server_configs = {}
-  server_configs.lua = require 'lsp.servers.lua'
-  server_configs.typescript = require 'lsp.servers.typescript'
-
-  for _, server in pairs(servers) do
-    local config = make_config(server_configs[server])
-    require('lspconfig')[server].setup(config)
-  end
+  lsp_installer.on_server_ready(function(server)
+    local config = make_config(server)
+    server:setup(config)
+    vim.cmd [[ do User LspAttachBuffers ]]
+  end)
 end
-
 setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require('lspinstall').post_install_hook = function()
-  setup_servers() -- reload installed servers
-  vim.cmd 'bufdo e'
-end
 
 utils.show_source()
 utils.diagnostics_symbols()

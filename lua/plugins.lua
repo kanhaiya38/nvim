@@ -17,7 +17,7 @@ return require('packer').startup {
     use 'wbthomason/packer.nvim'
     use 'lewis6991/impatient.nvim'
     -- Setting up LSP
-    use 'kabouzeid/nvim-lspinstall'
+    use 'williamboman/nvim-lsp-installer'
     use {
       'neovim/nvim-lspconfig',
       config = function()

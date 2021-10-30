@@ -22,6 +22,20 @@ O.kinds = {
   },
 }
 
+O.servers = {
+  'sumneko_lua',
+  'rust_analyzer',
+  'pyright',
+  'clangd',
+  'yamlls',
+  'tsserver',
+  'html',
+  'jsonls',
+  'cssls',
+  'dockerls',
+  'bashls',
+}
+
 -- glow
 vim.g.glow_binary_path = '/usr/bin'
 

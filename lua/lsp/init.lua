@@ -4,8 +4,8 @@ local lsp_installer_servers = require 'nvim-lsp-installer.servers'
 
 -- config that activates keymaps and enables snippet support
 local function make_config(server)
-  local default_capabilities = require('lsp.utils').default_capabilities()
-  local default_on_attach = require('lsp.utils').default_on_attach
+  local default_capabilities = utils.default_capabilities()
+  local default_on_attach = utils.default_on_attach
 
   local config = {}
   if server.name == 'tsserver' then
@@ -35,7 +35,7 @@ install_servers()
 
 local function setup_servers()
   lsp_installer.on_server_ready(function(server)
-    local config = make_config(server)
+    local config = make_config(server.name)
     server:setup(config)
     vim.cmd [[ do User LspAttachBuffers ]]
   end)

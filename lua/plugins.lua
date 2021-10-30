@@ -75,7 +75,7 @@ return require('packer').startup {
     use { 'tpope/vim-repeat' }
     use {
       'windwp/nvim-autopairs',
-      event = 'InsertEnter',
+      -- event = 'InsertEnter',
       config = function()
         require 'configs.autopairs'
       end,

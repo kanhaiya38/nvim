@@ -21,6 +21,14 @@ local function make_config(server)
   }
 end
 
+local function setup_servers()
+  lsp_installer.on_server_ready(function(server)
+    local config = make_config(server.name)
+    server:setup(config)
+    vim.cmd [[ do User LspAttachBuffers ]]
+  end)
+end
+
 local function install_servers()
   for _, server in ipairs(O.servers) do
     local ok, server_analyzer = lsp_installer_servers.get_server(server)
@@ -31,14 +39,6 @@ local function install_servers()
       end
     end
   end
-end
-
-local function setup_servers()
-  lsp_installer.on_server_ready(function(server)
-    local config = make_config(server.name)
-    server:setup(config)
-    vim.cmd [[ do User LspAttachBuffers ]]
-  end)
 end
 
 local M = {}

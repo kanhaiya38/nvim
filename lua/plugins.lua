@@ -37,7 +37,7 @@ return require('packer').startup {
       'hrsh7th/nvim-cmp',
       -- event = 'InsertEnter',
       config = function()
-        require 'configs.compe'
+        require 'configs.cmp'
       end,
       requires = {
         'hrsh7th/cmp-buffer',

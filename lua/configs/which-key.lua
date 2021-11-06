@@ -119,4 +119,6 @@ wk.register {
     },
     T = { '<cmd>lua require("configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%"))<CR>', 'test' },
   },
+
+  ['<leader>u'] = { '<cmd>lua require("functions").openURL()<CR>', 'open url' },
 }

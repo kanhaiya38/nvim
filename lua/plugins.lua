@@ -134,13 +134,7 @@ return require('packer').startup {
     use {
       'numToStr/Comment.nvim',
       config = function()
-        require('Comment').setup {
-          pre_hook = function(_)
-            return require('ts_context_commentstring.internal').calculate_commentstring()
-          end,
-        }
-        local lang = require 'Comment.ft'
-        lang.set('fish', '#%s')
+        require('configs.comment')
       end,
     }
 

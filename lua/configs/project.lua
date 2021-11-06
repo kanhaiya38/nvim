@@ -5,5 +5,5 @@ require('project_nvim').setup {
 
   ignore_lsp = { 'null-ls', 'html' },
 
-  silent_chdir = false,
+  -- silent_chdir = false,
 }

@@ -8,6 +8,14 @@ M.setup = function()
     open_mapping = [[<C-Space>]],
     shade_terminals = true,
     shading_factor = 0.6,
+    direction = 'vertical',
+    size = function(term)
+      if term.direction == 'horizontal' then
+        return 15
+      elseif term.direction == 'vertical' then
+        return vim.o.columns * 0.4
+      end
+    end,
   }
   local Terminal = require('toggleterm.terminal').Terminal
   M.terminals.lazygit = Terminal:new {

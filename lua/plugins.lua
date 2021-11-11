@@ -116,7 +116,7 @@ return require('packer').startup {
     use {
       'beauwilliams/focus.nvim',
       config = function()
-        require('focus').setup()
+        require('focus').setup { excluded_filetypes = { 'toggleterm' } }
       end,
     }
 

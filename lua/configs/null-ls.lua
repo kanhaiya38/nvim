@@ -1,6 +1,7 @@
-local formatting = require 'null-ls.builtins.formatting'
-local code_actions = require 'null-ls.builtins.code-actions'
-local diagnostics = require 'null-ls.builtins.diagnostics'
+local null = require('null-ls')
+local formatting = null.builtins.formatting
+local code_actions = null.builtins.code_actions
+local diagnostics = null.builtins.diagnostics
 
 local sources = {
   -- lua

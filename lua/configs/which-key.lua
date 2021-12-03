@@ -13,6 +13,7 @@ wk.register {
     g = { '<cmd>Glow<CR>', 'glow' },
     m = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
     p = { '<cmd>PasteImg<CR>', 'paste image' },
+    c = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
   },
 
   ['<leader>b'] = {

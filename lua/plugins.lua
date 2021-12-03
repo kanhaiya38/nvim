@@ -134,7 +134,7 @@ return require('packer').startup {
     use {
       'numToStr/Comment.nvim',
       config = function()
-        require('configs.comment')
+        require 'configs.comment'
       end,
     }
 

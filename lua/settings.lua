@@ -10,7 +10,6 @@ vim.o.timeoutlen = 500
 vim.o.undofile = true
 vim.cmd 'set clipboard+=unnamedplus'
 vim.o.shell = '/usr/bin/fish'
-
 vim.g.mapleader = ' '
 
 O = {}

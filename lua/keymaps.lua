@@ -31,3 +31,7 @@ opts = { noremap = true, silent = true, nowait = true }
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', opts)
 
 map('n', '<C-y>', 'ggVG"+y', opts)
+map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
+map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
+map('n', '<leader>o', '<cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
+map('n', '<leader>O', '<cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)

@@ -38,5 +38,7 @@ local sources = {
   -- git
   code_actions.gitsigns,
 }
-require('null-ls').config { sources = sources }
-require('lspconfig')['null-ls'].setup {}
+
+null.setup {
+  sources = sources,
+}

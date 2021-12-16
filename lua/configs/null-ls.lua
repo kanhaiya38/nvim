@@ -1,4 +1,4 @@
-local null = require('null-ls')
+local null = require 'null-ls'
 local formatting = null.builtins.formatting
 local code_actions = null.builtins.code_actions
 local diagnostics = null.builtins.diagnostics

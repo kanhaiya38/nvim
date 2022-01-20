@@ -5,21 +5,20 @@ local lualine = require 'lualine'
 
 -- Color table for highlights
 -- stylua: ignore
-local colors = require("onedark.colors").setup()
-colors.bg = colors.bg2
--- local colors = {
---   bg       = c.bg,
---   fg       = '#bbc2cf',
---   yellow   = '#ECBE7B',
---   cyan     = '#008080',
---   darkblue = '#081633',
---   green    = '#98be65',
---   orange   = '#FF8800',
---   violet   = '#a9a1e1',
---   magenta  = '#c678dd',
---   blue     = '#51afef',
---   red      = '#ec5f67',
--- }
+local onedark = require("onedark").get_colors()
+local colors = {
+  bg = onedark.bg1,
+  fg = onedark.fg0,
+  yellow = onedark.yellow0,
+  cyan = onedark.cyan0,
+  darkblue = onedark.darkblue0,
+  green = onedark.green0,
+  orange = onedark.orange0,
+  violet = onedark.violet0,
+  magenta = onedark.magenta0,
+  blue = onedark.blue0,
+  red = onedark.red0,
+}
 
 local conditions = {
   buffer_not_empty = function()
@@ -62,7 +61,7 @@ local config = {
   inactive_sections = {
     -- these are to remove the defaults
     lualine_a = {},
-    lualine_v = {},
+    lualine_b = {},
     lualine_y = {},
     lualine_z = {},
     lualine_c = {},

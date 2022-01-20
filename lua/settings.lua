@@ -12,6 +12,8 @@ vim.cmd 'set clipboard+=unnamedplus'
 vim.o.shell = '/usr/bin/fish'
 vim.g.mapleader = ' '
 
+vim.cmd [[ set runtimepath-=/usr/share/vim/vimfiles ]]
+
 O = {}
 
 O.kinds = {

@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- automatically run :PackerCompile whenever plugins.lua is updated
-vim.cmd [[autocmd BufWritePost ~/.config/nvim/lua/plugins/init.lua source <afile> | PackerCompile]]
+vim.cmd [[autocmd BufWritePost ~/.config/nvim/lua/plugins.lua source <afile> | PackerCompile]]
 
 return require('packer').startup {
   function(use)

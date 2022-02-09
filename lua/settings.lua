@@ -32,6 +32,7 @@ O.servers = {
   'clangd',
   'yamlls',
   'tsserver',
+  'eslint',
   'html',
   'jsonls',
   'cssls',

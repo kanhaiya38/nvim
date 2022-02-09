@@ -2,9 +2,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-local M = {}
-
-M.settings = {
+local settings = {
   Lua = {
     runtime = {
       -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -27,4 +25,6 @@ M.settings = {
   },
 }
 
-return M
+return function(opts)
+  opts.settings = settings
+end

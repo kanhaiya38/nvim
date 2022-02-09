@@ -1,11 +1,9 @@
 local ts_utils = require 'nvim-lsp-ts-utils'
 
-local M = {}
-
-M.init_options = ts_utils.init_options
+local init_options = ts_utils.init_options
 
 -- make sure to only run this once!
-M.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   require('lsp.utils').default_on_attach(client, bufnr)
 
   -- defaults
@@ -65,4 +63,7 @@ M.on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
 end
 
-return M
+return function (opts)
+  opts.init_options = init_options
+  opts.on_attach = on_attach
+end

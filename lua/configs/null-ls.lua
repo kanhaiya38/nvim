@@ -40,5 +40,6 @@ local sources = {
 }
 
 null.setup {
+  debug = false,
   sources = sources,
 }

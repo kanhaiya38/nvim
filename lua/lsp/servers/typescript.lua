@@ -1,9 +1,12 @@
+local ts_utils = require 'nvim-lsp-ts-utils'
+
 local M = {}
+
+M.init_options = ts_utils.init_options
+
 -- make sure to only run this once!
 M.on_attach = function(client, bufnr)
   require('lsp.utils').default_on_attach(client, bufnr)
-
-  local ts_utils = require 'nvim-lsp-ts-utils'
 
   -- defaults
   ts_utils.setup {
@@ -21,27 +24,35 @@ M.on_attach = function(client, bufnr)
     },
     import_all_scan_buffers = 100,
     import_all_select_source = false,
-
-    -- eslint
-    eslint_enable_code_actions = true,
-    eslint_enable_disable_comments = true,
-    eslint_bin = 'eslint_d',
-    eslint_enable_diagnostics = true,
-    eslint_opts = {},
-
-    -- formatting
-    enable_formatting = true,
-    formatter = 'prettier',
-    formatter_opts = {},
-
-    -- update imports on file move
-    update_imports_on_move = true,
-    require_confirmation_on_move = true,
-    watch_dir = nil,
+    -- if false will avoid organizing imports
+    always_organize_imports = true,
 
     -- filter diagnostics
     filter_out_diagnostics_by_severity = {},
     filter_out_diagnostics_by_code = {},
+
+    -- inlay hints
+    auto_inlay_hints = true,
+    inlay_hints_highlight = 'Comment',
+    inlay_hints_priority = 200, -- priority of the hint extmarks
+    inlay_hints_throttle = 150, -- throttle the inlay hint request
+    inlay_hints_format = { -- format options for individual hint kind
+      Type = {},
+      Parameter = {},
+      Enum = {},
+      -- Example format customization for `Type` kind:
+      -- Type = {
+      --     highlight = "Comment",
+      --     text = function(text)
+      --         return "->" .. text:sub(2)
+      --     end,
+      -- },
+    },
+
+    -- update imports on file move
+    update_imports_on_move = false,
+    require_confirmation_on_move = false,
+    watch_dir = nil,
   }
 
   -- required to fix code action ranges and filter diagnostics

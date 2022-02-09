@@ -17,6 +17,7 @@ local function make_config(server)
   end
 
   return {
+    init_options = config.init_options,
     capabilities = config.capabilities or default_capabilities,
     settings = config.settings,
     on_attach = config.on_attach or default_on_attach,

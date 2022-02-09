@@ -5,14 +5,14 @@ local function setup_servers()
   local enhance_server_opts = {
     -- Provide settings that should only apply to a specific server
     ['sumneko_lua'] = function(opts)
-      opts.settings = require('lsp.servers.lua').settings
+      opts.settings = require('lsp.servers.sumneko_lua').settings
     end,
     ['clangd'] = function(opts)
       opts.capabilities = require('lsp.servers.clangd').capabilities
     end,
     ['tsserver'] = function(opts)
-      opts.init_options = require('lsp.servers.typescript').init_options
-      opts.on_attach = require('lsp.servers.typescript').on_attach
+      opts.init_options = require('lsp.servers.tsserver').init_options
+      opts.on_attach = require('lsp.servers.tsserver').on_attach
     end,
   }
   lsp_installer.on_server_ready(function(server)

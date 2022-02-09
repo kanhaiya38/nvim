@@ -1,45 +1,42 @@
 local utils = require 'lsp.utils'
 local lsp_installer = require 'nvim-lsp-installer'
-local lsp_installer_servers = require 'nvim-lsp-installer.servers'
-
--- config that activates keymaps and enables snippet support
-local function make_config(server)
-  local default_capabilities = utils.default_capabilities()
-  local default_on_attach = utils.default_on_attach
-
-  local config = {}
-  if server == 'tsserver' then
-    config = require 'lsp.servers.typescript'
-  elseif server == 'sumneko_lua' then
-    config = require 'lsp.servers.lua'
-  elseif server == 'clangd' then
-    config = require 'lsp.servers.clangd'
-  end
-
-  return {
-    init_options = config.init_options,
-    capabilities = config.capabilities or default_capabilities,
-    settings = config.settings,
-    on_attach = config.on_attach or default_on_attach,
-  }
-end
 
 local function setup_servers()
+  local enhance_server_opts = {
+    -- Provide settings that should only apply to a specific server
+    ['sumneko_lua'] = function(opts)
+      opts.settings = require('lsp.servers.lua').settings
+    end,
+    ['clangd'] = function(opts)
+      opts.capabilities = require('lsp.servers.clangd').capabilities
+    end,
+    ['tsserver'] = function(opts)
+      opts.init_options = require('lsp.servers.typescript').init_options
+      opts.on_attach = require('lsp.servers.typescript').on_attach
+    end,
+  }
   lsp_installer.on_server_ready(function(server)
-    local config = make_config(server.name)
-    server:setup(config)
-    vim.cmd [[ do User LspAttachBuffers ]]
+    -- Specify the default options which we'll use to setup all servers
+    local opts = {
+      capabilities = utils.default_capabilities(),
+      on_attach = utils.default_on_attach,
+    }
+
+    if enhance_server_opts[server.name] then
+      -- Enhance the default opts with the server-specific ones
+      enhance_server_opts[server.name](opts)
+    end
+
+    server:setup(opts)
   end)
 end
 
 local function install_servers()
-  for _, server in ipairs(O.servers) do
-    local ok, server_analyzer = lsp_installer_servers.get_server(server)
-    if ok then
-      if not server_analyzer:is_installed() then
-        -- server_analyzer:install(server) -- will install in background
-        lsp_installer.install(server) -- install window will popup
-      end
+  for _, name in pairs(O.servers) do
+    local server_is_found, server = lsp_installer.get_server(name)
+    if server_is_found and not server:is_installed() then
+      print('Installing ' .. name)
+      server:install()
     end
   end
 end

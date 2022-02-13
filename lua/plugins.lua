@@ -183,7 +183,13 @@ return require('packer').startup {
     use 'rcarriga/nvim-notify'
 
     -- Dashboard
-    use 'glepnir/dashboard-nvim'
+    use {
+      'startup-nvim/startup.nvim',
+      after = 'theme',
+      config = function()
+        require 'configs.dashboard'
+      end,
+    }
 
     -- Tree Explorer
     use {

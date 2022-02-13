@@ -26,6 +26,3 @@ require('Comment').setup {
     end,
   },
 }
-
-local lang = require 'Comment.ft'
-lang.set('fish', '#%s')

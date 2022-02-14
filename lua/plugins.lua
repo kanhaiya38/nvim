@@ -95,6 +95,7 @@ return require('packer').startup {
         require('configs.telescope').setup()
       end,
     }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', after = 'telescope.nvim' }
 
     use {
       'folke/trouble.nvim',

@@ -34,7 +34,6 @@ wk.register {
     g = { '<cmd>Telescope git_files<CR>', 'git files' },
     s = { '<cmd>Telescope grep_string<CR>', 'grep string' },
     z = { '<cmd>Telescope live_grep<CR>', 'live grep' },
-    b = { '<cmd>Telescope file_browser<CR>', 'file browser' },
     p = { '<cmd>Telescope projects<CR>', 'projects' },
   },
 
@@ -59,7 +58,7 @@ wk.register {
     s = { '<cmd>Telescope lsp_document_symbols<CR>', 'document symbols' },
     a = { '<cmd>Telescope lsp_code_actions<CR>', 'code actions' },
     A = { '<cmd>Telescope lsp_range_code_actions<CR>', 'range codeactions' },
-    d = { '<cmd>Telescope lsp_document_diagnostics<CR>', 'document diagnostic' },
+    d = { '<cmd>Telescope diagnostics bufnr=0<CR>', 'document diagnostic' },
     i = { '<cmd>Telescope lsp_implementations<CR>', 'implementations' },
     D = { '<cmd>Telescope lsp_definitions<CR>', 'definitions' },
     f = { '<cmd>lua vim.lsp.buf.range_formatting()<CR>', 'format' },
@@ -68,7 +67,7 @@ wk.register {
   ['<leader>w'] = {
     s = { '<cmd>Telescope lsp_workspace_symbols<CR>', 'workspace symbols' },
     S = { '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', 'dynamic workspace symbols' },
-    d = { '<cmd>Telescope lsp_workspace_diagnostics<CR>', 'workspace diagnostic' },
+    d = { '<cmd>Telescope diagnostics<CR>', 'workspace diagnostic' },
   },
 
   ['<leader>g'] = {

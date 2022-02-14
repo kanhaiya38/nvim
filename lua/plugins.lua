@@ -230,6 +230,13 @@ return require('packer').startup {
       end,
     }
     use { 'michaelb/sniprun', cmd = 'SnipRun', run = 'bash ./install.sh' }
+    use {
+      'pianocomposer321/yabs.nvim',
+      cmd = { 'YabsTask', 'YabsDefaultTask' },
+      config = function()
+        require 'configs.yabs'
+      end,
+    }
     use 'dstein64/vim-startuptime'
 
     -- Language Specific

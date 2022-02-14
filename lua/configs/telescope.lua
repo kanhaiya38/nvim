@@ -19,6 +19,7 @@ M.setup = function()
   }
 
   telescope.load_extension 'projects'
+  telescope.load_extension 'yabs'
 end
 
 return M

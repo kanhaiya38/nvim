@@ -44,6 +44,7 @@ M.setup = function()
   g.nvim_tree_group_empty = 1
   g.nvim_tree_disable_window_picker = 0 -- 0 by default, will disable the window picker.
   g.nvim_tree_icon_padding = ' '
+  g.nvim_tree_respect_buf_cwd = 1
   g.nvim_tree_window_picker_exclude = {
     filetype = {
       'packer',
@@ -93,7 +94,7 @@ M.setup = function()
     auto_close = true,
     tab_open = true,
     update_cwd = true,
-    update_focused_file = { enable = true },
+    update_focused_file = { enable = true, update_cwd = true },
     lsp_diagnostics = true,
     view = {
       mappings = {

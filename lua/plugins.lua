@@ -172,6 +172,7 @@ return require('packer').startup {
             'help',
             'terminal',
             'dashboard',
+            'startup',
           },
           buftype_exclude = { 'terminal' },
           char_list = { '|', '¦', '┆', '┊' },

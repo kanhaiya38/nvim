@@ -16,5 +16,11 @@ require('neorg').setup {
         engine = 'nvim-cmp',
       },
     },
+    ['core.gtd.base'] = {
+      config = { -- Note that this table is optional and doesn't need to be provided
+        -- Configuration here
+        workspace = 'home',
+      },
+    },
   },
 }

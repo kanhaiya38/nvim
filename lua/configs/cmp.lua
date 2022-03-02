@@ -34,10 +34,10 @@ end
 
 cmp.setup {
   sources = cmp.config.sources {
+    { name = 'path' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'luasnip' },
-    { name = 'path' },
     { name = 'calc' },
     { name = 'emoji' },
     -- TODO: neorg

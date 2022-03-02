@@ -16,6 +16,7 @@ return require('packer').startup {
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'lewis6991/impatient.nvim'
+    use 'nathom/filetype.nvim'
     -- Setting up LSP
     use {
       'neovim/nvim-lspconfig',

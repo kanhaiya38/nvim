@@ -253,6 +253,9 @@ return require('packer').startup {
     }
     use {
       'vhyrro/neorg',
+      ft = 'norg',
+      cmd = 'NeorgStart',
+      after = 'nvim-treesitter', -- You may want to specify Telescope here as well
       config = function()
         require 'configs.neorg'
       end,

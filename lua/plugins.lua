@@ -25,6 +25,12 @@ return require('packer').startup {
       end,
       requires = 'williamboman/nvim-lsp-installer',
     }
+    use {
+      'tamago324/nlsp-settings.nvim',
+      config = function()
+        require 'configs.nlspsettings'
+      end,
+    }
     -- Formatting and Linting
     use {
       'jose-elias-alvarez/null-ls.nvim',

@@ -71,6 +71,12 @@ return require('packer').startup {
         require('lsp_signature').setup()
       end,
     }
+    use {
+      'tami5/lspsaga.nvim',
+      config = function()
+        require('lspsaga').setup()
+      end,
+    }
     -- Surroundings
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-repeat' }

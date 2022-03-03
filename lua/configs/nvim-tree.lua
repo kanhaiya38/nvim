@@ -42,17 +42,8 @@ M.setup = function()
   g.nvim_tree_highlight_opened_files = 1
   g.nvim_tree_root_folder_modifier = ':~' -- This is the default. See :help filename-modifiers for more options
   g.nvim_tree_group_empty = 1
-  g.nvim_tree_disable_window_picker = 0 -- 0 by default, will disable the window picker.
   g.nvim_tree_icon_padding = ' '
   g.nvim_tree_respect_buf_cwd = 1
-  g.nvim_tree_window_picker_exclude = {
-    filetype = {
-      'packer',
-    },
-    buftype = {
-      'terminal',
-    },
-  }
   --  Dictionary of buffer option names mapped to a list of option values that
   --  indicates to the window picker that the buffer's window should not be
   --  selectable.
@@ -97,9 +88,13 @@ M.setup = function()
     update_focused_file = { enable = true, update_cwd = true },
     lsp_diagnostics = true,
     view = {
-      mappings = {
-        custom_only = true,
-        list = list,
+      mappings = { custom_only = true, list = list },
+    },
+    actions = {
+      open_file = {
+        window_picker = {
+          exclude = { filetype = { 'packer' }, buftype = { 'terminal' } },
+        },
       },
     },
   }

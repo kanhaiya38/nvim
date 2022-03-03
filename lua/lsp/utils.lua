@@ -38,6 +38,7 @@ local setup_keymaps = function(bufnr)
   buf_set_keymap('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<cr>', opts)
   buf_set_keymap('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<cr>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', 'ga', '<cmd>Lspsaga code_action<CR>', opts)
 end
 
 M.default_on_attach = function(client, bufnr)

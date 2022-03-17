@@ -228,7 +228,7 @@ return require('packer').startup {
       'max397574/better-escape.nvim',
       event = 'InsertEnter',
       config = function()
-        require('better_escape').setup()
+        require('better_escape').setup { timeout = 200 }
       end,
     }
     use { 'michaelb/sniprun', cmd = 'SnipRun', run = 'bash ./install.sh' }

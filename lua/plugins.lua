@@ -243,6 +243,15 @@ return require('packer').startup {
       end,
       ft = 'rust',
     }
+    use {
+      'p00f/clangd_extensions.nvim',
+      ft = { 'cpp', 'c' },
+      config = function()
+        require('clangd_extensions').setup {
+          server = require('lsp.utils').get_server_opts('clangd', O.servers.clangd.enhance_server),
+        }
+      end,
+    }
     use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
     use { 'JoosepAlviste/nvim-ts-context-commentstring' }
     use {

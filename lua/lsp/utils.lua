@@ -1,6 +1,6 @@
 local M = {}
 
-M.default_capabilities = function()
+M.get_default_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -61,6 +61,19 @@ M.default_on_attach = function(client, bufnr)
       false
     )
   end
+end
+
+M.get_server_opts = function(server_name, enhance_server)
+  local opts = {
+    capabilities = M.get_default_capabilities(),
+    on_attach = M.default_on_attach,
+  }
+
+  if enhance_server then
+    require('lsp.servers.' .. server_name)(opts)
+  end
+
+  return opts
 end
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter

@@ -26,12 +26,19 @@ O.kinds = {
 }
 
 O.servers = {
-  'sumneko_lua',
+  sumneko_lua = {
+    enhance_server = true,
+  },
   'rust_analyzer',
   'pyright',
-  'clangd',
+  clangd = {
+    enhance_server = true,
+    load_manually = true,
+  },
   'yamlls',
-  'tsserver',
+  tsserver = {
+    enhance_server = true,
+  },
   'eslint',
   'html',
   'jsonls',

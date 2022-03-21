@@ -1,4 +1,4 @@
-local capabilities = require('lsp.utils').default_capabilities()
+local capabilities = require('lsp.utils').get_default_capabilities()
 capabilities.offsetEncoding = { 'utf-16' }
 
 return function (opts)

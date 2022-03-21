@@ -2,25 +2,15 @@ local utils = require 'lsp.utils'
 local lsp_installer = require 'nvim-lsp-installer'
 
 local function setup_servers()
-  local enhanced_servers = { 'sumneko_lua', 'clangd', 'tsserver' }
-  local enhance_server_opts = {}
-  for _, name in ipairs(enhanced_servers) do
-    enhance_server_opts[name] = require('lsp.servers.' .. name)
-  end
-
   lsp_installer.on_server_ready(function(server)
+    local server_config = O.servers[server.name] or {}
+    -- print(server.name .. ':')
+    -- vim.pretty_print(server_config)
     -- Specify the default options which we'll use to setup all servers
-    local opts = {
-      capabilities = utils.default_capabilities(),
-      on_attach = utils.default_on_attach,
-    }
-
-    if enhance_server_opts[server.name] then
-      -- Enhance the default opts with the server-specific ones
-      enhance_server_opts[server.name](opts)
+    if not server_config.load_manually then
+      print('Loading default ' .. server.name)
+      server:setup(utils.get_server_opts(server.name, server_config.enhance_server))
     end
-
-    server:setup(opts)
   end)
 end
 

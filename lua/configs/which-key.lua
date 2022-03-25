@@ -32,6 +32,7 @@ wk.register {
     name = '+file',
     f = { '<cmd>Telescope find_files<CR>', 'find files' },
     g = { '<cmd>Telescope git_files<CR>', 'git files' },
+    h = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
     s = { '<cmd>Telescope grep_string<CR>', 'grep string' },
     z = { '<cmd>Telescope live_grep<CR>', 'live grep' },
     p = { '<cmd>Telescope projects<CR>', 'projects' },
@@ -40,7 +41,6 @@ wk.register {
   ['<leader>s'] = {
     name = '+search',
     b = { '<cmd>Telescope buffers<CR>', 'buffers' },
-    h = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
     c = { '<cmd>Telescope commands<CR>', 'commands' },
     t = { '<cmd>Telescope tags<CR>', 'tags' },
     m = { '<cmd>Telescope marks<CR>', 'marks' },

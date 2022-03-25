@@ -63,13 +63,13 @@ M.default_on_attach = function(client, bufnr)
   end
 end
 
-M.get_server_opts = function(server_name, enhance_server)
+M.get_server_opts = function(server_name, enhance_opts)
   local opts = {
     capabilities = M.get_default_capabilities(),
     on_attach = M.default_on_attach,
   }
 
-  if enhance_server then
+  if enhance_opts then
     require('lsp.servers.' .. server_name)(opts)
   end
 

@@ -9,7 +9,7 @@ local function setup_servers()
     -- Specify the default options which we'll use to setup all servers
     if not server_config.load_manually then
       print('Loading default ' .. server.name)
-      server:setup(utils.get_server_opts(server.name, server_config.enhance_server))
+      server:setup(utils.get_server_opts(server.name, server_config.enhance_opts))
     end
   end)
 end

@@ -27,17 +27,17 @@ O.kinds = {
 
 O.servers = {
   sumneko_lua = {
-    enhance_server = true,
+    enhance_opts = true,
   },
   'rust_analyzer',
   'pyright',
   clangd = {
-    enhance_server = true,
+    enhance_opts = true,
     load_manually = true,
   },
   'yamlls',
   tsserver = {
-    enhance_server = true,
+    enhance_opts = true,
   },
   'eslint',
   'html',

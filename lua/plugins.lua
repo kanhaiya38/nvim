@@ -245,7 +245,6 @@ return require('packer').startup {
     }
     use {
       'p00f/clangd_extensions.nvim',
-      ft = { 'cpp', 'c' },
       config = function()
         require('clangd_extensions').setup {
           server = require('lsp.utils').get_server_opts('clangd', O.servers.clangd.enhance_server),

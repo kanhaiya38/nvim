@@ -33,7 +33,12 @@ O.servers = {
   'pyright',
   clangd = {
     enhance_opts = true,
-    load_manually = true,
+    loader = function(server)
+      require('clangd_extensions').setup {
+        server = require('lsp.utils').get_server_opts('clangd', true),
+      }
+      server:attach_buffers()
+    end,
   },
   'yamlls',
   tsserver = {

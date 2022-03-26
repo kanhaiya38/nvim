@@ -4,11 +4,11 @@ local lsp_installer = require 'nvim-lsp-installer'
 local function setup_servers()
   lsp_installer.on_server_ready(function(server)
     local server_config = O.servers[server.name] or {}
-    -- print(server.name .. ':')
-    -- vim.pretty_print(server_config)
-    -- Specify the default options which we'll use to setup all servers
-    if not server_config.load_manually then
-      print('Loading default ' .. server.name)
+    if server_config.loader then
+      -- print('Loading manual ' .. server.name)
+      server_config.loader(server)
+    else
+      -- print('Loading default ' .. server.name)
       server:setup(utils.get_server_opts(server.name, server_config.enhance_opts))
     end
   end)

@@ -26,6 +26,10 @@ map('n', '<C-n>', '<Cmd>NvimTreeToggle<CR>', opts)
 map('n', '<leader>r', ':NvimTreeRefresh<CR>', opts)
 map('n', '<leader>n', ':NvimTreeFindFile<CR>', opts)
 
+-- Lspsaga
+map('n', '<C-j>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
+map('n', '<C-k>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
+
 -- ToggleTerm
 opts = { noremap = true, silent = true, nowait = true }
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', opts)

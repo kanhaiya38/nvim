@@ -25,17 +25,32 @@ O.kinds = {
   },
 }
 
+local utils = require 'lsp.utils'
+
 O.servers = {
   sumneko_lua = {
     enhance_opts = true,
   },
-  'rust_analyzer',
+  rust_analyzer = {
+    loader = function(server)
+      require('rust-tools').setup {
+        -- The "server" property provided in rust-tools setup function are the
+        -- settings rust-tools will provide to lspconfig during init.            --
+        -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
+        -- with the user's own settings (opts).
+        server = vim.tbl_deep_extend('force', server:get_default_options(), utils.get_server_opts(server.name)),
+      }
+      server:attach_buffers()
+      -- Only if standalone support is needed
+      -- require('rust-tools').start_standalone_if_required()
+    end,
+  },
   'pyright',
   clangd = {
     enhance_opts = true,
     loader = function(server)
       require('clangd_extensions').setup {
-        server = require('lsp.utils').get_server_opts('clangd', true),
+        server = utils.get_server_opts('clangd', true),
       }
       server:attach_buffers()
     end,

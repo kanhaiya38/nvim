@@ -9,6 +9,7 @@ M.setup = function()
     shade_terminals = true,
     shading_factor = 0.6,
     direction = 'vertical',
+    persist_size = false,
     size = function(term)
       if term.direction == 'horizontal' then
         return 15

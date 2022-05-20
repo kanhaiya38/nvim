@@ -82,11 +82,11 @@ M.setup = function()
 
   require('nvim-tree').setup {
     open_on_setup = true,
-    auto_close = true,
-    tab_open = true,
+    -- auto_close = true,
+    -- tab_open = true,
     update_cwd = true,
     update_focused_file = { enable = true, update_cwd = true },
-    lsp_diagnostics = true,
+    -- lsp_diagnostics = true,
     view = {
       mappings = { custom_only = true, list = list },
     },

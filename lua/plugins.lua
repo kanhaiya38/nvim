@@ -131,6 +131,7 @@ return require('packer').startup {
       config = function()
         require('focus').setup { excluded_filetypes = { 'toggleterm' } }
       end,
+      disable = true
     }
 
     -- Git

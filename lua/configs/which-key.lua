@@ -9,7 +9,7 @@ local wk = require 'which-key'
 wk.register {
   ['<leader>a'] = {
     name = '+actions',
-    f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'format' },
+    f = { '<cmd>lua vim.lsp.buf.format { async = true }<CR>', 'format' },
     g = { '<cmd>Glow<CR>', 'glow' },
     m = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
     p = { '<cmd>PasteImg<CR>', 'paste image' },

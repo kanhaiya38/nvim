@@ -6,8 +6,6 @@ M.terminals = {}
 M.setup = function()
   require('toggleterm').setup {
     open_mapping = [[<C-Space>]],
-    shade_terminals = true,
-    shading_factor = 0.6,
     direction = 'vertical',
     persist_size = false,
     size = function(term)

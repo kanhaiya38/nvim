@@ -45,11 +45,11 @@ M.default_on_attach = function(client, bufnr)
   setup_keymaps(bufnr)
 
   -- Disable language server formatting
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
       [[
     augroup lsp_document_highlight

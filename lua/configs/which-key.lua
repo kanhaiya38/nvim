@@ -56,8 +56,6 @@ wk.register {
     name = '+lsp',
     r = { '<cmd>Telescope lsp_references<CR>', 'reference' },
     s = { '<cmd>Telescope lsp_document_symbols<CR>', 'document symbols' },
-    a = { '<cmd>Telescope lsp_code_actions<CR>', 'code actions' },
-    A = { '<cmd>Telescope lsp_range_code_actions<CR>', 'range codeactions' },
     d = { '<cmd>Telescope diagnostics bufnr=0<CR>', 'document diagnostic' },
     i = { '<cmd>Telescope lsp_implementations<CR>', 'implementations' },
     D = { '<cmd>Telescope lsp_definitions<CR>', 'definitions' },

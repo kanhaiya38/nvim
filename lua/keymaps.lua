@@ -1,41 +1,25 @@
-local map = vim.api.nvim_set_keymap
-
-local opts = { noremap = true }
+local map = vim.keymap.set
 
 -- Windows
-map('n', '<C-q>', '<Cmd>Bdelete<CR>', opts)
-map('n', '<C-j>', '<C-w>j', opts)
-map('n', '<C-k>', '<C-w>k', opts)
-map('n', '<C-h>', '<C-w>h', opts)
-map('n', '<C-l>', '<C-w>l', opts)
---
-map('i', '<C-j>', '<C-\\><C-n><C-w>j', opts)
-map('i', '<C-k>', '<C-\\><C-n><C-w>k', opts)
-map('i', '<C-h>', '<C-\\><C-n><C-w>h', opts)
-map('i', '<C-l>', '<C-\\><C-n><C-w>l', opts)
+map('n', '<C-q>', '<Cmd>Bdelete<CR>')
+map({ 'n', 'i', 't' }, '<C-j>', '<Esc><Cmd>wincmd j<CR>')
+map({ 'n', 'i', 't' }, '<C-k>', '<Esc><Cmd>wincmd k<CR>')
+map({ 'n', 'i', 't' }, '<C-h>', '<Esc><Cmd>wincmd h<CR>')
+map({ 'n', 'i', 't' }, '<C-l>', '<Esc><Cmd>wincmd l<CR>')
 
--- Terminal
--- map('t', '<Esc>', '<C-\\><C-n>', opts)
-map('t', '<C-j>', '<C-\\><C-n><C-w>j', opts)
-map('t', '<C-k>', '<C-\\><C-n><C-w>k', opts)
-map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)
-map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
-
-opts = { noremap = true, silent = true }
-map('n', '<C-n>', '<Cmd>NvimTreeToggle<CR>', opts)
-map('n', '<leader>r', ':NvimTreeRefresh<CR>', opts)
-map('n', '<leader>n', ':NvimTreeFindFile<CR>', opts)
+map({ 'n', 'i', 't' }, '<C-n>', '<Esc><Cmd>NvimTreeToggle<CR>')
 
 -- Lspsaga
-map('n', '<C-j>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
-map('n', '<C-k>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
+-- map('n', '<C-j>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
+-- map('n', '<C-k>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
+
+local opts = { silent = true, nowait = true }
 
 -- ToggleTerm
-opts = { noremap = true, silent = true, nowait = true }
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', opts)
 
 map('n', '<C-y>', 'ggVG"+y', opts)
 map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
-map('n', '<leader>o', '<cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
-map('n', '<leader>O', '<cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
+map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
+map('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)

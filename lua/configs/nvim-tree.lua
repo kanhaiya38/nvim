@@ -23,10 +23,10 @@ M.setup = function()
     },
     renderer = {
       highlight_opened_files = 'name',
-      indent_markers = {
-        enable = true,
-        icons = { corner = '└ ', edge = '│ ', item = '├ ', none = '- ' },
-      },
+      -- indent_markers = {
+      --   enable = true,
+      --   icons = { corner = '└ ', edge = '│ ', item = '├ ', none = '- ' },
+      -- },
       icons = {
         git_placement = 'after',
       },

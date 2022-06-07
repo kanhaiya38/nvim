@@ -259,6 +259,7 @@ return require('packer').startup {
     -- Utils
     use 'nvim-lua/plenary.nvim'
     use 'kyazdani42/nvim-web-devicons'
+    use 'famiu/bufdelete.nvim'
     use {
       'ekickx/clipboard-image.nvim',
       config = function()

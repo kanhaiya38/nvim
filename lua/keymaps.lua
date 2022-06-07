@@ -3,7 +3,7 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true }
 
 -- Windows
-map('n', '<C-q>', '<Cmd>bw<CR>', opts)
+map('n', '<C-q>', '<Cmd>Bdelete<CR>', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-h>', '<C-w>h', opts)

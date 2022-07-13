@@ -20,7 +20,7 @@ parser_configs.norg_table = {
 }
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = 'all', -- A list of parser names, or "all"
+  auto_install = true,
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension

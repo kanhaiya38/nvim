@@ -77,7 +77,7 @@ return require('packer').startup {
       end,
     }
     use {
-      'tami5/lspsaga.nvim',
+      'kkharji/lspsaga.nvim',
       config = function()
         require('lspsaga').setup()
       end,

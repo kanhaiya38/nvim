@@ -63,7 +63,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
 end
 
-return function (opts)
+return function(opts)
   opts.init_options = init_options
   opts.on_attach = on_attach
 end

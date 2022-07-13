@@ -25,6 +25,9 @@ M.setup = function()
       buffers = {
         theme = 'dropdown',
       },
+      live_grep = {
+        theme = 'dropdown',
+      },
     },
     extensions = {
       fzf = {

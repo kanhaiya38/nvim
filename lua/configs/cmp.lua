@@ -33,15 +33,16 @@ local s_tab_complete = function(fallback)
 end
 
 cmp.setup {
-  sources = cmp.config.sources {
-    { name = 'path' },
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
     { name = 'luasnip' },
+  }, {
+    { name = 'path' },
+    { name = 'buffer' },
     { name = 'calc' },
     { name = 'emoji' },
     -- TODO: neorg
-  },
+  }),
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)

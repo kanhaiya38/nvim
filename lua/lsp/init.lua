@@ -1,8 +1,8 @@
 local utils = require 'lsp.utils'
 local lsp_installer = require 'nvim-lsp-installer'
+local lspconfig = require 'lspconfig'
 
 local function setup_servers()
-  local lspconfig = require 'lspconfig'
   for _, server in ipairs(lsp_installer.get_installed_servers()) do
     local server_config = O.servers[server.name]
     lspconfig[server.name].setup(utils.get_server_opts(server.name, server_config.enhance_opts))

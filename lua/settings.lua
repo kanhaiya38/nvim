@@ -55,9 +55,7 @@ O.servers = {
       server:attach_buffers()
     end,
   },
-  tsserver = {
-    enhance_opts = true,
-  },
+  tsserver = { custom_setup = true },
   pyright = {},
   yamlls = {},
   eslint = {},

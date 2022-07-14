@@ -243,7 +243,7 @@ return require('packer').startup {
     use { 'npxbr/glow.nvim', cmd = 'Glow' }
     use { 'simrat39/rust-tools.nvim' }
     use { 'p00f/clangd_extensions.nvim' }
-    use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
+    use { 'jose-elias-alvarez/typescript.nvim' }
     use { 'JoosepAlviste/nvim-ts-context-commentstring' }
     use {
       'iamcco/markdown-preview.nvim',

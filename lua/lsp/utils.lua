@@ -1,12 +1,12 @@
+local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 local M = {}
 
-M.get_default_capabilities = function()
+local get_default_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-  return capabilities
+  return cmp_nvim_lsp.update_capabilities(capabilities)
 end
+
+M.default_capabilities = get_default_capabilities()
 
 -- keymaps
 local setup_keymaps = function(bufnr)
@@ -63,7 +63,7 @@ end
 
 M.get_server_opts = function(server_name, enhance_opts)
   local opts = {
-    capabilities = M.get_default_capabilities(),
+    capabilities = M.default_capabilities,
     on_attach = M.default_on_attach,
   }
 

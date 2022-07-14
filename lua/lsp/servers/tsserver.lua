@@ -56,11 +56,12 @@ local on_attach = function(client, bufnr)
   -- required to fix code action ranges and filter diagnostics
   ts_utils.setup_client(client)
 
+  -- TODO: set following keymaps
   -- no default maps, so you may want to define some here
-  local opts = { silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', ':TSLspRenameFile<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
+  -- local opts = { silent = true }
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', ':TSLspRenameFile<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
 end
 
 return function(opts)

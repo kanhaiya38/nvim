@@ -55,6 +55,7 @@ return require('packer').startup {
         'hrsh7th/cmp-emoji',
         'hrsh7th/cmp-nvim-lsp-signature-help',
         'hrsh7th/cmp-nvim-lsp-document-symbol',
+        'hrsh7th/cmp-cmdline',
       },
     }
     -- Snippets

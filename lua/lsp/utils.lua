@@ -61,18 +61,7 @@ M.default_on_attach = function(client, bufnr)
   end
 end
 
-M.get_server_opts = function(server_name, enhance_opts)
-  local opts = {
-    capabilities = M.default_capabilities,
-    on_attach = M.default_on_attach,
-  }
-
-  if enhance_opts then
-    require('lsp.servers.' .. server_name)(opts)
-  end
-
-  return opts
-end
+M.default_server_opts = { capabilities = M.default_capabilities, on_attach = M.default_on_attach }
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
 M.diagnostics_symbols = function()

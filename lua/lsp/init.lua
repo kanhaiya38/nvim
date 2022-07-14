@@ -5,7 +5,7 @@ local lspconfig = require 'lspconfig'
 local function setup_servers()
   for _, server in ipairs(lsp_installer.get_installed_servers()) do
     local server_config = O.servers[server.name]
-    local server_opts = utils.get_server_opts(server.name, server_config.enhance_opts)
+    local server_opts = utils.default_server_opts
     if server_config.custom_setup then
       require('lsp.servers.' .. server.name).setup(server_opts)
     end

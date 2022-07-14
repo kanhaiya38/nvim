@@ -29,7 +29,7 @@ local utils = require 'lsp.utils'
 
 O.servers = {
   sumneko_lua = {
-    enhance_opts = true,
+    custom_setup = true,
   },
   rust_analyzer = {
     -- TODO: loader function is not set up in lsp
@@ -46,15 +46,7 @@ O.servers = {
       -- require('rust-tools').start_standalone_if_required()
     end,
   },
-  clangd = {
-    enhance_opts = true,
-    loader = function(server)
-      require('clangd_extensions').setup {
-        server = utils.get_server_opts('clangd', true),
-      }
-      server:attach_buffers()
-    end,
-  },
+  clangd = { custom_setup = true },
   tsserver = { custom_setup = true },
   pyright = {},
   yamlls = {},

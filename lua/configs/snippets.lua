@@ -1,16 +1,9 @@
-require('luasnip/loaders/from_vscode').lazy_load {
+local luasnip = require 'luasnip'
+local vscode_loader = require 'luasnip/loaders/from_vscode'
+
+vscode_loader.lazy_load {
   paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' },
 }
+vscode_loader.load { paths = { '~/dotfiles/snippets' } }
 
--- local ls = require 'luasnip'
---
--- local cpp = {}
--- for key, val in pairs(require 'snippets.cpp') do
---   table.insert(cpp, ls.parser.parse_snippet(key, val))
--- end
---
--- require('luasnip').snippets = {
---   cpp = cpp,
--- }
-require('luasnip/loaders/from_vscode').load { paths = { '~/dotfiles/snippets' } }
-require'luasnip'.filetype_extend("javascript", {"javascriptreact"})
+luasnip.filetype_extend('javascript', { 'javascriptreact' })

@@ -53,6 +53,7 @@ return require('packer').startup {
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-calc',
         'hrsh7th/cmp-emoji',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
         'hrsh7th/cmp-nvim-lsp-document-symbol',
       },
     }
@@ -76,6 +77,7 @@ return require('packer').startup {
       config = function()
         require('lsp_signature').setup()
       end,
+      disable = true,
     }
     use {
       'kkharji/lspsaga.nvim',

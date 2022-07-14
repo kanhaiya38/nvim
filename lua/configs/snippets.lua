@@ -13,3 +13,4 @@ require('luasnip/loaders/from_vscode').lazy_load {
 --   cpp = cpp,
 -- }
 require('luasnip/loaders/from_vscode').load { paths = { '~/dotfiles/snippets' } }
+require'luasnip'.filetype_extend("javascript", {"javascriptreact"})

@@ -5,8 +5,6 @@ M.get_default_capabilities = function()
 
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-  -- enable snippet support
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
   return capabilities
 end
 

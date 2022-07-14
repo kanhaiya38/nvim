@@ -32,6 +32,7 @@ O.servers = {
     enhance_opts = true,
   },
   rust_analyzer = {
+    -- TODO: loader function is not set up in lsp
     loader = function(server)
       require('rust-tools').setup {
         -- The "server" property provided in rust-tools setup function are the
@@ -45,7 +46,6 @@ O.servers = {
       -- require('rust-tools').start_standalone_if_required()
     end,
   },
-  'pyright',
   clangd = {
     enhance_opts = true,
     loader = function(server)
@@ -55,16 +55,17 @@ O.servers = {
       server:attach_buffers()
     end,
   },
-  'yamlls',
   tsserver = {
     enhance_opts = true,
   },
-  'eslint',
-  'html',
-  'jsonls',
-  'cssls',
-  'dockerls',
-  'bashls',
+  pyright = {},
+  yamlls = {},
+  eslint = {},
+  html = {},
+  jsonls = {},
+  cssls = {},
+  dockerls = {},
+  bashls = {},
 }
 
 -- glow

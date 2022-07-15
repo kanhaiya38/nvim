@@ -120,4 +120,6 @@ wk.register {
   },
 
   ['<leader>u'] = { '<cmd>lua require("functions").openURL()<CR>', 'open url' },
+  ['['] = { name = '+goto' },
+  [']'] = { name = '+goto' },
 }

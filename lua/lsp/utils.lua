@@ -1,4 +1,5 @@
 local cmp_nvim_lsp = require 'cmp_nvim_lsp'
+local wk = require 'which-key'
 local M = {}
 
 local get_default_capabilities = function()
@@ -15,28 +16,37 @@ local setup_keymaps = function(bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gR', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  local lsp_opts = { mode = 'n', noremap = true, silent = true, buffer = bufnr }
+  local lsp_mappings = {
+    ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
+    ['gd'] = { vim.lsp.buf.definition, 'definition' },
+    ['K'] = { vim.lsp.buf.hover, 'hover' },
+    ['gI'] = { vim.lsp.buf.implementation, 'implementation' },
+    ['gh'] = { vim.lsp.buf.signature_help, 'signature_help' },
+    ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, 'add workspace' },
+    ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, 'remove workspace' },
+    ['<space>wl'] = {
+      function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end,
+      'list workspace',
+    },
+    ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
+    ['<space>rn'] = { vim.lsp.buf.rename, 'rename' },
+    ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
+    ['gR'] = { vim.lsp.buf.references, 'references' },
+    ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
+  }
+  wk.register(lsp_mappings, lsp_opts)
 
-  local opts = { noremap = true, silent = true }
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+  local diagnostic_opts = { mode = 'n', noremap = true, silent = true }
+  local diagnostic_mappings = {
+    ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostic' },
+    ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
+    [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
+    ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
+  }
+  wk.register(diagnostic_mappings, diagnostic_opts)
 end
 
 M.default_on_attach = function(client, bufnr)

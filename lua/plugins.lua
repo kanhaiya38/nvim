@@ -124,7 +124,9 @@ return require('packer').startup {
       config = function()
         require('trouble').setup {}
       end,
+      disable = true,
     }
+    use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
     -- Terminal
     use {
       'akinsho/nvim-toggleterm.lua',

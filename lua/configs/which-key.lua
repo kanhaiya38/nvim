@@ -11,6 +11,7 @@ wk.register {
     name = '+actions',
     f = { '<cmd>lua vim.lsp.buf.format { async = true }<CR>', 'format' },
     g = { '<cmd>Glow<CR>', 'glow' },
+    d = { require('notify').dismiss, 'dismiss notification' },
     m = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
     p = { '<cmd>PasteImg<CR>', 'paste image' },
     c = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },

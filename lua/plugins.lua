@@ -81,9 +81,13 @@ return require('packer').startup {
       disable = true,
     }
     use {
-      'kkharji/lspsaga.nvim',
+      'glepnir/lspsaga.nvim',
       config = function()
-        require('lspsaga').setup()
+        local saga = require 'lspsaga'
+
+        saga.init_lsp_saga {
+          -- your configuration
+        }
       end,
     }
     -- Surroundings

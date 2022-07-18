@@ -30,6 +30,14 @@ utils.set_keymaps(buffer, opts, { 'n', 'i', 't' })
 utils.set_keymaps(nvim_tree, opts, { 'n', 'i', 't' })
 utils.set_keymaps(toggleterm, opts)
 
+local diagnostic = {
+  ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostic' },
+  ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
+  [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
+  ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
+}
+utils.set_keymaps(diagnostic)
+
 -- map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)

@@ -1,5 +1,5 @@
 local cmp_nvim_lsp = require 'cmp_nvim_lsp'
-local wk = require 'which-key'
+local utils = require 'utils'
 local M = {}
 
 local get_default_capabilities = function()
@@ -16,7 +16,7 @@ local setup_keymaps = function(bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local lsp_opts = { mode = 'n', noremap = true, silent = true, buffer = bufnr }
+  local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
   local lsp_mappings = {
     ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
     ['gd'] = { vim.lsp.buf.definition, 'definition' },
@@ -37,16 +37,8 @@ local setup_keymaps = function(bufnr)
     ['gR'] = { vim.lsp.buf.references, 'references' },
     ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
   }
-  wk.register(lsp_mappings, lsp_opts)
+  utils.set_keymaps(lsp_mappings, lsp_opts)
 
-  local diagnostic_opts = { mode = 'n', noremap = true, silent = true }
-  local diagnostic_mappings = {
-    ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostic' },
-    ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
-    [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
-    ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
-  }
-  wk.register(diagnostic_mappings, diagnostic_opts)
 end
 
 M.default_on_attach = function(client, bufnr)

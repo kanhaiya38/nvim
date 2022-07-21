@@ -11,6 +11,7 @@ vim.o.undofile = true
 vim.cmd('set clipboard+=unnamedplus')
 vim.o.shell = '/usr/bin/fish'
 vim.g.mapleader = ' '
+vim.o.termguicolors = true
 
 vim.cmd([[ set runtimepath-=/usr/share/vim/vimfiles ]])
 

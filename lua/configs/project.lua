@@ -1,4 +1,4 @@
-require('project_nvim').setup {
+require('project_nvim').setup({
   detection_methods = { 'pattern', 'lsp' },
 
   patterns = { '>codechef', '>codeforces', '>atcoder' },
@@ -6,4 +6,4 @@ require('project_nvim').setup {
   ignore_lsp = { 'null-ls', 'html' },
 
   -- silent_chdir = false,
-}
+})

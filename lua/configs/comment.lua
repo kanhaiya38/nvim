@@ -6,12 +6,12 @@ local contains = function(list, value)
   end
 end
 
-require('Comment').setup {
+require('Comment').setup({
   pre_hook = function(ctx)
     local fts = { 'typescriptreact', 'typescript', 'javascriptreact', 'javascript' }
     -- Only calculate commentstring for tsx filetypes
     if contains(fts, vim.bo.filetype) then
-      local U = require 'Comment.utils'
+      local U = require('Comment.utils')
 
       -- Detemine whether to use linewise or blockwise commentstring
       local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
@@ -24,10 +24,10 @@ require('Comment').setup {
         location = require('ts_context_commentstring.utils').get_visual_start_location()
       end
 
-      return require('ts_context_commentstring.internal').calculate_commentstring {
+      return require('ts_context_commentstring.internal').calculate_commentstring({
         key = type,
         location = location,
-      }
+      })
     end
   end,
-}
+})

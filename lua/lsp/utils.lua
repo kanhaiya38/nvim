@@ -1,5 +1,5 @@
-local cmp_nvim_lsp = require 'cmp_nvim_lsp'
-local utils = require 'utils'
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local utils = require('utils')
 local M = {}
 
 local get_default_capabilities = function()
@@ -38,7 +38,6 @@ local setup_keymaps = function(bufnr)
     ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
   }
   utils.set_keymaps(lsp_mappings, lsp_opts)
-
 end
 
 M.default_on_attach = function(client, bufnr)

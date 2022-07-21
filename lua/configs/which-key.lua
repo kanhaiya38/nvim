@@ -1,12 +1,12 @@
-require('which-key').setup {
+require('which-key').setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
-}
+})
 
-local wk = require 'which-key'
+local wk = require('which-key')
 
-wk.register {
+wk.register({
   ['<leader>a'] = {
     name = '+actions',
     f = { '<cmd>lua vim.lsp.buf.format { async = true }<CR>', 'format' },
@@ -122,4 +122,4 @@ wk.register {
   ['<leader>u'] = { '<cmd>lua require("functions").openURL()<CR>', 'open url' },
   ['['] = { name = '+goto' },
   [']'] = { name = '+goto' },
-}
+})

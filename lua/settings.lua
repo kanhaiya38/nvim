@@ -8,11 +8,11 @@ vim.o.encoding = 'UTF-8'
 vim.o.updatetime = 100
 vim.o.timeoutlen = 500
 vim.o.undofile = true
-vim.cmd 'set clipboard+=unnamedplus'
+vim.cmd('set clipboard+=unnamedplus')
 vim.o.shell = '/usr/bin/fish'
 vim.g.mapleader = ' '
 
-vim.cmd [[ set runtimepath-=/usr/share/vim/vimfiles ]]
+vim.cmd([[ set runtimepath-=/usr/share/vim/vimfiles ]])
 
 O = {}
 
@@ -25,7 +25,7 @@ O.kinds = {
   },
 }
 
-local utils = require 'lsp.utils'
+local utils = require('lsp.utils')
 
 O.servers = {
   sumneko_lua = {
@@ -34,13 +34,13 @@ O.servers = {
   rust_analyzer = {
     -- TODO: loader function is not set up in lsp
     loader = function(server)
-      require('rust-tools').setup {
+      require('rust-tools').setup({
         -- The "server" property provided in rust-tools setup function are the
         -- settings rust-tools will provide to lspconfig during init.            --
         -- We merge the necessary settings from nvim-lsp-installer (server:get_default_options())
         -- with the user's own settings (opts).
         server = vim.tbl_deep_extend('force', server:get_default_options(), utils.get_server_opts(server.name)),
-      }
+      })
       server:attach_buffers()
       -- Only if standalone support is needed
       -- require('rust-tools').start_standalone_if_required()

@@ -1,6 +1,6 @@
-local utils = require 'lsp.utils'
-local lsp_installer = require 'nvim-lsp-installer'
-local lspconfig = require 'lspconfig'
+local utils = require('lsp.utils')
+local lsp_installer = require('nvim-lsp-installer')
+local lspconfig = require('lspconfig')
 
 local function setup_servers()
   for _, server in ipairs(lsp_installer.get_installed_servers()) do
@@ -18,10 +18,10 @@ local function install_servers()
   for key, _ in pairs(O.servers) do
     table.insert(ensure_installed, key)
   end
-  lsp_installer.setup {
+  lsp_installer.setup({
     ensure_installed = ensure_installed,
     automatic_installation = true,
-  }
+  })
 end
 
 local M = {}

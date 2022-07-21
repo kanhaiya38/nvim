@@ -1,10 +1,10 @@
-local actions = require 'telescope.actions'
-local telescope = require 'telescope'
+local actions = require('telescope.actions')
+local telescope = require('telescope')
 
 local M = {}
 
 M.setup = function()
-  telescope.setup {
+  telescope.setup({
     defaults = {
       layout_config = {
         horizontal = { height = 0.75, width = 0.7, preview_width = 0.57 },
@@ -38,10 +38,10 @@ M.setup = function()
         -- the default case_mode is "smart_case"
       },
     },
-  }
+  })
 
-  telescope.load_extension 'fzf'
-  telescope.load_extension 'projects'
+  telescope.load_extension('fzf')
+  telescope.load_extension('projects')
 end
 
 M.project_files = function()

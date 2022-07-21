@@ -16,11 +16,11 @@ nnoremap('<A-7>', '<Cmd>BufferLineGoToBuffer 7<CR>')
 nnoremap('<A-8>', '<Cmd>BufferLineGoToBuffer 8<CR>')
 nnoremap('<A-9>', '<Cmd>BufferLineGoToBuffer 9<CR>')
 
-require('bufferline').setup {
+require('bufferline').setup({
   options = {
     diagnostics = 'nvim_lsp',
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      local icon = level:match 'error' and O.kinds.lsp.error or O.kinds.lsp.warning
+      local icon = level:match('error') and O.kinds.lsp.error or O.kinds.lsp.warning
       return ' ' .. icon .. ' ' .. count
     end,
     offsets = {
@@ -32,4 +32,4 @@ require('bufferline').setup {
       },
     },
   },
-}
+})

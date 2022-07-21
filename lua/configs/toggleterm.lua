@@ -4,7 +4,7 @@ local M = {}
 M.terminals = {}
 
 M.setup = function()
-  require('toggleterm').setup {
+  require('toggleterm').setup({
     open_mapping = [[<C-Space>]],
     direction = 'vertical',
     persist_size = false,
@@ -15,9 +15,9 @@ M.setup = function()
         return vim.o.columns * 0.4
       end
     end,
-  }
+  })
   local Terminal = require('toggleterm.terminal').Terminal
-  M.terminals.lazygit = Terminal:new {
+  M.terminals.lazygit = Terminal:new({
     cmd = 'lazygit',
     hidden = true,
     direction = 'float',
@@ -39,7 +39,7 @@ M.setup = function()
         { noremap = true, silent = true }
       )
     end,
-  }
+  })
 end
 
 M.toggle = function(terminal)

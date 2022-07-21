@@ -19,7 +19,7 @@ parser_configs.norg_table = {
   },
 }
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   auto_install = true,
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
@@ -80,4 +80,4 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
-}
+})

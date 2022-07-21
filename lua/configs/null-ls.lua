@@ -1,4 +1,4 @@
-local null = require 'null-ls'
+local null = require('null-ls')
 local formatting = null.builtins.formatting
 local code_actions = null.builtins.code_actions
 local diagnostics = null.builtins.diagnostics
@@ -17,15 +17,15 @@ local sources = {
   formatting.isort,
 
   -- c/c++
-  formatting.clang_format.with {
+  formatting.clang_format.with({
     extra_args = { '-style=file', '--fallback-style=Google' },
-  },
+  }),
 
   -- markdown
   diagnostics.markdownlint,
-  diagnostics.vale.with {
-    extra_args = { '--config', vim.fn.expand '~/.config/vale/vale.ini' },
-  },
+  diagnostics.vale.with({
+    extra_args = { '--config', vim.fn.expand('~/.config/vale/vale.ini') },
+  }),
 
   -- shell scripts
   formatting.shfmt,
@@ -39,7 +39,7 @@ local sources = {
   code_actions.gitsigns,
 }
 
-null.setup {
+null.setup({
   debug = false,
   sources = sources,
-}
+})

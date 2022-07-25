@@ -165,10 +165,10 @@ return require('packer').startup({
     -- UI
     -- Colorschemes
     use({
-      'ful1e5/onedark.nvim',
+      'navarasu/onedark.nvim',
       as = 'theme',
       config = function()
-        require('onedark').setup()
+        require('onedark').load()
       end,
     })
     -- Statusline and Bufferline

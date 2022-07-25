@@ -5,20 +5,7 @@ local lualine = require('lualine')
 
 -- Color table for highlights
 -- stylua: ignore
-local onedark = require("onedark").get_colors()
-local colors = {
-  bg = onedark.bg1,
-  fg = onedark.fg0,
-  yellow = onedark.yellow0,
-  cyan = onedark.cyan0,
-  darkblue = onedark.darkblue0,
-  green = onedark.green0,
-  orange = onedark.orange0,
-  violet = onedark.violet0,
-  magenta = onedark.magenta0,
-  blue = onedark.blue0,
-  red = onedark.red0,
-}
+local colors = require("onedark.colors")
 
 local conditions = {
   buffer_not_empty = function()
@@ -44,8 +31,8 @@ local config = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
+      normal = { c = { fg = colors.fg, bg = colors.bg_d } },
+      inactive = { c = { fg = colors.fg, bg = colors.bg_d } },
     },
   },
   sections = {
@@ -90,6 +77,9 @@ ins_left({
 ins_left({
   -- mode component
   function()
+    return ''
+  end,
+  color = function()
     -- auto change color according to neovims mode
     local mode_color = {
       n = colors.red,
@@ -113,10 +103,8 @@ ins_left({
       ['!'] = colors.red,
       t = colors.red,
     }
-    vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
-    return ''
+    return { fg = mode_color[vim.fn.mode()] }
   end,
-  color = 'LualineMode',
   padding = { right = 1 },
 })
 

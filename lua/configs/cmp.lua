@@ -68,15 +68,8 @@ cmp.setup({
   },
   formatting = {
     format = lspkind.cmp_format({
-      with_text = true,
-      menu = {
-        nvim_lsp = '[LSP]',
-        buffer = '[Buffer]',
-        luasnip = '[LuaSnip]',
-        path = '[Path]',
-        calc = '[Calc]',
-        emoji = '[Emoji]',
-      },
+      mode = 'symbol_text',
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
     }),
   },
 })

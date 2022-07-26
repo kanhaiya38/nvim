@@ -168,7 +168,7 @@ return require('packer').startup({
       'navarasu/onedark.nvim',
       as = 'theme',
       config = function()
-        require('onedark').load()
+        require('configs.theme')
       end,
     })
     -- Statusline and Bufferline

@@ -1,22 +1,35 @@
--- keymaps
-local nnoremap = function(key, map)
-  vim.api.nvim_set_keymap('n', key, map, { noremap = true, silent = true })
+local utils = require('utils')
+local bl = require('bufferline')
+
+local go_to_buffer = function(num)
+  return function()
+    bl.go_to_buffer(num, true)
+  end
 end
 
-nnoremap('gb', '<Cmd>BufferLinePick<CR>')
--- nnoremap('[b', '<Cmd>BufferLineCycleNext<CR>')
--- nnoremap('b]', '<Cmd>BufferLineCyclePrev<CR>')
-nnoremap('<A-1>', '<Cmd>BufferLineGoToBuffer 1<CR>')
-nnoremap('<A-2>', '<Cmd>BufferLineGoToBuffer 2<CR>')
-nnoremap('<A-3>', '<Cmd>BufferLineGoToBuffer 3<CR>')
-nnoremap('<A-4>', '<Cmd>BufferLineGoToBuffer 4<CR>')
-nnoremap('<A-5>', '<Cmd>BufferLineGoToBuffer 5<CR>')
-nnoremap('<A-6>', '<Cmd>BufferLineGoToBuffer 6<CR>')
-nnoremap('<A-7>', '<Cmd>BufferLineGoToBuffer 7<CR>')
-nnoremap('<A-8>', '<Cmd>BufferLineGoToBuffer 8<CR>')
-nnoremap('<A-9>', '<Cmd>BufferLineGoToBuffer 9<CR>')
+local cycle = function(num)
+  return function()
+    bl.cycle(num)
+  end
+end
 
-require('bufferline').setup({
+utils.set_keymaps({
+  -- Go to buffer
+  ['[b'] = { cycle(-1), 'prev buffer' },
+  [']b'] = { cycle(1), 'next buffer' },
+  ['<leader>1'] = { go_to_buffer(1), 'go to buffer 1' },
+  ['<leader>2'] = { go_to_buffer(2), 'go to buffer 2' },
+  ['<leader>3'] = { go_to_buffer(3), 'go to buffer 3' },
+  ['<leader>4'] = { go_to_buffer(4), 'go to buffer 4' },
+  ['<leader>5'] = { go_to_buffer(5), 'go to buffer 5' },
+  ['<leader>6'] = { go_to_buffer(6), 'go to buffer 6' },
+  ['<leader>7'] = { go_to_buffer(7), 'go to buffer 7' },
+  ['<leader>8'] = { go_to_buffer(8), 'go to buffer 8' },
+  ['<leader>9'] = { go_to_buffer(9), 'go to buffer 9' },
+  ['<leader>0'] = { go_to_buffer(-1), 'go to buffer 0' },
+}, { silent = true, noremap = true })
+
+bl.setup({
   options = {
     diagnostics = 'nvim_lsp',
     diagnostics_indicator = function(count, level, diagnostics_dict, context)

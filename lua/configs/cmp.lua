@@ -32,6 +32,8 @@ local s_tab_complete = function(fallback)
   end
 end
 
+local window_config = { border = 'single' }
+
 cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -65,6 +67,10 @@ cmp.setup({
       'i',
       's',
     }),
+  },
+  window = {
+    completion = window_config,
+    documentation = window_config,
   },
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },

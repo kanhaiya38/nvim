@@ -23,7 +23,7 @@ return require('packer').startup({
       config = function()
         require('lsp').setup()
       end,
-      requires = 'williamboman/nvim-lsp-installer',
+      requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
     })
     use({
       'tamago324/nlsp-settings.nvim',

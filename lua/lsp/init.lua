@@ -1,33 +1,25 @@
-local utils = require('lsp.utils')
-local lsp_installer = require('nvim-lsp-installer')
 local lspconfig = require('lspconfig')
+local utils = require('lsp.utils')
 
 local function setup_servers()
-  for _, server in ipairs(lsp_installer.get_installed_servers()) do
-    local server_config = O.servers[server.name]
+  for _, server in ipairs(utils.get_installed_servers()) do
+    local server_config = O.servers[server]
     local server_opts = utils.default_server_opts
     if server_config.custom_setup then
-      require('lsp.servers.' .. server.name).setup(server_opts)
+      require('lsp.servers.' .. server).setup(server_opts)
+    else
+      lspconfig[server].setup(server_opts)
     end
-    lspconfig[server.name].setup(server_opts)
   end
-end
-
-local function install_servers()
-  local ensure_installed = {}
-  for key, _ in pairs(O.servers) do
-    table.insert(ensure_installed, key)
-  end
-  lsp_installer.setup({
-    ensure_installed = ensure_installed,
-    automatic_installation = true,
-  })
 end
 
 local M = {}
 
 M.setup = function()
-  install_servers()
+  require('mason').setup()
+  require('mason-lspconfig').setup({
+    ensure_installed = utils.get_ensure_installed(),
+  })
   setup_servers()
   utils.show_source()
   utils.diagnostics_symbols()

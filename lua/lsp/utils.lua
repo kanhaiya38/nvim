@@ -1,5 +1,6 @@
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local utils = require('utils')
+
 local M = {}
 
 local get_default_capabilities = function()
@@ -63,6 +64,16 @@ M.default_on_attach = function(client, bufnr)
 end
 
 M.default_server_opts = { capabilities = M.default_capabilities, on_attach = M.default_on_attach }
+
+M.get_ensure_installed = function()
+  local ensure_installed = {}
+  for key, _ in pairs(O.servers) do
+    table.insert(ensure_installed, key)
+  end
+  return ensure_installed
+end
+
+M.get_installed_servers = require('mason-lspconfig').get_installed_servers
 
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
 M.diagnostics_symbols = function()

@@ -67,10 +67,21 @@ cmp.setup({
     }),
   },
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'symbol_text',
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-    }),
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(entry, vim_item)
+      local kind = lspkind.cmp_format({
+        mode = 'symbol',
+        maxwidth = 50,
+        menu = {
+          buffer = '[Buffer]',
+          nvim_lsp = '[LSP]',
+          luasnip = '[LuaSnip]',
+          nvim_lua = '[Lua]',
+          latex_symbols = '[Latex]',
+        },
+      })(entry, vim_item)
+      return kind
+    end,
   },
 })
 

@@ -57,7 +57,11 @@ vim.g.surround_mappings_style = 'surround'
 vim.g.dashboard_default_executive = 'telescope'
 
 -- notify
-_, vim.notify = pcall(require, 'notify')
+local ok, notify = pcall(require, 'notify')
+
+if ok then
+  vim.notify = notify
+end
 
 -- disable builtin plugins
 local disabled_built_ins = {

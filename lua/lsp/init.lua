@@ -3,7 +3,8 @@ local utils = require('lsp.utils')
 
 local function setup_servers()
   for _, server in ipairs(utils.get_installed_servers()) do
-    local server_config = O.servers[server]
+    local default_server_config = { custom_setup = false }
+    local server_config = O.servers[server] or default_server_config
     local server_opts = utils.default_server_opts
     if server_config.custom_setup then
       require('lsp.servers.' .. server).setup(server_opts)

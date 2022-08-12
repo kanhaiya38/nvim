@@ -23,7 +23,7 @@ local toggleterm = {
   ['<C-Space>'] = { '<Cmd>ToggleTerm<CR>', 'open terminal' },
 }
 
-local opts = { nowait = true }
+local opts = { noremap = true, silent = true, nowait = true }
 
 utils.set_keymaps(windows, opts, { 'n', 'i', 't' })
 utils.set_keymaps(buffer, opts, { 'n', 'i', 't' })

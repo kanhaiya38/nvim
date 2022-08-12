@@ -214,6 +214,15 @@ return require('packer').startup({
       after = 'theme',
       config = function()
         require('configs.dashboard')
+    use({
+      'rmagatti/auto-session',
+      config = function()
+        vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+
+        require('auto-session').setup({
+          log_level = 'error',
+          auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+        })
       end,
     })
 

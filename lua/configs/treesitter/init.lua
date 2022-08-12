@@ -7,6 +7,7 @@ require('nvim-treesitter.configs').setup({
   highlight = extensions.highlight,
   incremental_selection = extensions.incremental_selection,
   -- plugins
+  autotag = extensions.autotag,
   context_commentstring = extensions.context_commentstring,
   rainbow = extensions.rainbow,
   textobjects = extensions.textobjects,

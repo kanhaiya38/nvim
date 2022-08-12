@@ -100,12 +100,6 @@ return require('packer').startup({
         require('configs.autopairs')
       end,
     })
-    use({
-      'windwp/nvim-ts-autotag',
-      config = function()
-        require('nvim-ts-autotag').setup()
-      end,
-    })
 
     -- Telescope
     use({
@@ -246,6 +240,7 @@ return require('packer').startup({
       end,
     })
 
+    -- Treesitter
     use({
       'nvim-treesitter/nvim-treesitter',
       config = function()
@@ -253,7 +248,11 @@ return require('packer').startup({
       end,
       run = ':TSUpdate',
     })
-    use({ 'nvim-treesitter/nvim-treesitter-textobjects', 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
+    use({ 'windwp/nvim-ts-autotag' })
+    use({ 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' })
+    use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
+    use({ 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' })
+
     use({
       'ahmedkhalf/project.nvim',
       config = function()
@@ -275,7 +274,6 @@ return require('packer').startup({
     use({ 'simrat39/rust-tools.nvim' })
     use({ 'p00f/clangd_extensions.nvim' })
     use({ 'jose-elias-alvarez/typescript.nvim' })
-    use({ 'JoosepAlviste/nvim-ts-context-commentstring' })
     use({
       'iamcco/markdown-preview.nvim',
       run = 'cd app && yarn install',

@@ -20,6 +20,11 @@ M.incremental_selection = {
   },
 }
 
+M.autotag = {
+  enable = true,
+  -- filetypes = { 'html', 'xml' },
+}
+
 M.context_commentstring = {
   enable = true,
   enable_autocmd = false,

@@ -214,6 +214,10 @@ return require('packer').startup({
       after = 'theme',
       config = function()
         require('configs.dashboard')
+      end,
+      -- TODO: configure dashboard as it is breaking auto-session
+      disable = true,
+    })
     use({
       'rmagatti/auto-session',
       config = function()

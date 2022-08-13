@@ -5,6 +5,9 @@ local M = {}
 ---@alias keymap.mode mode_letter[] | mode_letter
 ---@alias keymap.mappings table<string, {[1]: funcref, [2]: string, mode: keymap.mode, opts: keymap.opts }>
 
+--- @type keymap.opts
+local default_opts = { noremap = true, silent = true }
+
 ---@param keymaps { mappings: keymap.mappings, opts: keymap.opts, mode: keymap.mode, debug: boolean }
 M.set_keymaps = function(keymaps)
   local mappings = keymaps.mappings
@@ -17,7 +20,7 @@ M.set_keymaps = function(keymaps)
     local rhs = val[1]
     local desc = val[2]
     local local_mode = val.mode or mode
-    local local_opts = vim.tbl_deep_extend('force', opts, val.opts or {}, { desc = desc })
+    local local_opts = vim.tbl_deep_extend('force', default_opts, opts, val.opts or {}, { desc = desc })
     if debug then
       vim.pretty_print('mode', local_mode)
       vim.pretty_print('lhs', lhs)

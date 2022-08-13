@@ -125,6 +125,9 @@ return require('packer').startup({
     use({
       'akinsho/nvim-toggleterm.lua',
       cmd = 'ToggleTerm',
+      setup = function()
+        require('keymaps').toggleterm()
+      end,
       config = function()
         require('configs.toggleterm').setup()
       end,
@@ -236,6 +239,9 @@ return require('packer').startup({
     use({
       'kyazdani42/nvim-tree.lua',
       cmd = 'NvimTreeToggle',
+      setup = function()
+        require('keymaps').nvim_tree()
+      end,
       config = function()
         require('configs.nvim-tree')
       end,

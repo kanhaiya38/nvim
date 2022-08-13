@@ -25,7 +25,7 @@ M.lsp = function(bufnr)
       ['gR'] = { vim.lsp.buf.references, 'references' },
       ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
     },
-    opts = { noremap = true, silent = true, buffer = bufnr },
+    opts = { buffer = bufnr },
   })
 end
 
@@ -115,50 +115,56 @@ M.bufferline = function()
       ['<leader>9'] = { go_to_buffer(9), 'go to buffer 9' },
       ['<leader>0'] = { go_to_buffer(-1), 'go to buffer 0' },
     },
-    opts = { silent = true, noremap = true },
   })
 end
 
--- Windows
-local windows = {
-  ['<c-j>'] = { '<esc><cmd>wincmd j<cr>', 'down' },
-  ['<c-k>'] = { '<esc><cmd>wincmd k<cr>', 'up' },
-  ['<c-h>'] = { '<esc><cmd>wincmd h<cr>', 'left' },
-  ['<c-l>'] = { '<esc><cmd>wincmd l<cr>', 'right' },
-}
+M.nvim_tree = function()
+  utils.set_keymaps({
+    mappings = {
+      ['<c-n>'] = { '<esc><cmd>NvimTreeToggle<cr>', 'tree toggle' },
+    },
+    mode = { 'n', 'i', 't' },
+  })
+end
 
-local buffer = {
-  ['<c-q>'] = { '<cmd>Bdelete<cr>', 'delete buffer' },
-  ['<C-y>'] = { 'ggVG"+y', 'copy buffer' },
-}
-
--- NvimTree
-local nvim_tree = {
-  ['<c-n>'] = { '<esc><cmd>NvimTreeToggle<cr>', 'tree toggle' },
-}
-
--- ToggleTerm
-local toggleterm = {
-  ['<C-Space>'] = { '<Cmd>ToggleTerm<CR>', 'open terminal' },
-}
-
-local opts = { noremap = true, silent = true, nowait = true }
-
-utils.set_keymaps({ mappings = windows, opts = opts, modes = { 'n', 'i', 't' } })
-utils.set_keymaps({ mappings = buffer, opts = opts, modes = { 'n', 'i', 't' } })
-utils.set_keymaps({ mappings = nvim_tree, opts = opts, modes = { 'n', 'i', 't' } })
-utils.set_keymaps({ mappings = toggleterm, opts = opts })
-
-local diagnostic = {
-  ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostic' },
-  ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
-  [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
-  ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
-}
-utils.set_keymaps({ mappings = diagnostic })
+M.toggleterm = function()
+  utils.set_keymaps({
+    mappings = {
+      ['<C-Space>'] = { '<Cmd>ToggleTerm<CR>', 'open terminal' },
+    },
+  })
+end
 
 -- map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
 -- map('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
+
+M.defaults = function()
+  utils.set_keymaps({
+    mappings = {
+      -- Windows
+      ['<c-j>'] = { '<esc><cmd>wincmd j<cr>', 'down' },
+      ['<c-k>'] = { '<esc><cmd>wincmd k<cr>', 'up' },
+      ['<c-h>'] = { '<esc><cmd>wincmd h<cr>', 'left' },
+      ['<c-l>'] = { '<esc><cmd>wincmd l<cr>', 'right' },
+
+      -- Buffer
+      ['<c-q>'] = { '<cmd>Bdelete<cr>', 'delete buffer' },
+      ['<C-y>'] = { 'ggVG"+y', 'copy buffer' },
+    },
+    mode = { 'n', 'i', 't' },
+  })
+
+  utils.set_keymaps({
+    mappings = {
+      -- Diagnostics
+      ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostic' },
+      ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
+      [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
+      ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
+    },
+  })
+end
+
 return M

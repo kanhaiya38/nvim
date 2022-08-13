@@ -21,7 +21,7 @@ return require('packer').startup({
     use({
       'neovim/nvim-lspconfig',
       config = function()
-        require('lsp').setup()
+        require('lsp')
       end,
       requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
     })

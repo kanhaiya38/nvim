@@ -14,16 +14,10 @@ local function setup_servers()
   end
 end
 
-local M = {}
-
-M.setup = function()
-  require('mason').setup()
-  require('mason-lspconfig').setup({
-    ensure_installed = utils.get_ensure_installed(),
-  })
-  setup_servers()
-  utils.show_source()
-  utils.diagnostics_symbols()
-end
-
-return M
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = utils.get_ensure_installed(),
+})
+setup_servers()
+utils.show_source()
+utils.diagnostics_symbols()

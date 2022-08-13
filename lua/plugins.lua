@@ -42,22 +42,21 @@ return require('packer').startup({
     -- Autocompletion
     use({
       'hrsh7th/nvim-cmp',
-      -- event = 'InsertEnter',
+      as = 'cmp',
+      event = { 'InsertEnter', 'CmdlineEnter' },
       config = function()
         require('configs.cmp')
       end,
-      requires = {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-nvim-lsp',
-        'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-calc',
-        'hrsh7th/cmp-emoji',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-nvim-lsp-document-symbol',
-        'hrsh7th/cmp-cmdline',
-      },
     })
+    use({ 'hrsh7th/cmp-buffer', after = 'cmp' })
+    use({ 'hrsh7th/cmp-nvim-lsp', after = 'cmp' })
+    use({ 'saadparwaiz1/cmp_luasnip', after = 'cmp' })
+    use({ 'hrsh7th/cmp-path', after = 'cmp' })
+    use({ 'hrsh7th/cmp-calc', after = 'cmp' })
+    use({ 'hrsh7th/cmp-emoji', after = 'cmp' })
+    use({ 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'cmp' })
+    use({ 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'cmp' })
+    use({ 'hrsh7th/cmp-cmdline', after = 'cmp' })
     -- Snippets
     use({
       'L3MON4D3/Luasnip',

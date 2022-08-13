@@ -1,5 +1,4 @@
 local cmp = require('cmp')
-local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
 local has_words_before = function()
@@ -11,6 +10,7 @@ end
 -- move to prev/next item in completion menuone
 -- jump to prev/next snippet's placeholder
 local tab_complete = function(fallback)
+  local luasnip = require('luasnip')
   if cmp.visible() then
     cmp.select_next_item()
   elseif luasnip.expand_or_jumpable() then
@@ -23,6 +23,7 @@ local tab_complete = function(fallback)
 end
 
 local s_tab_complete = function(fallback)
+  local luasnip = require('luasnip')
   if cmp.visible() then
     cmp.select_prev_item()
   elseif luasnip.jumpable(-1) then

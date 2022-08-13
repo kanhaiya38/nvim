@@ -63,6 +63,7 @@ return require('packer').startup({
       config = function()
         require('configs.snippets')
       end,
+      after = 'cmp',
       requires = 'rafamadriz/friendly-snippets',
     })
     use({

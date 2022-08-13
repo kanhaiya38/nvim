@@ -97,7 +97,7 @@ return require('packer').startup({
       'windwp/nvim-autopairs',
       -- event = 'InsertEnter',
       config = function()
-        require('configs.autopairs')
+        require('nvim-autopairs').setup({})
       end,
     })
 

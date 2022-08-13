@@ -14,6 +14,22 @@ local list = {
 }
 
 require('nvim-tree').setup({
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+  },
+  renderer = {
+    highlight_opened_files = 'name',
+    icons = {
+      git_placement = 'after',
+    },
+  },
   view = {
     mappings = { list = list },
   },

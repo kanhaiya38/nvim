@@ -17,18 +17,6 @@ wk.register({
     c = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
   },
 
-  ['<leader>b'] = {
-    name = '+buffer',
-    a = { '<cmd>BufferLineCloseLeft<CR> | <cmd>BufferLineCloseRight<CR>', 'close all but current' },
-    r = { '<cmd>BufferLineCloseRight<CR>', 'close all buffers right' },
-    l = { '<cmd>BufferLineCloseLeft<CR>', 'close all buffers left' },
-    D = { '<cmd>BufferLineSortByDirectory<CR>', 'order by directory' },
-    E = { '<cmd>BufferLineSortByExtension<CR>', 'order by extension' },
-    T = { '<cmd>BufferLineSortByTabs<CR>', 'order by tabs' },
-    z = { '<cmd>Telescope current_buffer_fuzzy_find<CR>', 'buffer fuzzy find' },
-    t = { '<cmd>Telescope current_buffer_tags<CR>', 'buffer tags' },
-  },
-
   ['<leader>f'] = {
     name = '+file',
     f = { '<cmd>Telescope find_files<CR>', 'find files' },

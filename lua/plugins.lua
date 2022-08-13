@@ -129,7 +129,7 @@ return require('packer').startup({
         require('keymaps').toggleterm()
       end,
       config = function()
-        require('configs.toggleterm').setup()
+        require('configs.toggleterm')
       end,
     })
 

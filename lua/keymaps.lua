@@ -130,6 +130,12 @@ end
 M.toggleterm = function()
   utils.set_keymaps({
     mappings = {
+      ['<leader>tl'] = {
+        function()
+          require('configs.toggleterm').lazygit:toggle()
+        end,
+        'lazygit',
+      },
       ['<C-Space>'] = { '<Cmd>ToggleTerm<CR>', 'open terminal' },
     },
   })

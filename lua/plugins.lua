@@ -125,11 +125,12 @@ return require('packer').startup({
     use({
       'akinsho/nvim-toggleterm.lua',
       cmd = 'ToggleTerm',
+      module = 'configs.toggleterm',
       setup = function()
         require('keymaps').toggleterm()
       end,
       config = function()
-        require('configs.toggleterm')
+        require('configs.toggleterm').setup()
       end,
     })
 

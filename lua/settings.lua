@@ -50,12 +50,6 @@ vim.g.mkdp_browser = 'qutebrowser'
 -- startuptime
 vim.g.startuptime_tries = 5
 
--- surround.nvim
-vim.g.surround_mappings_style = 'surround'
-
--- dashboard
-vim.g.dashboard_default_executive = 'telescope'
-
 -- notify
 local ok, notify = pcall(require, 'notify')
 

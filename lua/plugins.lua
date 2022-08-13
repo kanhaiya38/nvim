@@ -248,7 +248,13 @@ return require('packer').startup({
       end,
       run = ':TSUpdate',
     })
-    use({ 'windwp/nvim-ts-autotag' })
+    use({
+      'windwp/nvim-ts-autotag',
+      config = function()
+        require('nvim-ts-autotag').setup()
+      end,
+      after = 'nvim-treesitter',
+    })
     use({ 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' })
     use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
     use({ 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' })

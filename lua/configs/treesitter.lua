@@ -1,6 +1,4 @@
-local M = {}
-
-M.highlight = {
+local highlight = {
   enable = true, -- false will disable the whole extension
   disable = {}, -- list of language that will be disabled
   -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -10,7 +8,7 @@ M.highlight = {
   additional_vim_regex_highlighting = false,
 }
 
-M.incremental_selection = {
+local incremental_selection = {
   enable = true,
   keymaps = {
     init_selection = 'gnn',
@@ -20,17 +18,12 @@ M.incremental_selection = {
   },
 }
 
-M.autotag = {
-  enable = true,
-  -- filetypes = { 'html', 'xml' },
-}
-
-M.context_commentstring = {
+local context_commentstring = {
   enable = true,
   enable_autocmd = false,
 }
 
-M.rainbow = {
+local rainbow = {
   enable = true,
   -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
   extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
@@ -39,7 +32,7 @@ M.rainbow = {
   -- termcolors = {} -- table of colour name strings
 }
 
-M.textobjects = {
+local textobjects = {
   select = {
     enable = true,
 
@@ -85,4 +78,15 @@ M.textobjects = {
   },
 }
 
-return M
+require('nvim-treesitter.configs').setup({
+  auto_install = true,
+  ignore_install = {}, -- List of parsers to ignore installing
+  -- default
+  highlight = highlight,
+  incremental_selection = incremental_selection,
+  -- plugins
+  -- autotag = extensions.autotag,
+  context_commentstring = context_commentstring,
+  rainbow = rainbow,
+  textobjects = textobjects,
+})

@@ -38,7 +38,7 @@ local setup_keymaps = function(bufnr)
     ['gR'] = { vim.lsp.buf.references, 'references' },
     ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
   }
-  utils.set_keymaps(lsp_mappings, lsp_opts)
+  utils.set_keymaps({ mappings = lsp_mappings, opts = lsp_opts })
 end
 
 M.default_on_attach = function(client, bufnr)

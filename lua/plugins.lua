@@ -181,6 +181,9 @@ return require('packer').startup({
     use({
       'akinsho/bufferline.nvim',
       after = 'theme',
+      setup = function()
+        require('keymaps').bufferline()
+      end,
       config = function()
         require('configs.bufferline')
       end,

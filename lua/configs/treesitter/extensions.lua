@@ -54,6 +54,15 @@ M.textobjects = {
       ['ic'] = '@class.inner',
     },
   },
+  swap = {
+    enable = true,
+    swap_next = {
+      ['gs'] = '@parameter.inner',
+    },
+    swap_previous = {
+      ['gS'] = '@parameter.inner',
+    },
+  },
   move = {
     enable = true,
     set_jumps = true, -- whether to set jumps in the jumplist

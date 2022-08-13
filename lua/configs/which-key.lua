@@ -92,18 +92,6 @@ wk.register({
     l = { '<cmd>lua require("configs.toggleterm").toggle("lazygit")<CR>', 'lazygit' },
   },
 
-  ['<leader>h'] = {
-    name = '+gitsigns',
-    s = 'stage hunk',
-    S = 'stage buffer',
-    u = 'undo stage hunk',
-    U = 'reset buffer index',
-    r = 'reset hunk',
-    R = 'rest buffer',
-    p = 'preview hunk',
-    b = 'blame line',
-  },
-
   ['<leader>x'] = {
     name = '+leetcode',
     a = {

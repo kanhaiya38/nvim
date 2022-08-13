@@ -1,5 +1,4 @@
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local utils = require('utils')
 
 local M = {}
 
@@ -10,39 +9,11 @@ end
 
 M.default_capabilities = get_default_capabilities()
 
--- keymaps
-local setup_keymaps = function(bufnr)
+M.default_on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local lsp_opts = { noremap = true, silent = true, buffer = bufnr }
-  local lsp_mappings = {
-    ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
-    ['gd'] = { vim.lsp.buf.definition, 'definition' },
-    ['K'] = { vim.lsp.buf.hover, 'hover' },
-    ['gI'] = { vim.lsp.buf.implementation, 'implementation' },
-    ['gh'] = { vim.lsp.buf.signature_help, 'signature_help' },
-    ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, 'add workspace' },
-    ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, 'remove workspace' },
-    ['<space>wl'] = {
-      function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end,
-      'list workspace',
-    },
-    ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
-    ['<space>rn'] = { vim.lsp.buf.rename, 'rename' },
-    ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
-    ['gR'] = { vim.lsp.buf.references, 'references' },
-    ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
-  }
-  utils.set_keymaps({ mappings = lsp_mappings, opts = lsp_opts })
-end
-
-M.default_on_attach = function(client, bufnr)
-  setup_keymaps(bufnr)
+  require('keymaps').lsp(bufnr)
 
   -- Disable language server formatting
   client.server_capabilities.documentFormattingProvider = false

@@ -2,6 +2,33 @@ local M = {}
 
 local utils = require('utils')
 
+M.lsp = function(bufnr)
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  utils.set_keymaps({
+    mappings = {
+      ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
+      ['gd'] = { vim.lsp.buf.definition, 'definition' },
+      ['K'] = { vim.lsp.buf.hover, 'hover' },
+      ['gI'] = { vim.lsp.buf.implementation, 'implementation' },
+      ['gh'] = { vim.lsp.buf.signature_help, 'signature_help' },
+      ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, 'add workspace' },
+      ['<space>wr'] = { vim.lsp.buf.remove_workspace_folder, 'remove workspace' },
+      ['<space>wl'] = {
+        function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
+        'list workspace',
+      },
+      ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
+      ['<space>rn'] = { vim.lsp.buf.rename, 'rename' },
+      ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
+      ['gR'] = { vim.lsp.buf.references, 'references' },
+      ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
+    },
+    opts = { noremap = true, silent = true, buffer = bufnr },
+  })
+end
+
 M.gitsigns = function(bufnr)
   local gs = package.loaded.gitsigns
 

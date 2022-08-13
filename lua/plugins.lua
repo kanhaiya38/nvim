@@ -154,6 +154,12 @@ return require('packer').startup({
         require('configs.comment')
       end,
     })
+    use({
+      'danymat/neogen',
+      config = function()
+        require('neogen').setup({})
+      end,
+    })
 
     -- UI
     -- Colorschemes

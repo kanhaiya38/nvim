@@ -252,6 +252,13 @@ return require('packer').startup({
     use({ 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' })
     use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
     use({ 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' })
+    use({
+      'nvim-treesitter/nvim-treesitter-context',
+      config = function()
+        require('treesitter-context').setup()
+      end,
+      after = 'nvim-treesitter',
+    })
 
     use({
       'ahmedkhalf/project.nvim',

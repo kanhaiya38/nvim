@@ -72,6 +72,7 @@ wk.register({
     c = { '<cmd>PackerCompile<CR>', 'compile' },
     i = { '<cmd>PackerInstall<CR>', 'install' },
     s = { '<cmd>PackerSync<CR>', 'sync' },
+    S = { '<cmd>PackerStatus<CR>', 'status' },
     u = { '<cmd>PackerUpdate<CR>', 'update' },
   },
 

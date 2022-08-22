@@ -7,3 +7,5 @@ vscode_loader.lazy_load({
 vscode_loader.load({ paths = { '~/dotfiles/snippets' } })
 
 luasnip.filetype_extend('javascript', { 'javascriptreact' })
+
+require('configs.snippets.react')

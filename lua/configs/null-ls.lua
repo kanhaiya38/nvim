@@ -1,6 +1,6 @@
 local null = require('null-ls')
 local formatting = null.builtins.formatting
-local code_actions = null.builtins.code_actions
+-- local code_actions = null.builtins.code_actions
 local diagnostics = null.builtins.diagnostics
 
 local sources = {
@@ -36,7 +36,7 @@ local sources = {
   -- formatting.rustfmt, // use rust-tools
 
   -- git
-  code_actions.gitsigns,
+  -- code_actions.gitsigns,
 }
 
 null.setup({

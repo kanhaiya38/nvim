@@ -3,12 +3,19 @@ local M = {}
 local utils = require('utils')
 
 M.lsp = function(bufnr)
+  local custom_hover = function()
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover()
+    end
+  end
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   utils.set_keymaps({
     mappings = {
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
       ['gd'] = { vim.lsp.buf.definition, 'definition' },
-      ['K'] = { vim.lsp.buf.hover, 'hover' },
+      ['K'] = { custom_hover, 'hover' },
       ['gI'] = { vim.lsp.buf.implementation, 'implementation' },
       ['gh'] = { vim.lsp.buf.signature_help, 'signature_help' },
       ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, 'add workspace' },
@@ -137,6 +144,25 @@ M.toggleterm = function()
         'lazygit',
       },
       ['<C-Space>'] = { '<Cmd>ToggleTerm<CR>', 'open terminal' },
+    },
+  })
+end
+
+M.ufo = function()
+  utils.set_keymaps({
+    mappings = {
+      ['zR'] = {
+        function()
+          require('ufo').openAllFolds()
+        end,
+        'open folds',
+      },
+      ['zM'] = {
+        function()
+          require('ufo').closeAllFolds()
+        end,
+        'close folds',
+      },
     },
   })
 end

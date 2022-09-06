@@ -14,9 +14,6 @@ end
 M.default_capabilities = get_default_capabilities()
 
 M.default_on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   require('keymaps').lsp(bufnr)
 
   -- Disable language server formatting

@@ -50,8 +50,17 @@ end
 
 M.get_installed_servers = require('mason-lspconfig').get_installed_servers
 
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
-M.diagnostics_symbols = function()
+M.setup_diagnostics = function()
+  vim.diagnostic.config({
+    virtual_text = { source = true },
+    float = { source = true },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = false,
+  })
+
+  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
   local signs = {
     Error = O.kinds.lsp.error,
     Warning = O.kinds.lsp.warning,
@@ -65,12 +74,4 @@ M.diagnostics_symbols = function()
   end
 end
 
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
-M.show_source = function()
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      source = 'always', -- Or "if_many"
-    },
-  })
-end
 return M

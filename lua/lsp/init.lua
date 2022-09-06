@@ -19,5 +19,4 @@ require('mason-lspconfig').setup({
   ensure_installed = utils.get_ensure_installed(),
 })
 setup_servers()
-utils.show_source()
-utils.diagnostics_symbols()
+utils.setup_diagnostics()

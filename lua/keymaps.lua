@@ -6,7 +6,7 @@ M.lsp = function(bufnr)
   local custom_hover = function()
     local winid = require('ufo').peekFoldedLinesUnderCursor()
     if not winid then
-      vim.lsp.buf.hover()
+      require('lspsaga.hover'):render_hover_doc()
     end
   end
 
@@ -14,7 +14,12 @@ M.lsp = function(bufnr)
   utils.set_keymaps({
     mappings = {
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
-      ['gd'] = { vim.lsp.buf.definition, 'definition' },
+      ['gd'] = {
+        function()
+          require('lspsaga.definition'):preview_definition()
+        end,
+        'definition',
+      },
       ['K'] = { custom_hover, 'hover' },
       ['gI'] = { vim.lsp.buf.implementation, 'implementation' },
       ['gh'] = { vim.lsp.buf.signature_help, 'signature_help' },
@@ -27,8 +32,18 @@ M.lsp = function(bufnr)
         'list workspace',
       },
       ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
-      ['<space>rn'] = { vim.lsp.buf.rename, 'rename' },
-      ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
+      ['<space>rn'] = {
+        function()
+          require('lspsaga.rename').lsp_rename()
+        end,
+        'rename',
+      },
+      ['<space>ca'] = {
+        function()
+          require('lspsaga.codeaction').code_action()
+        end,
+        'code action',
+      },
       ['gR'] = { vim.lsp.buf.references, 'references' },
       ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
     },
@@ -191,9 +206,30 @@ M.defaults = function()
   utils.set_keymaps({
     mappings = {
       -- Diagnostics
-      ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostic' },
-      ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
-      [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
+      ['<space>e'] = {
+        function()
+          require('lspsaga.diagnostic').show_cursor_diagnostics()
+        end,
+        'open diagnostics',
+      },
+      ['<space>E'] = {
+        function()
+          require('lspsaga.diagnostic').show_line_diagnostics()
+        end,
+        'open line diagnostic',
+      },
+      ['[d'] = {
+        function()
+          require('lspsaga.diagnostic').goto_prev()
+        end,
+        'prev diagnostic',
+      },
+      [']d'] = {
+        function()
+          require('lspsaga.diagnostic').goto_next()
+        end,
+        'next diagnostic',
+      },
       ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
     },
   })

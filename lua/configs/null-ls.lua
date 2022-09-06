@@ -6,7 +6,7 @@ local diagnostics = null.builtins.diagnostics
 local sources = {
   -- lua
   formatting.stylua,
-  diagnostics.luacheck,
+  diagnostics.selene,
 
   -- js
   formatting.prettier,

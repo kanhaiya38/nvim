@@ -1,9 +1,7 @@
 require('indent_blankline').setup({
   filetype_exclude = {
     'help',
-    'terminal',
-    'dashboard',
-    'startup',
+    'mason'
   },
   buftype_exclude = { 'terminal' },
   char_list = { '|', '¦', '┆', '┊' },

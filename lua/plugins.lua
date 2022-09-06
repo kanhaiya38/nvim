@@ -91,8 +91,12 @@ return require('packer').startup({
       end,
     })
     -- Surroundings
-    use({ 'tpope/vim-surround' })
-    use({ 'tpope/vim-repeat' })
+    use({
+      'kylechui/nvim-surround',
+      config = function()
+        require('nvim-surround').setup()
+      end,
+    })
     use({
       'windwp/nvim-autopairs',
       -- event = 'InsertEnter',

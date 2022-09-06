@@ -31,7 +31,7 @@ theme.setup({
     diff_text    = '#2c5372',
   },
   diagnostics = {
-    darker = false,
+    darker = false
   },
 })
 

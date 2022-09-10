@@ -35,7 +35,7 @@ O.servers = {
   yamlls = {},
   eslint = {},
   html = {},
-  jsonls = {},
+  jsonls = { custom_setup = true },
   cssls = {},
   dockerls = {},
   bashls = {},

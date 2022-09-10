@@ -3,4 +3,7 @@ require('gitsigns').setup({
   on_attach = function(bufnr)
     require('keymaps').gitsigns(bufnr)
   end,
+  yadm = {
+    enable = true,
+  },
 })

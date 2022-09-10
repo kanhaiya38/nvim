@@ -51,6 +51,19 @@ M.lsp = function(bufnr)
   })
 end
 
+M.telescope = function()
+  utils.set_keymaps({
+    mappings = {
+      ['<leader>ff'] = {
+        function()
+          require('configs.telescope').project_files()
+        end,
+        'find_files',
+      },
+    },
+  })
+end
+
 M.gitsigns = function(bufnr)
   local gs = package.loaded.gitsigns
 

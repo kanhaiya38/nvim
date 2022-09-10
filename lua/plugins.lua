@@ -109,6 +109,9 @@ return require('packer').startup({
     use({
       'nvim-telescope/telescope.nvim',
       cmd = 'Telescope',
+      setup = function()
+        require('keymaps').telescope()
+      end,
       config = function()
         require('configs.telescope')
       end,

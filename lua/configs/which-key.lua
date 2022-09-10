@@ -17,55 +17,6 @@ wk.register({
     c = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
   },
 
-  ['<leader>f'] = {
-    name = '+file',
-    f = { '<cmd>Telescope find_files<CR>', 'find files' },
-    g = { '<cmd>Telescope git_files<CR>', 'git files' },
-    h = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
-    s = { '<cmd>Telescope grep_string<CR>', 'grep string' },
-    z = { '<cmd>Telescope live_grep<CR>', 'live grep' },
-    p = { '<cmd>Telescope projects<CR>', 'projects' },
-  },
-
-  ['<leader>s'] = {
-    name = '+search',
-    b = { '<cmd>Telescope buffers<CR>', 'buffers' },
-    c = { '<cmd>Telescope commands<CR>', 'commands' },
-    t = { '<cmd>Telescope tags<CR>', 'tags' },
-    m = { '<cmd>Telescope marks<CR>', 'marks' },
-    q = { '<cmd>Telescope quickfix<CR>', 'quickfix' },
-    o = { '<cmd>Telescope vim_options<CR>', 'vim options' },
-    r = { '<cmd>Telescope registers<CR>', 'registers' },
-    a = { '<cmd>Telescope autocommands<CR>', 'autocommands' },
-    s = { '<cmd>Telescope spell_suggest<CR>', 'spell suggest' },
-    k = { '<cmd>Telescope keymaps<CR>', 'keymaps' },
-  },
-
-  ['<leader>l'] = {
-    name = '+lsp',
-    r = { '<cmd>Telescope lsp_references<CR>', 'reference' },
-    s = { '<cmd>Telescope lsp_document_symbols<CR>', 'document symbols' },
-    d = { '<cmd>Telescope diagnostics bufnr=0<CR>', 'document diagnostic' },
-    i = { '<cmd>Telescope lsp_implementations<CR>', 'implementations' },
-    D = { '<cmd>Telescope lsp_definitions<CR>', 'definitions' },
-    f = { '<cmd>lua vim.lsp.buf.range_formatting()<CR>', 'format' },
-  },
-
-  ['<leader>w'] = {
-    s = { '<cmd>Telescope lsp_workspace_symbols<CR>', 'workspace symbols' },
-    S = { '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', 'dynamic workspace symbols' },
-    d = { '<cmd>Telescope diagnostics<CR>', 'workspace diagnostic' },
-  },
-
-  ['<leader>g'] = {
-    name = '+git',
-    c = { '<cmd>Telescope git_commits<CR>', 'commits' },
-    C = { '<cmd>Telescope git_bcommits<CR>', 'buffer commits' },
-    b = { '<cmd>Telescope git_branches<CR>', 'branches' },
-    s = { '<cmd>Telescope git_status<CR>', 'status' },
-    S = { '<cmd>Telescope git_stash<CR>', 'stash' },
-  },
-
   ['<leader>p'] = {
     name = '+packer',
     d = { '<cmd>PackerClean<CR>', 'clean' },

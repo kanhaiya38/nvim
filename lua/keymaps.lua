@@ -207,6 +207,31 @@ end
 -- map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
 -- map('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
 
+M.typescript = function()
+  utils.set_keymaps({
+    mappings = {
+      ['<leader>ti'] = {
+        function()
+          require('typescript').actions.addMissingImports()
+        end,
+        'add missing imports',
+      },
+      ['<leader>to'] = {
+        function()
+          require('typescript').actions.organizeImports()
+        end,
+        'organize imports',
+      },
+      ['<leader>tr'] = {
+        function()
+          require('typescript').actions.removeUnused()
+        end,
+        'remove unused',
+      },
+    },
+  })
+end
+
 M.defaults = function()
   utils.set_keymaps({
     mappings = {

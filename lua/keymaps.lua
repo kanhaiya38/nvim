@@ -14,9 +14,10 @@ M.lsp = function(bufnr)
   utils.set_keymaps({
     mappings = {
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
-      ['gd'] = {
+      ['gd'] = { vim.lsp.buf.definition, 'declaration' },
+      ['gK'] = {
         function()
-          require('lspsaga.definition'):preview_definition()
+          require('lspsaga.definition'):peek_definition()
         end,
         'definition',
       },
@@ -34,13 +35,13 @@ M.lsp = function(bufnr)
       ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
       ['<space>rn'] = {
         function()
-          require('lspsaga.rename').lsp_rename()
+          require('lspsaga.rename'):lsp_rename()
         end,
         'rename',
       },
       ['<space>ca'] = {
         function()
-          require('lspsaga.codeaction').code_action()
+          require('lspsaga.codeaction'):code_action()
         end,
         'code action',
       },

@@ -60,6 +60,12 @@ M.telescope = function()
         end,
         'find_files',
       },
+      ['<leader>fz'] = {
+        function()
+          require('telescope.builtin').live_grep()
+        end,
+        'find_files',
+      },
     },
   })
 end

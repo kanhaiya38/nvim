@@ -16,9 +16,23 @@ local use_state = {
   i(2, 'T'),
   t('>('),
   i(0, 'default'),
-  t(');'),
+  t(')'),
+}
+
+local ed = {
+  t('export default '),
+  i(1),
+}
+
+local use = {
+  t('const '),
+  i(0),
+  t(' = use'),
+  i(1, 'Hook'),
 }
 
 ls.add_snippets('typescriptreact', {
   s('uss', use_state),
+  s('ed', ed),
+  s('use', use),
 })

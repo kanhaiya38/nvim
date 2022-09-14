@@ -17,16 +17,6 @@ wk.register({
     c = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
   },
 
-  ['<leader>p'] = {
-    name = '+packer',
-    d = { '<cmd>PackerClean<CR>', 'clean' },
-    c = { '<cmd>PackerCompile<CR>', 'compile' },
-    i = { '<cmd>PackerInstall<CR>', 'install' },
-    s = { '<cmd>PackerSync<CR>', 'sync' },
-    S = { '<cmd>PackerStatus<CR>', 'status' },
-    u = { '<cmd>PackerUpdate<CR>', 'update' },
-  },
-
   ['<leader>x'] = {
     name = '+leetcode',
     a = {

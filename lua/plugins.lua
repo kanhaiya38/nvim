@@ -1,3 +1,4 @@
+local keymaps = require('keymaps')
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -14,7 +15,7 @@ vim.cmd([[autocmd BufWritePost ~/.config/nvim/lua/plugins.lua source <afile> | P
 return require('packer').startup({
   function(use)
     -- Packer can manage itself
-    use('wbthomason/packer.nvim')
+    use({ 'wbthomason/packer.nvim', setup = keymaps.packer })
     use('lewis6991/impatient.nvim')
     use('nathom/filetype.nvim')
     -- Setting up LSP

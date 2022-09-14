@@ -52,6 +52,44 @@ M.lsp = function(bufnr)
   })
 end
 
+M.packer = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<leader>pd'] = {
+        function()
+          require('packer').clean()
+        end,
+        'clean',
+      },
+      ['<leader>pc'] = {
+        function()
+          require('packer').compile()
+        end,
+        'compile',
+      },
+      ['<leader>pi'] = {
+        function()
+          require('packer').install()
+        end,
+        'install',
+      },
+      ['<leader>ps'] = {
+        function()
+          require('packer').sync()
+        end,
+        'sync',
+      },
+      ['<leader>pS'] = {
+        function()
+          require('packer').status()
+        end,
+        'status',
+      },
+      ['<leader>pu'] = { '<cmd>PackerUpdate<CR>', 'update' },
+    },
+  })
+end
+
 M.telescope = function()
   utils.set_keymaps({
     mappings = {

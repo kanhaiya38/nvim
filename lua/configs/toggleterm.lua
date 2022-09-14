@@ -1,22 +1,28 @@
-require('toggleterm').setup({
-  open_mapping = [[<C-Space>]],
-  direction = 'vertical',
-  persist_size = false,
-  size = function(term)
-    if term.direction == 'horizontal' then
-      return 15
-    elseif term.direction == 'vertical' then
-      return vim.o.columns * 0.4
-    end
-  end,
-})
+local M = {}
 
-local Terminal = require('toggleterm.terminal').Terminal
+M.setup = function()
+  require('toggleterm').setup({
+    open_mapping = [[<C-Space>]],
+    direction = 'vertical',
+    persist_size = false,
+    size = function(term)
+      if term.direction == 'horizontal' then
+        return 15
+      elseif term.direction == 'vertical' then
+        return vim.o.columns * 0.4
+      end
+    end,
+  })
+end
 
-local lazygit = Terminal:new({
-  cmd = 'lazygit',
-  direction = 'float',
-  hidden = true,
-})
+M.lazygit = function()
+  local Terminal = require('toggleterm.terminal').Terminal
 
-return { lazygit = lazygit }
+  local lazygit = Terminal:new({
+    cmd = 'lazygit',
+    direction = 'float',
+    hidden = true,
+  })
+  lazygit:toggle()
+end
+return M

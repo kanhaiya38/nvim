@@ -1,3 +1,5 @@
+local M = {}
+
 local highlight = {
   enable = true, -- false will disable the whole extension
   disable = {}, -- list of language that will be disabled
@@ -78,15 +80,19 @@ local textobjects = {
   },
 }
 
-require('nvim-treesitter.configs').setup({
-  auto_install = true,
-  ignore_install = {}, -- List of parsers to ignore installing
-  -- default
-  highlight = highlight,
-  incremental_selection = incremental_selection,
-  -- plugins
-  -- autotag = extensions.autotag,
-  context_commentstring = context_commentstring,
-  rainbow = rainbow,
-  textobjects = textobjects,
-})
+M.setup = function()
+  require('nvim-treesitter.configs').setup({
+    auto_install = true,
+    ignore_install = {}, -- List of parsers to ignore installing
+    -- default
+    highlight = highlight,
+    incremental_selection = incremental_selection,
+    -- plugins
+    -- autotag = extensions.autotag,
+    context_commentstring = context_commentstring,
+    rainbow = rainbow,
+    textobjects = textobjects,
+  })
+end
+
+return M

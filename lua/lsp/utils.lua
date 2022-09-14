@@ -38,8 +38,10 @@ end
 M.default_server_opts = { capabilities = M.default_capabilities, on_attach = M.default_on_attach }
 
 M.get_ensure_installed = function()
+  local servers = require('settings').servers
+
   local ensure_installed = {}
-  for key, _ in pairs(O.servers) do
+  for key, _ in pairs(servers) do
     table.insert(ensure_installed, key)
   end
   return ensure_installed
@@ -58,11 +60,12 @@ M.setup_diagnostics = function()
   })
 
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
+  local lsp_kinds = require('settings').kinds.lsp
   local signs = {
-    Error = O.kinds.lsp.error,
-    Warning = O.kinds.lsp.warning,
-    Hint = O.kinds.lsp.warning,
-    Information = O.kinds.info,
+    Error = lsp_kinds.error,
+    Warning = lsp_kinds.warning,
+    Hint = lsp_kinds.warning,
+    Information = lsp_kinds.info,
   }
 
   for type, icon in pairs(signs) do

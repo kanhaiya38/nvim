@@ -1,11 +1,9 @@
+local M = {}
+
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
-local lualine = require('lualine')
-
--- Color table for highlights
--- stylua: ignore
-local colors = require("onedark.colors")
+local colors = require('onedark.colors')
 
 local conditions = {
   buffer_not_empty = function()
@@ -206,4 +204,9 @@ ins_right({
 })
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
+
+M.setup = function()
+  require('lualine').setup(config)
+end
+
+return M

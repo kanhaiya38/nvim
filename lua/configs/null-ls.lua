@@ -1,45 +1,51 @@
-local null = require('null-ls')
-local formatting = null.builtins.formatting
--- local code_actions = null.builtins.code_actions
-local diagnostics = null.builtins.diagnostics
+local M = {}
 
-local sources = {
-  -- lua
-  formatting.stylua,
-  diagnostics.selene,
+M.setup = function()
+  local null = require('null-ls')
+  local formatting = null.builtins.formatting
+  -- local code_actions = null.builtins.code_actions
+  local diagnostics = null.builtins.diagnostics
 
-  -- js
-  formatting.prettier,
+  local sources = {
+    -- lua
+    formatting.stylua,
+    diagnostics.selene,
 
-  -- python
-  formatting.black,
-  diagnostics.flake8,
-  formatting.isort,
+    -- js
+    formatting.prettier,
 
-  -- c/c++
-  formatting.clang_format.with({
-    extra_args = { '-style=file', '--fallback-style=Google' },
-  }),
+    -- python
+    formatting.black,
+    diagnostics.flake8,
+    formatting.isort,
 
-  -- markdown
-  diagnostics.markdownlint,
-  diagnostics.vale.with({
-    extra_args = { '--config', vim.fn.expand('~/.config/vale/vale.ini') },
-  }),
+    -- c/c++
+    formatting.clang_format.with({
+      extra_args = { '-style=file', '--fallback-style=Google' },
+    }),
 
-  -- shell scripts
-  formatting.shfmt,
-  diagnostics.shellcheck,
-  formatting.fish_indent,
+    -- markdown
+    diagnostics.markdownlint,
+    diagnostics.vale.with({
+      extra_args = { '--config', vim.fn.expand('~/.config/vale/vale.ini') },
+    }),
 
-  -- rust
-  -- formatting.rustfmt, // use rust-tools
+    -- shell scripts
+    formatting.shfmt,
+    diagnostics.shellcheck,
+    formatting.fish_indent,
 
-  -- git
-  -- code_actions.gitsigns,
-}
+    -- rust
+    -- formatting.rustfmt, // use rust-tools
 
-null.setup({
-  debug = false,
-  sources = sources,
-})
+    -- git
+    -- code_actions.gitsigns,
+  }
+
+  null.setup({
+    debug = false,
+    sources = sources,
+  })
+end
+
+return M

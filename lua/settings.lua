@@ -1,23 +1,75 @@
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.expandtab = true
-vim.o.relativenumber = true
-vim.o.encoding = 'UTF-8'
-vim.o.updatetime = 100
-vim.o.timeoutlen = 500
-vim.o.undofile = true
-vim.cmd('set clipboard+=unnamedplus')
-vim.o.shell = '/usr/bin/fish'
-vim.g.mapleader = ' '
-vim.o.termguicolors = true
+local M = {}
 
-vim.cmd([[ set runtimepath-=/usr/share/vim/vimfiles ]])
+local setup_variables = function()
+  local o = vim.o
+  local cmd = vim.cmd
+  local g = vim.g
 
-O = {}
+  o.number = true
+  o.relativenumber = true
+  o.shiftwidth = 2
+  o.tabstop = 2
+  o.expandtab = true
+  o.relativenumber = true
+  o.encoding = 'UTF-8'
+  o.updatetime = 100
+  o.timeoutlen = 500
+  o.undofile = true
+  cmd('set clipboard+=unnamedplus')
+  o.shell = '/usr/bin/fish'
+  g.mapleader = ' '
+  o.termguicolors = true
 
-O.kinds = {
+  cmd([[ set runtimepath-=/usr/share/vim/vimfiles ]])
+
+  -- glow
+  g.glow_binary_path = '/usr/bin'
+
+  -- markdown preview
+  g.mkdp_browser = 'qutebrowser'
+
+  -- startuptime
+  g.startuptime_tries = 5
+end
+
+local setup_notify = function()
+  -- notify
+  local ok, notify = pcall(require, 'notify')
+
+  if ok then
+    vim.notify = notify
+  end
+end
+
+local disable_builtins = function()
+  -- disable builtin plugins
+  local disabled_built_ins = {
+    'netrw',
+    'netrwPlugin',
+    'netrwSettings',
+    'netrwFileHandlers',
+    'gzip',
+    'zip',
+    'zipPlugin',
+    'tar',
+    'tarPlugin',
+    'getscript',
+    'getscriptPlugin',
+    'vimball',
+    'vimballPlugin',
+    '2html_plugin',
+    'logipat',
+    'rrhelper',
+    'spellfile_plugin',
+    'matchit',
+  }
+
+  for _, plugin in pairs(disabled_built_ins) do
+    vim.g['loaded_' .. plugin] = 1
+  end
+end
+
+M.kinds = {
   lsp = {
     hint = '',
     info = '',
@@ -26,7 +78,7 @@ O.kinds = {
   },
 }
 
-O.servers = {
+M.servers = {
   sumneko_lua = { custom_setup = true },
   rust_analyzer = { custom_setup = true },
   clangd = { custom_setup = true },
@@ -41,44 +93,10 @@ O.servers = {
   bashls = {},
 }
 
--- glow
-vim.g.glow_binary_path = '/usr/bin'
-
--- markdown preview
-vim.g.mkdp_browser = 'qutebrowser'
-
--- startuptime
-vim.g.startuptime_tries = 5
-
--- notify
-local ok, notify = pcall(require, 'notify')
-
-if ok then
-  vim.notify = notify
+M.setup = function()
+  setup_variables()
+  disable_builtins()
+  setup_notify()
 end
 
--- disable builtin plugins
-local disabled_built_ins = {
-  'netrw',
-  'netrwPlugin',
-  'netrwSettings',
-  'netrwFileHandlers',
-  'gzip',
-  'zip',
-  'zipPlugin',
-  'tar',
-  'tarPlugin',
-  'getscript',
-  'getscriptPlugin',
-  'vimball',
-  'vimballPlugin',
-  '2html_plugin',
-  'logipat',
-  'rrhelper',
-  'spellfile_plugin',
-  'matchit',
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g['loaded_' .. plugin] = 1
-end
+return M

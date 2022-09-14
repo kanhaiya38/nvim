@@ -1,11 +1,17 @@
-local luasnip = require('luasnip')
-local vscode_loader = require('luasnip/loaders/from_vscode')
+local M = {}
 
-vscode_loader.lazy_load({
-  paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' },
-})
-vscode_loader.load({ paths = { '~/dotfiles/snippets' } })
+M.setup = function()
+  local luasnip = require('luasnip')
+  local vscode_loader = require('luasnip/loaders/from_vscode')
 
-luasnip.filetype_extend('javascript', { 'javascriptreact' })
+  vscode_loader.lazy_load({
+    paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' },
+  })
+  vscode_loader.load({ paths = { '~/dotfiles/snippets' } })
 
-require('configs.snippets.react')
+  luasnip.filetype_extend('javascript', { 'javascriptreact' })
+
+  require('configs.snippets.react')
+end
+
+return M

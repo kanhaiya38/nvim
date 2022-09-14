@@ -89,14 +89,17 @@ M.packer = function()
 end
 
 M.telescope = function()
+  local project_files = function()
+    local opts = {} -- define here if you want to define something
+    local ok = pcall(require('telescope.builtin').git_files, opts)
+    if not ok then
+      require('telescope.builtin').find_files(opts)
+    end
+  end
+
   require('utils').set_keymaps({
     mappings = {
-      ['<leader>ff'] = {
-        function()
-          require('configs.telescope').project_files()
-        end,
-        'find_files',
-      },
+      ['<leader>ff'] = { project_files, 'find_files' },
       ['<leader>fz'] = {
         function()
           require('telescope.builtin').live_grep()
@@ -215,7 +218,7 @@ M.toggleterm = function()
     mappings = {
       ['<leader>tl'] = {
         function()
-          require('configs.toggleterm').lazygit:toggle()
+          require('configs.toggleterm').lazygit()
         end,
         'lazygit',
       },

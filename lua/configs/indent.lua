@@ -1,7 +1,8 @@
 require('indent_blankline').setup({
   filetype_exclude = {
     'help',
-    'mason'
+    'mason',
+    'packer'
   },
   buftype_exclude = { 'terminal' },
   char_list = { '|', '¦', '┆', '┊' },

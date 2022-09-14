@@ -1,7 +1,5 @@
 local M = {}
 
-local utils = require('utils')
-
 M.lsp = function(bufnr)
   local custom_hover = function()
     local winid = require('ufo').peekFoldedLinesUnderCursor()
@@ -11,7 +9,7 @@ M.lsp = function(bufnr)
   end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
       ['gd'] = { vim.lsp.buf.definition, 'declaration' },
@@ -46,7 +44,7 @@ M.lsp = function(bufnr)
         'code action',
       },
       ['gR'] = { vim.lsp.buf.references, 'references' },
-      ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
+      -- ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
     },
     opts = { buffer = bufnr },
   })
@@ -91,7 +89,7 @@ M.packer = function()
 end
 
 M.telescope = function()
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       ['<leader>ff'] = {
         function()
@@ -139,7 +137,7 @@ M.gitsigns = function(bufnr)
     gs.diffthis('~')
   end
 
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       -- Navigation
       [']c'] = { next_hunk, 'next_hunk', opts = { expr = true } },
@@ -179,10 +177,10 @@ M.bufferline = function()
     end
   end
 
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       -- Go to buffer
-      ['[b'] = { 'kan', 'prev buffer' },
+      ['[b'] = { cycle(-1), 'prev buffer' },
       [']b'] = { cycle(1), 'next buffer' },
       ['<leader>1'] = { go_to_buffer(1), 'go to buffer 1' },
       ['<leader>2'] = { go_to_buffer(2), 'go to buffer 2' },
@@ -199,16 +197,21 @@ M.bufferline = function()
 end
 
 M.nvim_tree = function()
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
-      ['<c-n>'] = { '<esc><cmd>NvimTreeToggle<cr>', 'tree toggle' },
+      ['<c-n>'] = {
+        function()
+          require('nvim-tree').toggle()
+        end,
+        'tree toggle',
+      },
     },
     mode = { 'n', 'i', 't' },
   })
 end
 
 M.toggleterm = function()
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       ['<leader>tl'] = {
         function()
@@ -222,7 +225,7 @@ M.toggleterm = function()
 end
 
 M.ufo = function()
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       ['zR'] = {
         function()
@@ -246,7 +249,7 @@ end
 -- map('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
 
 M.typescript = function()
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       ['<leader>ti'] = {
         function()
@@ -271,7 +274,7 @@ M.typescript = function()
 end
 
 M.defaults = function()
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       -- Windows
       ['<c-j>'] = { '<esc><cmd>wincmd j<cr>', 'down' },
@@ -286,7 +289,7 @@ M.defaults = function()
     mode = { 'n', 'i', 't' },
   })
 
-  utils.set_keymaps({
+  require('utils').set_keymaps({
     mappings = {
       -- Diagnostics
       ['<space>e'] = {

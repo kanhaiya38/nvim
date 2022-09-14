@@ -109,11 +109,8 @@ return require('packer').startup({
     -- Telescope
     use({
       'nvim-telescope/telescope.nvim',
-      cmd = 'Telescope',
       module = { 'configs.telescope', 'telescope' },
-      setup = function()
-        require('keymaps').telescope()
-      end,
+      setup = keymaps.telescope,
       config = function()
         require('configs.telescope')
       end,
@@ -135,9 +132,7 @@ return require('packer').startup({
       'akinsho/nvim-toggleterm.lua',
       cmd = 'ToggleTerm',
       module = 'configs.toggleterm',
-      setup = function()
-        require('keymaps').toggleterm()
-      end,
+      setup = keymaps.toggleterm,
       config = function()
         require('configs.toggleterm')
       end,
@@ -194,9 +189,7 @@ return require('packer').startup({
     use({
       'akinsho/bufferline.nvim',
       after = 'theme',
-      setup = function()
-        require('keymaps').bufferline()
-      end,
+      setup = keymaps.bufferline,
       config = function()
         require('configs.bufferline')
       end,
@@ -225,9 +218,7 @@ return require('packer').startup({
     use({
       'kevinhwang91/nvim-ufo',
       requires = 'kevinhwang91/promise-async',
-      setup = function()
-        require('keymaps').ufo()
-      end,
+      setup = keymaps.ufo,
       config = function()
         -- vim.o.foldcolumn = '1'
         vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -262,10 +253,8 @@ return require('packer').startup({
     -- Tree Explorer
     use({
       'kyazdani42/nvim-tree.lua',
-      cmd = 'NvimTreeToggle',
-      setup = function()
-        require('keymaps').nvim_tree()
-      end,
+      module = 'nvim-tree',
+      setup = keymaps.nvim_tree,
       config = function()
         require('configs.nvim-tree')
       end,

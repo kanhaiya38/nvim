@@ -25,4 +25,5 @@ M.lazygit = function()
   })
   lazygit:toggle()
 end
+
 return M

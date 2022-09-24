@@ -7,7 +7,7 @@ M.setup = function()
   bl.setup({
     options = {
       diagnostics = 'nvim_lsp',
-      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      diagnostics_indicator = function(count, level)
         local icon = level:match('error') and kinds.error or kinds.warning
         return ' ' .. icon .. ' ' .. count
       end,

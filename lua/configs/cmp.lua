@@ -7,6 +7,20 @@ end
 
 local window_config = { border = 'single' }
 
+local entry_format = function(entry, vim_item)
+  return require('lspkind').cmp_format({
+    mode = 'symbol',
+    maxwidth = 50,
+    menu = {
+      buffer = '[Buffer]',
+      nvim_lsp = '[LSP]',
+      luasnip = '[LuaSnip]',
+      nvim_lua = '[Lua]',
+      latex_symbols = '[Latex]',
+    },
+  })(entry, vim_item)
+end
+
 M.setup = function()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
@@ -76,20 +90,7 @@ M.setup = function()
     },
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
-      format = function(entry, vim_item)
-        local kind = require('lspkind').cmp_format({
-          mode = 'symbol',
-          maxwidth = 50,
-          menu = {
-            buffer = '[Buffer]',
-            nvim_lsp = '[LSP]',
-            luasnip = '[LuaSnip]',
-            nvim_lua = '[Lua]',
-            latex_symbols = '[Latex]',
-          },
-        })(entry, vim_item)
-        return kind
-      end,
+      format = entry_format,
     },
   })
 

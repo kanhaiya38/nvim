@@ -81,13 +81,7 @@ M.setup = function()
           require('lspkind').init({})
         end,
       })
-      use({
-        'ray-x/lsp_signature.nvim',
-        config = function()
-          require('lsp_signature').setup()
-        end,
-        disable = true,
-      })
+
       use({
         'glepnir/lspsaga.nvim',
         config = function()
@@ -144,14 +138,6 @@ M.setup = function()
         config = function()
           require('configs.toggleterm').setup()
         end,
-      })
-
-      use({
-        'beauwilliams/focus.nvim',
-        config = function()
-          require('focus').setup({ excluded_filetypes = { 'toggleterm' } })
-        end,
-        disable = true,
       })
 
       -- Git
@@ -331,7 +317,7 @@ M.setup = function()
         ft = 'markdown',
       })
       use({
-        'vhyrro/neorg',
+        'nvim-neorg/neorg',
         ft = 'norg',
         after = 'treesitter', -- You may want to specify Telescope here as well
         config = function()

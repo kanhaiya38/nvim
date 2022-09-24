@@ -20,21 +20,6 @@ M.setup = function()
       c = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
     },
 
-    ['<leader>x'] = {
-      name = '+leetcode',
-      a = {
-        '<cmd>lua require("configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r") .. " --solution")<CR>',
-        'solution',
-      },
-      s = { '<cmd>lua require("configs.toggleterm").exec("leetcode show " .. vim.fn.expand("%:r:r"))<CR>', 'show' },
-      S = { '<cmd>lua require("configs.toggleterm").exec("leetcode submit " .. vim.fn.expand("%"))<CR>', 'submit' },
-      t = {
-        '<cmd>lua require("configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%") .. " --local")<CR>',
-        'local test',
-      },
-      T = { '<cmd>lua require("configs.toggleterm").exec("leetcode test " .. vim.fn.expand("%"))<CR>', 'test' },
-    },
-
     ['<leader>u'] = { '<cmd>lua require("functions").openURL()<CR>', 'open url' },
     ['['] = { name = '+goto' },
     [']'] = { name = '+goto' },

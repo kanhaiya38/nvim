@@ -1,14 +1,13 @@
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-
 local M = {}
 
 local get_default_capabilities = function()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities({})
+
   capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
   }
-  return cmp_nvim_lsp.update_capabilities(capabilities)
+  return capabilities
 end
 
 M.default_capabilities = get_default_capabilities()

@@ -5,8 +5,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
-local window_config = { border = 'single' }
-
 local entry_format = function(entry, vim_item)
   return require('lspkind').cmp_format({
     mode = 'symbol',
@@ -67,7 +65,7 @@ M.setup = function()
         luasnip.lsp_expand(args.body)
       end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
@@ -83,10 +81,10 @@ M.setup = function()
         'i',
         's',
       }),
-    },
+    }),
     window = {
-      completion = window_config,
-      documentation = window_config,
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },

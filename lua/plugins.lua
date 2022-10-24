@@ -269,6 +269,7 @@ M.setup = function()
       -- Which Key
       use({
         'folke/which-key.nvim',
+        keys = '<Space>',
         config = function()
           require('configs.which-key').setup()
         end,

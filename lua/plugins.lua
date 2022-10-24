@@ -330,7 +330,6 @@ M.setup = function()
       use({
         'nvim-neorg/neorg',
         ft = 'norg',
-        after = 'treesitter', -- You may want to specify Telescope here as well
         config = function()
           require('configs.neorg').setup()
         end,

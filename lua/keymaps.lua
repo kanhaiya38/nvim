@@ -44,9 +44,16 @@ M.lsp = function(bufnr)
         'code action',
       },
       ['gR'] = { vim.lsp.buf.references, 'references' },
-      -- ['<space>f'] = { vim.lsp.buf.formatting, 'format' },
     },
     opts = { buffer = bufnr },
+  })
+end
+
+M.null_ls = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<Space>af'] = { vim.lsp.buf.format, 'format' },
+    },
   })
 end
 
@@ -260,6 +267,19 @@ M.ufo = function()
   })
 end
 
+M.notify = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<Space>ad'] = {
+        function()
+          require('notify').dismiss()
+        end,
+        'dismiss notification',
+      },
+    },
+  })
+end
+
 -- map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
@@ -291,7 +311,8 @@ M.typescript = function()
 end
 
 M.defaults = function()
-  require('utils').set_keymaps({
+  local set_keymaps = require('utils').set_keymaps
+  set_keymaps({
     mappings = {
       -- Windows
       ['<c-j>'] = { '<esc><cmd>wincmd j<cr>', 'down' },
@@ -306,7 +327,7 @@ M.defaults = function()
     mode = { 'n', 'i', 't' },
   })
 
-  require('utils').set_keymaps({
+  set_keymaps({
     mappings = {
       -- Diagnostics
       ['<space>e'] = {
@@ -334,6 +355,14 @@ M.defaults = function()
         'next diagnostic',
       },
       ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
+    },
+  })
+  set_keymaps({
+    mappings = {
+      ['<Space>ag'] = { '<cmd>Glow<CR>', 'glow' },
+      ['<Space>am'] = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
+      ['<Space>ap'] = { '<cmd>PasteImg<CR>', 'paste image' },
+      ['<Space>ac'] = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
     },
   })
 end

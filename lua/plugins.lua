@@ -42,6 +42,7 @@ M.setup = function()
       -- Formatting and Linting
       use({
         'jose-elias-alvarez/null-ls.nvim',
+        setup = keymaps.null_ls,
         config = function()
           require('configs.null-ls').setup()
         end,
@@ -208,7 +209,7 @@ M.setup = function()
           require('configs.indent').setup()
         end,
       })
-      use('rcarriga/nvim-notify')
+      use({ 'rcarriga/nvim-notify', setup = keymaps.notify })
       use({
         'kevinhwang91/nvim-ufo',
         requires = 'kevinhwang91/promise-async',

@@ -258,6 +258,7 @@ M.setup = function()
       use({
         'nvim-neo-tree/neo-tree.nvim',
         branch = 'v2.x',
+        module = 'neo-tree',
         setup = keymaps.neo_tree,
         config = function()
           require('configs.tree').setup()

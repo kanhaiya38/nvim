@@ -6,6 +6,7 @@ M.setup = function()
       'help',
       'mason',
       'packer',
+      'neo-tree',
     },
     buftype_exclude = { 'terminal' },
     char_list = { '|', '¦', '┆', '┊' },

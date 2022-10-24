@@ -213,6 +213,20 @@ M.nvim_tree = function()
   })
 end
 
+M.neo_tree = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<C-n>'] = {
+        function()
+          require('neo-tree.command').execute({ toggle = true , reveal =true})
+        end,
+        'tree toggle',
+      },
+    },
+    mode = { 'n', 'i', 't' },
+  })
+end
+
 M.toggleterm = function()
   require('utils').set_keymaps({
     mappings = {

@@ -122,7 +122,6 @@ M.setup = function()
       use({
         'folke/trouble.nvim',
         cmd = 'Trouble',
-        requires = 'kyazdani42/nvim-web-devicons',
         config = function()
           require('trouble').setup({})
         end,
@@ -240,6 +239,7 @@ M.setup = function()
           require('auto-session').setup({
             log_level = 'error',
             auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+            pre_save_cmds = { 'NeoTreeClose' },
           })
         end,
       })
@@ -252,6 +252,16 @@ M.setup = function()
         config = function()
           require('configs.nvim-tree').setup()
         end,
+        disable = true,
+      })
+      use({
+        'nvim-neo-tree/neo-tree.nvim',
+        branch = 'v2.x',
+        setup = keymaps.neo_tree,
+        config = function()
+          require('configs.tree').setup()
+        end,
+        requires = 'MunifTanjim/nui.nvim',
       })
 
       -- Which Key

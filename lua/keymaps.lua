@@ -218,7 +218,7 @@ M.neo_tree = function()
     mappings = {
       ['<C-n>'] = {
         function()
-          require('neo-tree.command').execute({ toggle = true , reveal =true})
+          require('neo-tree.command').execute({ toggle = true, reveal = true })
         end,
         'tree toggle',
       },

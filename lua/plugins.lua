@@ -112,6 +112,7 @@ M.setup = function()
       use({
         'nvim-telescope/telescope.nvim',
         module = { 'configs.telescope', 'telescope' },
+        cmd = 'Telescope',
         setup = keymaps.telescope,
         config = function()
           require('configs.telescope').setup()

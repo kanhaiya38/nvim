@@ -280,6 +280,19 @@ M.notify = function()
   })
 end
 
+M.guess_indent = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<Space>ai'] = {
+        function()
+          require('guess-indent').set_from_buffer()
+        end,
+        'guess indent',
+      },
+    },
+  })
+end
+
 -- map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)

@@ -311,6 +311,13 @@ M.setup = function()
         end,
       })
       use({
+        'NMAC427/guess-indent.nvim',
+        setup = keymaps.guess_indent,
+        config = function()
+          require('guess-indent').setup({})
+        end,
+      })
+      use({
         'max397574/better-escape.nvim',
         event = 'InsertEnter',
         config = function()

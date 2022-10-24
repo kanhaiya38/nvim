@@ -3,9 +3,7 @@ local M = {}
 M.setup = function()
   local null = require('null-ls')
   local formatting = null.builtins.formatting
-  -- local code_actions = null.builtins.code_actions
   local diagnostics = null.builtins.diagnostics
-  local command_resolver = require('null-ls.helpers.command_resolver')
 
   local sources = {
     -- lua
@@ -13,11 +11,7 @@ M.setup = function()
     diagnostics.selene,
 
     -- js
-    -- formatting.prettier,
     formatting.prettierd,
-    -- formatting.prettier.with({
-    --   dynamic_command = command_resolver.from_node_modules(),
-    -- }),
 
     -- python
     formatting.black,
@@ -42,9 +36,6 @@ M.setup = function()
 
     -- rust
     -- formatting.rustfmt, // use rust-tools
-
-    -- git
-    -- code_actions.gitsigns,
   }
 
   null.setup({

@@ -69,6 +69,10 @@ local disable_builtins = function()
   end
 end
 
+local json_to_jsonc = function()
+  vim.cmd([[autocmd BufRead,BufNewFile *.json set filetype=jsonc]])
+end
+
 M.kinds = {
   lsp = {
     hint = '',
@@ -97,6 +101,7 @@ M.setup = function()
   setup_variables()
   disable_builtins()
   setup_notify()
+  json_to_jsonc()
 end
 
 return M

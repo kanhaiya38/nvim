@@ -25,13 +25,8 @@ local config = {
     -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.bg_d } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg_d } },
-    },
+    globalstatus = true, -- enable global statusline (have a single statusline
+    theme = 'onedark',
   },
   sections = {
     -- these are to remove the defaults
@@ -85,7 +80,7 @@ ins_left({
       v = colors.blue,
       [''] = colors.blue,
       V = colors.blue,
-      c = colors.magenta,
+      c = colors.purple,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
@@ -115,7 +110,7 @@ ins_left({
 ins_left({
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+  color = { fg = colors.purple, gui = 'bold' },
 })
 
 ins_left({ 'location' })
@@ -164,23 +159,9 @@ ins_left({
 
 -- Add components to right sections
 ins_right({
-  'o:encoding', -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
-  cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = 'bold' },
-})
-
-ins_right({
-  'fileformat',
-  fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = 'bold' },
-})
-
-ins_right({
   'branch',
   icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
+  color = { fg = colors.cyan, gui = 'bold' },
 })
 
 ins_right({
@@ -193,6 +174,12 @@ ins_right({
     removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
+})
+
+ins_right({
+  'fileformat',
+  fmt = string.upper,
+  color = { fg = colors.green, gui = 'bold' },
 })
 
 ins_right({

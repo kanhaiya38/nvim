@@ -7,6 +7,7 @@ M.setup = function()
       'mason',
       'packer',
       'neo-tree',
+      'neo-tree-popup',
     },
     buftype_exclude = { 'terminal' },
     space_char_blankline = ' ',

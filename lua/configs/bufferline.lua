@@ -11,12 +11,17 @@ M.setup = function()
         local icon = level:match('error') and kinds.error or kinds.warning
         return ' ' .. icon .. ' ' .. count
       end,
+      numbers = function(opts)
+        return string.format('%s', opts.raise(opts.ordinal))
+      end,
       offsets = {
         {
-          filetype = 'NvimTree',
+          filetype = 'neo-tree',
           text = 'File Explorer',
           highlight = 'Directory',
           text_align = 'left',
+          separator = '▊',
+          -- separator = true -- use a "true" to enable the default, or set your own character
         },
       },
     },

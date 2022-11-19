@@ -134,7 +134,8 @@ M.setup = function()
       use({
         'akinsho/nvim-toggleterm.lua',
         cmd = 'ToggleTerm',
-        module = 'configs.toggleterm',
+        keys = '<C-Space>',
+        module = 'toggleterm',
         setup = keymaps.toggleterm,
         config = function()
           require('configs.toggleterm').setup()

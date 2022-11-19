@@ -243,7 +243,6 @@ M.toggleterm = function()
         end,
         'lazygit',
       },
-      ['<C-Space>'] = { '<Cmd>ToggleTerm<CR>', 'open terminal' },
     },
   })
 end

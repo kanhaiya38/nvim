@@ -1,6 +1,7 @@
 # Tips
 
 `<C-a>` increment number
+`<C-x>` decrement number
 70
 2
 3

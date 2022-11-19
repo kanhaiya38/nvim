@@ -15,14 +15,14 @@ M.setup = function()
   })
 end
 
-M.lazygit = function()
-  local Terminal = require('toggleterm.terminal').Terminal
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = string.format('lazygit -ucf %s/lazygit.yml', vim.fn.stdpath('config')),
+  direction = 'float',
+  count = 98,
+})
 
-  local lazygit = Terminal:new({
-    cmd = 'lazygit',
-    direction = 'float',
-    hidden = true,
-  })
+M.lazygit = function()
   lazygit:toggle()
 end
 

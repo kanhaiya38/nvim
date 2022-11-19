@@ -1,0 +1,4 @@
+os:
+  editCommand: 'nvim --server $NVIM'
+  editCommandTemplate: '{{editor}} --remote-send "<Esc><Cmd>ToggleTerm<CR><Cmd>edit {{filename}}<CR>"'
+promptToReturnFromSubprocess: false

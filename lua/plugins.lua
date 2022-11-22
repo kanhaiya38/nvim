@@ -330,6 +330,7 @@ M.setup = function()
 
       -- Language Specific
       use({ 'npxbr/glow.nvim', cmd = 'Glow' })
+      use({ 'folke/neodev.nvim' })
       use({ 'simrat39/rust-tools.nvim' })
       use({ 'p00f/clangd_extensions.nvim' })
       use({ 'jose-elias-alvarez/typescript.nvim' })

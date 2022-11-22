@@ -22,6 +22,11 @@ local lazygit = Terminal:new({
   count = 98,
 })
 
+M.exec = Terminal:new({
+  direction = 'vertical',
+  count = 99,
+})
+
 M.lazygit = function()
   lazygit:toggle()
 end

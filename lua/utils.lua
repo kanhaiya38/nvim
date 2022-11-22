@@ -31,4 +31,23 @@ M.set_keymaps = function(keymaps)
   end
 end
 
+M.on_save = function(cmd)
+  vim.validate({ cmd = { cmd, 'string' } })
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*/loan/*.ts',
+    desc = 'on save',
+    callback = function()
+      -- require('toggleterm').exec(cmd, 9, nil, nil, nil, nil, nil)
+      local term = require('configs.toggleterm').exec
+      if not term:is_open() then
+        term:open()
+      else
+        term:send(vim.api.nvim_replace_termcodes('<C-c>', true, true, true))
+      end
+      term:send(cmd)
+      -- term:toggle()
+    end,
+  })
+end
+
 return M

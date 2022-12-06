@@ -24,7 +24,6 @@ M.setup = function()
       -- Packer can manage itself
       use({ 'wbthomason/packer.nvim', setup = keymaps.packer })
       use('lewis6991/impatient.nvim')
-      use('nathom/filetype.nvim')
       -- Setting up LSP
       use({
         'neovim/nvim-lspconfig',

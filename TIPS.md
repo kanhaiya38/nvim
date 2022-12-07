@@ -12,3 +12,15 @@
 
 - Continue recording macro using capital letters
   e.g for macro recorded using qa use qA to continue recording
+
+## Quickfix
+
+## Search and Replace
+
+- [https://vim.fandom.com/wiki/Search_and_replace](fandom)
+
+## TODO
+
+- [ ] refresh neovim config without restart
+- [ ] Search and Replace
+- [ ] keymap to go to props to edit

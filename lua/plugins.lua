@@ -142,6 +142,13 @@ M.setup = function()
       })
 
       -- Git
+      use({
+        'sindrets/diffview.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+          require('configs.diffview').setup()
+        end,
+      })
       use({ 'tpope/vim-fugitive' })
       use({
         'lewis6991/gitsigns.nvim',

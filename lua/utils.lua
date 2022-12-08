@@ -1,9 +1,9 @@
 local M = {}
 
 ---@alias keymap.opts { silent: boolean, noremap: boolean, buffer: number, nowait: boolean, expr: boolean }
----@alias mode_letter 'n' | 'v' | 't' | 'o' | 'x'
+---@alias mode_letter 'n' | 'v' | 'i' | 't' | 'o' | 'x'
 ---@alias keymap.mode mode_letter[] | mode_letter
----@alias keymap.mappings table<string, {[1]: function, [2]: string, mode: keymap.mode, opts: keymap.opts }>
+---@alias keymap.mappings table<string, {[1]: function | string, [2]: string, mode: keymap.mode, opts: keymap.opts }>
 
 --- @type keymap.opts
 local default_opts = { noremap = true, silent = true }

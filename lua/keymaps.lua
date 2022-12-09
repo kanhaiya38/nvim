@@ -60,37 +60,37 @@ end
 M.packer = function()
   require('utils').set_keymaps({
     mappings = {
-      ['<leader>pd'] = {
+      ['<Leader>pd'] = {
         function()
           require('packer').clean()
         end,
         'clean',
       },
-      ['<leader>pc'] = {
+      ['<Leader>pc'] = {
         function()
           require('packer').compile()
         end,
         'compile',
       },
-      ['<leader>pi'] = {
+      ['<Leader>pi'] = {
         function()
           require('packer').install()
         end,
         'install',
       },
-      ['<leader>ps'] = {
+      ['<Leader>ps'] = {
         function()
           require('packer').sync()
         end,
         'sync',
       },
-      ['<leader>pS'] = {
+      ['<Leader>pS'] = {
         function()
           require('packer').status()
         end,
         'status',
       },
-      ['<leader>pu'] = { '<cmd>PackerUpdate<CR>', 'update' },
+      ['<Leader>pu'] = { '<Cmd>PackerUpdate<CR>', 'update' },
     },
   })
 end
@@ -106,8 +106,8 @@ M.telescope = function()
 
   require('utils').set_keymaps({
     mappings = {
-      ['<leader>ff'] = { project_files, 'find_files' },
-      ['<leader>fz'] = {
+      ['<Leader>ff'] = { project_files, 'find_files' },
+      ['<Leader>fz'] = {
         function()
           require('telescope.builtin').live_grep()
         end,
@@ -154,17 +154,17 @@ M.gitsigns = function(bufnr)
       ['[c'] = { prev_hunk, 'prev_hunk', opts = { expr = true } },
 
       -- Actions
-      ['<leader>hs'] = { ':Gitsigns stage_hunk<CR>', 'stage_hunk', mode = { 'n', 'v' } },
-      ['<leader>hr'] = { ':Gitsigns reset_hunk<CR>', 'reset_hunk', mode = { 'n', 'v' } },
-      ['<leader>hS'] = { gs.stage_buffer, 'stage_buffer' },
-      ['<leader>hu'] = { gs.undo_stage_hunk, 'undo_stage_hunk' },
-      ['<leader>hR'] = { gs.reset_buffer, 'reset_buffer' },
-      ['<leader>hp'] = { gs.preview_hunk, 'preview_hunk' },
-      ['<leader>hb'] = { blame_line, 'blame_line' },
-      ['<leader>tb'] = { gs.toggle_current_line_blame, 'stage_buffer' },
-      ['<leader>hd'] = { gs.diffthis, 'stage_buffer' },
-      ['<leader>hD'] = { diffthis, 'diffthis' },
-      ['<leader>td'] = { gs.toggle_deleted, 'stage_buffer' },
+      ['<Leader>hs'] = { ':Gitsigns stage_hunk<CR>', 'stage_hunk', mode = { 'n', 'v' } },
+      ['<Leader>hr'] = { ':Gitsigns reset_hunk<CR>', 'reset_hunk', mode = { 'n', 'v' } },
+      ['<Leader>hS'] = { gs.stage_buffer, 'stage_buffer' },
+      ['<Leader>hu'] = { gs.undo_stage_hunk, 'undo_stage_hunk' },
+      ['<Leader>hR'] = { gs.reset_buffer, 'reset_buffer' },
+      ['<Leader>hp'] = { gs.preview_hunk, 'preview_hunk' },
+      ['<Leader>hb'] = { blame_line, 'blame_line' },
+      ['<Leader>tb'] = { gs.toggle_current_line_blame, 'stage_buffer' },
+      ['<Leader>hd'] = { gs.diffthis, 'stage_buffer' },
+      ['<Leader>hD'] = { diffthis, 'diffthis' },
+      ['<Leader>td'] = { gs.toggle_deleted, 'stage_buffer' },
 
       -- Text object
       ['ih'] = { ':<C-U>Gitsigns select_hunk<CR>', 'stage_hunk', mode = { 'o', 'x' } },
@@ -192,16 +192,16 @@ M.bufferline = function()
       -- Go to buffer
       ['[b'] = { cycle(-1), 'prev buffer' },
       [']b'] = { cycle(1), 'next buffer' },
-      ['<leader>1'] = { go_to_buffer(1), 'go to buffer 1' },
-      ['<leader>2'] = { go_to_buffer(2), 'go to buffer 2' },
-      ['<leader>3'] = { go_to_buffer(3), 'go to buffer 3' },
-      ['<leader>4'] = { go_to_buffer(4), 'go to buffer 4' },
-      ['<leader>5'] = { go_to_buffer(5), 'go to buffer 5' },
-      ['<leader>6'] = { go_to_buffer(6), 'go to buffer 6' },
-      ['<leader>7'] = { go_to_buffer(7), 'go to buffer 7' },
-      ['<leader>8'] = { go_to_buffer(8), 'go to buffer 8' },
-      ['<leader>9'] = { go_to_buffer(9), 'go to buffer 9' },
-      ['<leader>0'] = { go_to_buffer(-1), 'go to buffer 0' },
+      ['<Leader>1'] = { go_to_buffer(1), 'go to buffer 1' },
+      ['<Leader>2'] = { go_to_buffer(2), 'go to buffer 2' },
+      ['<Leader>3'] = { go_to_buffer(3), 'go to buffer 3' },
+      ['<Leader>4'] = { go_to_buffer(4), 'go to buffer 4' },
+      ['<Leader>5'] = { go_to_buffer(5), 'go to buffer 5' },
+      ['<Leader>6'] = { go_to_buffer(6), 'go to buffer 6' },
+      ['<Leader>7'] = { go_to_buffer(7), 'go to buffer 7' },
+      ['<Leader>8'] = { go_to_buffer(8), 'go to buffer 8' },
+      ['<Leader>9'] = { go_to_buffer(9), 'go to buffer 9' },
+      ['<Leader>0'] = { go_to_buffer(-1), 'go to buffer 0' },
     },
   })
 end
@@ -237,7 +237,7 @@ end
 M.toggleterm = function()
   require('utils').set_keymaps({
     mappings = {
-      ['<leader>tl'] = {
+      ['<Leader>tl'] = {
         function()
           require('configs.toggleterm').lazygit()
         end,
@@ -292,27 +292,27 @@ M.guess_indent = function()
   })
 end
 
--- map('n', '<leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
--- map('n', '<leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
--- map('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
--- map('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
+-- map('n', '<Leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
+-- map('n', '<Leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
+-- map('n', '<Leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
+-- map('n', '<Leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
 
 M.typescript = function()
   require('utils').set_keymaps({
     mappings = {
-      ['<leader>ti'] = {
+      ['<Leader>ti'] = {
         function()
           require('typescript').actions.addMissingImports()
         end,
         'add missing imports',
       },
-      ['<leader>to'] = {
+      ['<Leader>to'] = {
         function()
           require('typescript').actions.organizeImports()
         end,
         'organize imports',
       },
-      ['<leader>tr'] = {
+      ['<Leader>tr'] = {
         function()
           require('typescript').actions.removeUnused()
         end,
@@ -327,14 +327,13 @@ M.defaults = function()
   set_keymaps({
     mappings = {
       -- Windows
-      ['<c-j>'] = { '<esc><cmd>wincmd j<cr>', 'down' },
-      ['<c-k>'] = { '<esc><cmd>wincmd k<cr>', 'up' },
-      ['<c-h>'] = { '<esc><cmd>wincmd h<cr>', 'left' },
-      ['<c-l>'] = { '<esc><cmd>wincmd l<cr>', 'right' },
+      ['<C-j>'] = { '<Esc><Cmd>wincmd j<CR>', 'down' },
+      ['<C-k>'] = { '<Esc><Cmd>wincmd k<CR>', 'up' },
+      ['<C-h>'] = { '<Esc><Cmd>wincmd h<CR>', 'left' },
+      ['<C-l>'] = { '<Esc><Cmd>wincmd l<CR>', 'right' },
 
       -- Buffer
-      ['<c-q>'] = { '<cmd>Bdelete<cr>', 'delete buffer' },
-      ['<C-y>'] = { 'ggVG"+y', 'copy buffer' },
+      ['<C-q>'] = { '<Cmd>Bdelete<CR>', 'delete buffer' },
     },
     mode = { 'n', 'i', 't' },
   })
@@ -369,12 +368,13 @@ M.defaults = function()
       ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
     },
   })
+
   set_keymaps({
     mappings = {
-      ['<Space>ag'] = { '<cmd>Glow<CR>', 'glow' },
-      ['<Space>am'] = { '<cmd>MarkdownPreview<CR>', 'markdown preview' },
-      ['<Space>ap'] = { '<cmd>PasteImg<CR>', 'paste image' },
-      ['<Space>ac'] = { '<cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
+      -- ['p'] = { '<Cmd>MarkdownPreview<CR>', 'markdown preview' },
+      ['<Space>am'] = { '<Cmd>MarkdownPreview<CR>', 'markdown preview' },
+      ['<Space>ap'] = { '<Cmd>PasteImg<CR>', 'paste image' },
+      ['<Space>ac'] = { '<Cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
     },
   })
 end

@@ -34,8 +34,6 @@ M.default_on_attach = function(client, bufnr)
   end
 end
 
-M.default_server_opts = { capabilities = M.default_capabilities, on_attach = M.default_on_attach }
-
 M.get_ensure_installed = function()
   local servers = require('settings').servers
 

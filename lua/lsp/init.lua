@@ -9,7 +9,10 @@ M.setup = function()
     for _, server in ipairs(utils.get_installed_servers()) do
       local default_server_config = { custom_setup = false }
       local server_config = servers[server] or default_server_config
-      local server_opts = utils.default_server_opts
+      local server_opts = {
+        capabilities = utils.default_capabilities,
+        on_attach = utils.default_on_attach,
+      }
       if server_config.custom_setup then
         require('lsp.servers.' .. server).setup(server_opts)
       else

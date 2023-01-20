@@ -12,6 +12,7 @@ M.setup = function()
   luasnip.filetype_extend('javascript', { 'javascriptreact' })
 
   require('configs.snippets.react')
+  require('luasnip.loaders.from_lua').load({ paths = '~/.config/nvim/snippets' })
 end
 
 return M

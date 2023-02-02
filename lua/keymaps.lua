@@ -107,11 +107,23 @@ M.telescope = function()
   require('utils').set_keymaps({
     mappings = {
       ['<Leader>ff'] = { project_files, 'find_files' },
+      ['<Leader>fa'] = {
+        function()
+          require('telescope.builtin').find_files()
+        end,
+        'find_files',
+      },
+      ['<Leader>fs'] = {
+        function()
+          require('telescope.builtin').grep_string()
+        end,
+        'grep_string',
+      },
       ['<Leader>fz'] = {
         function()
           require('telescope.builtin').live_grep()
         end,
-        'find_files',
+        'live_grep',
       },
     },
   })

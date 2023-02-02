@@ -30,6 +30,16 @@ M.setup = function()
         },
       },
     }),
+    pickers = {
+      find_files = {
+        -- find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+        -- theme = 'dropdown',
+        entry_maker = require('configs.telescope.entry_maker').find_files(),
+      },
+      git_files = {
+        entry_maker = require('configs.telescope.entry_maker').find_files(),
+      },
+    },
     extensions = {
       fzf = fzf,
     },

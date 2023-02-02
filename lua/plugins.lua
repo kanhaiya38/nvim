@@ -119,6 +119,7 @@ M.setup = function()
         end,
       })
       use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
+      use({ 'nvim-telescope/telescope-live-grep-args.nvim' })
 
       use({
         'folke/trouble.nvim',

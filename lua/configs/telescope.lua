@@ -24,6 +24,9 @@ M.setup = function()
         i = {
           ['<C-j>'] = actions.move_selection_next,
           ['<C-k>'] = actions.move_selection_previous,
+          ['<C-o>'] = function()
+            require('telescope-live-grep-args.actions').quote_prompt()
+          end,
         },
       },
     }),
@@ -34,6 +37,7 @@ M.setup = function()
 
   telescope.load_extension('fzf')
   telescope.load_extension('projects')
+  telescope.load_extension('live_grep_args')
 end
 
 return M

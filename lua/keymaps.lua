@@ -119,6 +119,12 @@ M.telescope = function()
         end,
         'grep_string',
       },
+      ['<Leader>fg'] = {
+        function()
+          require('telescope').extensions.live_grep_args.live_grep_args()
+        end,
+        'live_grep_args',
+      },
       ['<Leader>fz'] = {
         function()
           require('telescope.builtin').live_grep()

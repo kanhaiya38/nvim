@@ -19,11 +19,10 @@ M.setup = function()
   local keymaps = require('keymaps')
 
   bootstrap()
-  -- automatically run :PackerCompile whenever plugins.lua is updated
-  -- vim.cmd([[autocmd BufWritePost ~/.config/nvim/lua/plugins.lua source <afile> | PackerCompile]])
 
   require('lazy').setup({
     'lewis6991/impatient.nvim',
+    { 'folke/lazy.nvim', version = '*', init = keymaps.lazy },
     -- Setting up LSP
     {
       'neovim/nvim-lspconfig',

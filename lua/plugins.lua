@@ -33,9 +33,13 @@ M.setup = function()
     },
     {
       'tamago324/nlsp-settings.nvim',
-      config = function()
-        require('configs.nlspsettings').setup()
-      end,
+      opts = {
+        config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+        local_settings_dir = '.nlsp-settings',
+        local_settings_root_markers = { '.git' },
+        append_default_schemas = true,
+        loader = 'json',
+      },
     },
     -- Formatting and Linting
     {
@@ -70,6 +74,7 @@ M.setup = function()
     -- Snippets
     {
       'L3MON4D3/Luasnip',
+      build = 'make install_jsregexp',
       config = function()
         require('configs.snippets').setup()
       end,
@@ -142,9 +147,11 @@ M.setup = function()
     {
       'lewis6991/gitsigns.nvim',
       event = 'BufWinEnter',
-      config = function()
-        require('configs.gitsigns').setup()
-      end,
+      opts = {
+        current_line_blame = true,
+        on_attach = keymaps.gitsigns,
+        yadm = { enable = true },
+      },
     },
 
     -- Comments
@@ -203,9 +210,20 @@ M.setup = function()
     {
       'lukas-reineke/indent-blankline.nvim',
       event = 'VeryLazy',
-      config = function()
-        require('configs.indent').setup()
-      end,
+      opts = {
+        filetype_exclude = {
+          'help',
+          'mason',
+          'lazy',
+          'neo-tree',
+          'neo-tree-popup',
+        },
+        buftype_exclude = { 'terminal' },
+        space_char_blankline = ' ',
+        show_first_indent_level = false,
+        show_current_context = true,
+        show_current_context_start = true,
+      },
     },
     { 'rcarriga/nvim-notify', init = keymaps.notify },
     {
@@ -259,9 +277,7 @@ M.setup = function()
     {
       'folke/which-key.nvim',
       keys = '<Space>',
-      config = function()
-        require('configs.which-key').setup()
-      end,
+      config = true,
     },
 
     -- Treesitter
@@ -293,9 +309,12 @@ M.setup = function()
     },
     {
       'ahmedkhalf/project.nvim',
-      config = function()
-        require('configs.project').setup()
-      end,
+      opts = {
+        detection_methods = { 'pattern', 'lsp' },
+        patterns = { '>codechef', '>codeforces', '>atcoder' },
+        ignore_lsp = { 'null-ls', 'html' },
+        -- silent_chdir = false,
+      },
     },
     {
       'NMAC427/guess-indent.nvim',
@@ -311,11 +330,12 @@ M.setup = function()
     { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 
     -- Language Specific
-    { 'npxbr/glow.nvim', cmd = 'Glow' },
     { 'folke/neodev.nvim' },
     { 'simrat39/rust-tools.nvim' },
     { 'p00f/clangd_extensions.nvim' },
     { 'jose-elias-alvarez/typescript.nvim' },
+    'b0o/schemastore.nvim', -- jsonls
+    { 'npxbr/glow.nvim', cmd = 'Glow' },
     {
       'iamcco/markdown-preview.nvim',
       build = 'cd app && yarn install',
@@ -330,9 +350,6 @@ M.setup = function()
     },
 
     -- Utils
-    'nvim-lua/plenary.nvim',
-    'kyazdani42/nvim-web-devicons',
-    'b0o/schemastore.nvim',
     {
       'norcalli/nvim-colorizer.lua',
       event = 'BufRead',
@@ -346,6 +363,8 @@ M.setup = function()
       cmd = 'PasteImg',
       config = true,
     },
+    'nvim-lua/plenary.nvim',
+    'kyazdani42/nvim-web-devicons',
   }, { defaults = { lazy = true } })
 end
 

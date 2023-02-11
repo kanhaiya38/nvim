@@ -1,5 +1,29 @@
 local M = {}
 
+M.kinds = {
+  lsp = {
+    hint = '',
+    info = '',
+    warning = '',
+    error = '',
+  },
+}
+
+M.servers = {
+  sumneko_lua = { custom_setup = true },
+  rust_analyzer = { custom_setup = true },
+  clangd = { custom_setup = true },
+  tsserver = { custom_setup = true },
+  pyright = {},
+  yamlls = {},
+  eslint = {},
+  html = {},
+  jsonls = { custom_setup = true },
+  cssls = {},
+  dockerls = {},
+  bashls = {},
+}
+
 local setup_variables = function()
   local o = vim.o
   local cmd = vim.cmd
@@ -72,30 +96,6 @@ end
 local json_to_jsonc = function()
   vim.cmd([[autocmd BufRead,BufNewFile *.json set filetype=jsonc]])
 end
-
-M.kinds = {
-  lsp = {
-    hint = '',
-    info = '',
-    warning = '',
-    error = '',
-  },
-}
-
-M.servers = {
-  sumneko_lua = { custom_setup = true },
-  rust_analyzer = { custom_setup = true },
-  clangd = { custom_setup = true },
-  tsserver = { custom_setup = true },
-  pyright = {},
-  yamlls = {},
-  eslint = {},
-  html = {},
-  jsonls = { custom_setup = true },
-  cssls = {},
-  dockerls = {},
-  bashls = {},
-}
 
 M.setup = function()
   setup_variables()

@@ -198,20 +198,6 @@ M.bufferline = function()
   })
 end
 
-M.nvim_tree = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<c-n>'] = {
-        function()
-          require('nvim-tree').toggle()
-        end,
-        'tree toggle',
-      },
-    },
-    mode = { 'n', 'i', 't' },
-  })
-end
-
 M.neo_tree = function()
   require('utils').set_keymaps({
     mappings = {

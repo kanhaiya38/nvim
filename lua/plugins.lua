@@ -247,14 +247,6 @@ M.setup = function()
 
     -- Tree Explorer
     {
-      'kyazdani42/nvim-tree.lua',
-      init = keymaps.nvim_tree,
-      config = function()
-        require('configs.nvim-tree').setup()
-      end,
-      enabled = false,
-    },
-    {
       'nvim-neo-tree/neo-tree.nvim',
       branch = 'v2.x',
       init = keymaps.neo_tree,

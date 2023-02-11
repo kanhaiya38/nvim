@@ -57,40 +57,15 @@ M.null_ls = function()
   })
 end
 
-M.packer = function()
+M.lazy = function()
   require('utils').set_keymaps({
     mappings = {
-      ['<Leader>pd'] = {
+      ['<Leader>lh'] = {
         function()
-          require('packer').clean()
+          require('lazy').home()
         end,
-        'clean',
+        'lazy',
       },
-      ['<Leader>pc'] = {
-        function()
-          require('packer').compile()
-        end,
-        'compile',
-      },
-      ['<Leader>pi'] = {
-        function()
-          require('packer').install()
-        end,
-        'install',
-      },
-      ['<Leader>ps'] = {
-        function()
-          require('packer').sync()
-        end,
-        'sync',
-      },
-      ['<Leader>pS'] = {
-        function()
-          require('packer').status()
-        end,
-        'status',
-      },
-      ['<Leader>pu'] = { '<Cmd>PackerUpdate<CR>', 'update' },
     },
   })
 end
@@ -192,16 +167,15 @@ M.gitsigns = function(bufnr)
 end
 
 M.bufferline = function()
-  local bl = require('bufferline')
   local go_to_buffer = function(num)
     return function()
-      bl.go_to_buffer(num, true)
+      require('bufferline').go_to_buffer(num, true)
     end
   end
 
   local cycle = function(num)
     return function()
-      bl.cycle(num)
+      require('bufferline').cycle(num)
     end
   end
 

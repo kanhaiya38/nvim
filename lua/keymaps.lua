@@ -217,7 +217,7 @@ M.toggleterm = function()
     mappings = {
       ['<Leader>tl'] = {
         function()
-          require('configs.toggleterm').lazygit()
+          require('utils.toggleterm').lazygit()
         end,
         'lazygit',
       },

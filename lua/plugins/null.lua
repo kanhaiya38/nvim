@@ -1,6 +1,4 @@
-local M = {}
-
-M.setup = function()
+local config = function()
   local null = require('null-ls')
   local formatting = null.builtins.formatting
   local diagnostics = null.builtins.diagnostics
@@ -45,4 +43,14 @@ M.setup = function()
   })
 end
 
-return M
+---@type LazySpec
+local plugins = {
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    init = require('keymaps').null_ls,
+    event = 'BufRead',
+    config = config,
+  },
+}
+
+return plugins

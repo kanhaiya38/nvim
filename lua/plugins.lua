@@ -1,371 +1,147 @@
-local M = {}
+local keymaps = require('keymaps')
 
-local bootstrap = function()
-  local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-  if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-      'git',
-      'clone',
-      '--filter=blob:none',
-      'https://github.com/folke/lazy.nvim.git',
-      '--branch=stable', -- latest stable release
-      lazypath,
-    })
-  end
-  vim.opt.rtp:prepend(lazypath)
-end
+---@type LazySpec
+local plugins = {
+  {
+    'folke/lazy.nvim',
+    version = '*',
+    init = keymaps.lazy,
+  },
 
-M.setup = function()
-  local keymaps = require('keymaps')
+  {
+    'glepnir/lspsaga.nvim',
+    config = true,
+  },
+  {
+    'folke/trouble.nvim',
+    cmd = 'Trouble',
+    config = true,
+    enabled = false,
+  },
+  {
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+  },
 
-  bootstrap()
-
-  require('lazy').setup({
-    { 'folke/lazy.nvim', version = '*', init = keymaps.lazy },
-    -- Setting up LSP
-    {
-      'neovim/nvim-lspconfig',
-      event = 'BufRead',
-      config = function()
-        require('lsp').setup()
-      end,
-      dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
-    },
-    {
-      'tamago324/nlsp-settings.nvim',
-      opts = {
-        config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
-        local_settings_dir = '.nlsp-settings',
-        local_settings_root_markers = { '.git' },
-        append_default_schemas = true,
-        loader = 'json',
+  {
+    'rcarriga/nvim-notify',
+    init = keymaps.notify,
+  },
+  {
+    'j-hui/fidget.nvim',
+    event = 'VeryLazy',
+    opts = {
+      text = {
+        spinner = 'pipe', -- animation shown when tasks are ongoing
+        done = '', -- character shown when all tasks are complete
+        commenced = 'Started', -- message shown when task starts
+        completed = 'Completed', -- message shown when task completes
       },
     },
-    -- Formatting and Linting
-    {
-      'jose-elias-alvarez/null-ls.nvim',
-      init = keymaps.null_ls,
-      event = 'BufRead',
-      config = function()
-        require('configs.null-ls').setup()
-      end,
-    },
+  },
 
-    -- Autocompletion
-    {
-      'hrsh7th/nvim-cmp',
-      name = 'cmp',
-      event = { 'InsertEnter', 'CmdlineEnter' },
-      config = function()
-        require('configs.cmp').setup()
-      end,
-      dependencies = {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-nvim-lsp',
-        'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-calc',
-        'hrsh7th/cmp-emoji',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-nvim-lsp-document-symbol',
-        'hrsh7th/cmp-cmdline',
-      },
-    },
-    -- Snippets
-    {
-      'L3MON4D3/Luasnip',
-      build = 'make install_jsregexp',
-      config = function()
-        require('configs.snippets').setup()
-      end,
-      dependencies = 'rafamadriz/friendly-snippets',
-    },
-    {
-      'onsails/lspkind-nvim',
-      config = function()
-        require('lspkind').init({}) -- TODO: Not required
-      end,
-    },
+  {
+    'kevinhwang91/nvim-ufo',
+    init = keymaps.ufo,
+    config = function()
+      -- vim.o.foldcolumn = '1'
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      require('ufo').setup()
+    end,
+    dependencies = 'kevinhwang91/promise-async',
+  },
 
-    {
-      'glepnir/lspsaga.nvim',
-      config = true,
-    },
-    -- Surroundings
-    {
-      'kylechui/nvim-surround',
-      lazy = false,
-      config = true,
-    },
-    {
-      'windwp/nvim-autopairs',
-      config = true,
-    },
+  -- Surroundings
+  {
+    'kylechui/nvim-surround',
+    lazy = false,
+    config = true,
+  },
+  {
+    'windwp/nvim-autopairs',
+    config = true,
+  },
 
-    -- Telescope
-    {
-      'nvim-telescope/telescope.nvim',
-      cmd = 'Telescope',
-      init = keymaps.telescope,
-      config = function()
-        require('configs.telescope').setup()
-      end,
-      dependencies = {
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-        { 'nvim-telescope/telescope-live-grep-args.nvim' },
-      },
-    },
+  -- Comments
+  {
+    'numToStr/Comment.nvim',
+    lazy = false,
+    config = function()
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
+    end,
+  },
+  {
+    'danymat/neogen',
+    cmd = 'Neogen',
+    config = true,
+  },
 
-    {
-      'folke/trouble.nvim',
-      cmd = 'Trouble',
-      config = function()
-        require('trouble').setup({})
-      end,
-      enabled = false,
-    },
-    { 'kevinhwang91/nvim-bqf', ft = 'qf' },
-    -- Terminal
-    {
-      'akinsho/nvim-toggleterm.lua',
-      cmd = 'ToggleTerm',
-      keys = '<C-Space>',
-      init = keymaps.toggleterm,
-      config = function()
-        require('configs.toggleterm').setup()
-      end,
-    },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+    config = function()
+      vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
-    -- Git
-    {
-      'sindrets/diffview.nvim',
-      config = function()
-        require('configs.diffview').setup()
-      end,
-    },
-    { 'tpope/vim-fugitive' },
-    {
-      'lewis6991/gitsigns.nvim',
-      event = 'BufWinEnter',
-      opts = {
-        current_line_blame = true,
-        on_attach = keymaps.gitsigns,
-        yadm = { enable = true },
-      },
-    },
+      require('auto-session').setup({
+        log_level = 'error',
+        auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+        pre_save_cmds = { 'NeoTreeClose' },
+      })
+    end,
+  },
 
-    -- Comments
-    {
-      'numToStr/Comment.nvim',
-      lazy = false,
-      config = function()
-        require('configs.comment').setup()
-      end,
-    },
-    {
-      'danymat/neogen',
-      cmd = 'Neogen',
-      config = true,
-    },
+  -- Which Key
+  {
+    'folke/which-key.nvim',
+    keys = '<Space>',
+    config = true,
+  },
 
-    -- UI
-    -- Colorschemes
-    {
-      'navarasu/onedark.nvim',
-      name = 'theme',
-      lazy = false,
-      priority = 1000,
-      config = function()
-        require('configs.theme').setup()
-      end,
+  {
+    'ahmedkhalf/project.nvim',
+    name = 'project_nvim',
+    opts = {
+      detection_methods = { 'pattern', 'lsp' },
+      patterns = { '>codechef', '>codeforces', '>atcoder' },
+      ignore_lsp = { 'null-ls', 'html' },
+      -- silent_chdir = false,
     },
-    -- Statusline and Bufferline
-    {
-      'nvim-lualine/lualine.nvim',
-      lazy = false,
-      config = function()
-        require('configs.statusline').setup()
-      end,
-    },
-    {
-      'akinsho/bufferline.nvim',
-      lazy = false,
-      init = keymaps.bufferline,
-      config = function()
-        require('configs.bufferline').setup()
-      end,
-    },
-    {
-      'j-hui/fidget.nvim',
-      event = 'VeryLazy',
-      opts = {
-        text = {
-          spinner = 'pipe', -- animation shown when tasks are ongoing
-          done = '', -- character shown when all tasks are complete
-          commenced = 'Started', -- message shown when task starts
-          completed = 'Completed', -- message shown when task completes
-        },
-      },
-    },
-    {
-      'lukas-reineke/indent-blankline.nvim',
-      event = 'VeryLazy',
-      opts = {
-        filetype_exclude = {
-          'help',
-          'mason',
-          'lazy',
-          'neo-tree',
-          'neo-tree-popup',
-        },
-        buftype_exclude = { 'terminal' },
-        space_char_blankline = ' ',
-        show_first_indent_level = false,
-        show_current_context = true,
-        show_current_context_start = true,
-      },
-    },
-    { 'rcarriga/nvim-notify', init = keymaps.notify },
-    {
-      'kevinhwang91/nvim-ufo',
-      init = keymaps.ufo,
-      config = function()
-        -- vim.o.foldcolumn = '1'
-        vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-        vim.o.foldlevelstart = 99
-        vim.o.foldenable = true
-        require('ufo').setup()
-      end,
-      dependencies = 'kevinhwang91/promise-async',
-    },
+  },
+  {
+    'michaelb/sniprun',
+    cmd = 'SnipRun',
+    build = 'bash ./install.sh',
+  },
 
-    -- Dashboard
-    {
-      'startup-nvim/startup.nvim',
-      config = function()
-        require('configs.dashboard')
-      end,
-      -- TODO: configure dashboard as it is breaking auto-session
-      enabled = false,
-    },
-    {
-      'rmagatti/auto-session',
-      lazy = false,
-      config = function()
-        vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+  {
+    'max397574/better-escape.nvim',
+    event = 'InsertEnter',
+    opts = { timeout = 200 },
+  },
+  {
+    'dstein64/vim-startuptime',
+    cmd = 'StartupTime',
+  },
 
-        require('auto-session').setup({
-          log_level = 'error',
-          auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-          pre_save_cmds = { 'NeoTreeClose' },
-        })
-      end,
-    },
+  -- Utils
+  {
+    'norcalli/nvim-colorizer.lua',
+    event = 'BufRead',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
+  {
+    'famiu/bufdelete.nvim',
+    cmd = 'Bdelete',
+  },
 
-    -- Tree Explorer
-    {
-      'nvim-neo-tree/neo-tree.nvim',
-      branch = 'v2.x',
-      init = keymaps.neo_tree,
-      config = function()
-        require('configs.tree').setup()
-      end,
-      dependencies = 'MunifTanjim/nui.nvim',
-    },
+  'nvim-lua/plenary.nvim',
+  'kyazdani42/nvim-web-devicons',
+}
 
-    -- Which Key
-    {
-      'folke/which-key.nvim',
-      keys = '<Space>',
-      config = true,
-    },
-
-    -- Treesitter
-    {
-      'nvim-treesitter/nvim-treesitter',
-      name = 'treesitter',
-      event = 'BufRead',
-      config = function()
-        require('configs.treesitter').setup()
-      end,
-      build = ':TSUpdate',
-      dependencies = {
-        {
-          'windwp/nvim-ts-autotag',
-          config = function()
-            require('nvim-ts-autotag').setup()
-          end,
-        },
-        { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        { 'p00f/nvim-ts-rainbow' },
-        { 'JoosepAlviste/nvim-ts-context-commentstring' },
-        {
-          'nvim-treesitter/nvim-treesitter-context',
-          config = function()
-            require('treesitter-context').setup()
-          end,
-        },
-      },
-    },
-    {
-      'ahmedkhalf/project.nvim',
-      opts = {
-        detection_methods = { 'pattern', 'lsp' },
-        patterns = { '>codechef', '>codeforces', '>atcoder' },
-        ignore_lsp = { 'null-ls', 'html' },
-        -- silent_chdir = false,
-      },
-    },
-    {
-      'NMAC427/guess-indent.nvim',
-      init = keymaps.guess_indent,
-      config = true,
-    },
-    {
-      'max397574/better-escape.nvim',
-      event = 'InsertEnter',
-      opts = { timeout = 200 },
-    },
-    { 'michaelb/sniprun', cmd = 'SnipRun', build = 'bash ./install.sh' },
-    { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
-
-    -- Language Specific
-    { 'folke/neodev.nvim' },
-    { 'simrat39/rust-tools.nvim' },
-    { 'p00f/clangd_extensions.nvim' },
-    { 'jose-elias-alvarez/typescript.nvim' },
-    'b0o/schemastore.nvim', -- jsonls
-    { 'npxbr/glow.nvim', cmd = 'Glow' },
-    {
-      'iamcco/markdown-preview.nvim',
-      build = 'cd app && yarn install',
-      ft = 'markdown',
-    },
-    {
-      'nvim-neorg/neorg',
-      ft = 'norg',
-      config = function()
-        require('configs.neorg').setup()
-      end,
-    },
-
-    -- Utils
-    {
-      'norcalli/nvim-colorizer.lua',
-      event = 'BufRead',
-      config = function()
-        require('colorizer').setup()
-      end,
-    },
-    { 'famiu/bufdelete.nvim', cmd = 'Bdelete' },
-    {
-      'ekickx/clipboard-image.nvim',
-      cmd = 'PasteImg',
-      config = true,
-    },
-    'nvim-lua/plenary.nvim',
-    'kyazdani42/nvim-web-devicons',
-  }, { defaults = { lazy = true } })
-end
-
-return M
+return plugins

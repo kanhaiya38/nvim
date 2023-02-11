@@ -1,5 +1,3 @@
-local M = {}
-
 -- stylua: ignore
 local colors = {
   black        = '#13151a', -- '#181a1f',
@@ -30,7 +28,7 @@ local colors = {
   diff_text    = '#2c5372',
 }
 
-M.setup = function()
+local config = function()
   local theme = require('onedark')
 
   theme.setup({
@@ -42,4 +40,15 @@ M.setup = function()
   theme.load()
 end
 
-return M
+---@type LazySpec
+local plugins = {
+  {
+    'navarasu/onedark.nvim',
+    name = 'theme',
+    lazy = false,
+    priority = 1000,
+    config = config,
+  },
+}
+
+return plugins

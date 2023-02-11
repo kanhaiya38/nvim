@@ -1,26 +1,25 @@
-local M = {}
-M.setup = function()
-  local events = require('neo-tree.events')
+---@class FileMovedArgs
+---@field source string
+---@field destination string
 
-  ---@class FileMovedArgs
-  ---@field source string
-  ---@field destination string
-
-  ---@param args FileMovedArgs
-  local function on_file_remove(args)
-    local ts_clients = vim.lsp.get_active_clients({ name = 'tsserver' })
-    for _, ts_client in ipairs(ts_clients) do
-      ts_client.request('workspace/executeCommand', {
-        command = '_typescript.applyRenameFile',
-        arguments = {
-          {
-            sourceUri = vim.uri_from_fname(args.source),
-            targetUri = vim.uri_from_fname(args.destination),
-          },
+---@param args FileMovedArgs
+local function on_file_remove(args)
+  local ts_clients = vim.lsp.get_active_clients({ name = 'tsserver' })
+  for _, ts_client in ipairs(ts_clients) do
+    ts_client.request('workspace/executeCommand', {
+      command = '_typescript.applyRenameFile',
+      arguments = {
+        {
+          sourceUri = vim.uri_from_fname(args.source),
+          targetUri = vim.uri_from_fname(args.destination),
         },
-      })
-    end
+      },
+    })
   end
+end
+
+local config = function()
+  local events = require('neo-tree.events')
 
   require('neo-tree').setup({
     close_if_last_window = true,
@@ -62,4 +61,15 @@ M.setup = function()
   })
 end
 
-return M
+---@type LazySpec
+local plugins = {
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    init = require('keymaps').neo_tree,
+    config = config,
+    dependencies = 'MunifTanjim/nui.nvim',
+  },
+}
+
+return plugins

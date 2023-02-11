@@ -1,6 +1,4 @@
-local M = {}
-
-M.setup = function()
+local config = function()
   local bl = require('bufferline')
   local kinds = require('settings').kinds.lsp
 
@@ -28,4 +26,14 @@ M.setup = function()
   })
 end
 
-return M
+---@type LazySpec
+local plugins = {
+  {
+    'akinsho/bufferline.nvim',
+    lazy = false,
+    init = require('keymaps').bufferline,
+    config = config,
+  },
+}
+
+return plugins

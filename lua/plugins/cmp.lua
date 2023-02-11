@@ -1,5 +1,3 @@
-local M = {}
-
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -19,7 +17,7 @@ local entry_format = function(entry, vim_item)
   })(entry, vim_item)
 end
 
-M.setup = function()
+local config = function()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
 
@@ -115,4 +113,26 @@ M.setup = function()
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
-return M
+---@type LazySpec
+local plugins = {
+  {
+    'hrsh7th/nvim-cmp',
+    name = 'cmp',
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    config = config,
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-emoji',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-cmdline',
+      'onsails/lspkind-nvim',
+    },
+  },
+}
+
+return plugins

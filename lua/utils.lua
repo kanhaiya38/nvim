@@ -38,7 +38,7 @@ M.on_save = function(cmd)
     desc = 'on save',
     callback = function()
       -- require('toggleterm').exec(cmd, 9, nil, nil, nil, nil, nil)
-      local term = require('configs.toggleterm').exec
+      local term = require('utils.toggleterm').exec
       if not term:is_open() then
         term:open()
       else

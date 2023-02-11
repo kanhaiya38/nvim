@@ -1,5 +1,3 @@
-local M = {}
-
 local fzf = {
   fuzzy = true, -- false will only do exact matching
   override_generic_sorter = true, -- override the generic sorter
@@ -8,7 +6,7 @@ local fzf = {
   -- the default case_mode is "smart_case"
 }
 
-M.setup = function()
+local config = function()
   local actions = require('telescope.actions')
   local themes = require('telescope.themes')
   local telescope = require('telescope')
@@ -34,10 +32,10 @@ M.setup = function()
       find_files = {
         -- find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
         -- theme = 'dropdown',
-        entry_maker = require('configs.telescope.entry_maker').find_files(),
+        entry_maker = require('utils.telescope.entry_maker').find_files(),
       },
       git_files = {
-        entry_maker = require('configs.telescope.entry_maker').find_files(),
+        entry_maker = require('utils.telescope.entry_maker').find_files(),
       },
     },
     extensions = {
@@ -50,4 +48,18 @@ M.setup = function()
   telescope.load_extension('live_grep_args')
 end
 
-return M
+---@type LazySpec
+local plugins = {
+  {
+    'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    init = require('keymaps').telescope,
+    config = config,
+    dependencies = {
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
+    },
+  },
+}
+
+return plugins

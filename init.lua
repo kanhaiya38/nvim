@@ -4,5 +4,5 @@ if status_ok then
 end
 require('settings').setup()
 require('keymaps').defaults()
-require('plugins').setup()
+require('main').setup()
 -- require 'packer_compiled'

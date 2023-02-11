@@ -1,5 +1,3 @@
-local M = {}
-
 local highlight = {
   enable = true, -- false will disable the whole extension
   disable = {}, -- list of language that will be disabled
@@ -80,19 +78,45 @@ local textobjects = {
   },
 }
 
-M.setup = function()
-  require('nvim-treesitter.configs').setup({
-    auto_install = true,
-    ignore_install = {}, -- List of parsers to ignore installing
-    -- default
-    highlight = highlight,
-    incremental_selection = incremental_selection,
-    -- plugins
-    -- autotag = extensions.autotag,
-    context_commentstring = context_commentstring,
-    rainbow = rainbow,
-    textobjects = textobjects,
-  })
-end
+---@type LazySpec
+local plugins = {
+  {
+    'nvim-treesitter/nvim-treesitter',
+    name = 'treesitter',
+    event = 'BufRead',
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        auto_install = true,
+        ignore_install = {}, -- List of parsers to ignore installing
+        -- default
+        highlight = highlight,
+        incremental_selection = incremental_selection,
+        -- plugins
+        -- autotag = extensions.autotag,
+        context_commentstring = context_commentstring,
+        rainbow = rainbow,
+        textobjects = textobjects,
+      })
+    end,
+    build = ':TSUpdate',
+    dependencies = {
+      {
+        'windwp/nvim-ts-autotag',
+        config = function()
+          require('nvim-ts-autotag').setup()
+        end,
+      },
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      { 'p00f/nvim-ts-rainbow' },
+      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+          require('treesitter-context').setup()
+        end,
+      },
+    },
+  },
+}
 
-return M
+return plugins

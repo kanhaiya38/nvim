@@ -21,7 +21,6 @@ M.setup = function()
   bootstrap()
 
   require('lazy').setup({
-    'lewis6991/impatient.nvim',
     { 'folke/lazy.nvim', version = '*', init = keymaps.lazy },
     -- Setting up LSP
     {

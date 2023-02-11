@@ -79,29 +79,23 @@ M.setup = function()
     {
       'onsails/lspkind-nvim',
       config = function()
-        require('lspkind').init({})
+        require('lspkind').init({}) -- TODO: Not required
       end,
     },
 
     {
       'glepnir/lspsaga.nvim',
-      config = function()
-        require('lspsaga').setup({})
-      end,
+      config = true,
     },
     -- Surroundings
     {
       'kylechui/nvim-surround',
       lazy = false,
-      config = function()
-        require('nvim-surround').setup()
-      end,
+      config = true,
     },
     {
       'windwp/nvim-autopairs',
-      config = function()
-        require('nvim-autopairs').setup({})
-      end,
+      config = true,
     },
 
     -- Telescope
@@ -164,9 +158,8 @@ M.setup = function()
     },
     {
       'danymat/neogen',
-      config = function()
-        require('neogen').setup({})
-      end,
+      cmd = 'Neogen',
+      config = true,
     },
 
     -- UI
@@ -199,16 +192,14 @@ M.setup = function()
     {
       'j-hui/fidget.nvim',
       event = 'VeryLazy',
-      config = function()
-        require('fidget').setup({
-          text = {
-            spinner = 'pipe', -- animation shown when tasks are ongoing
-            done = '', -- character shown when all tasks are complete
-            commenced = 'Started', -- message shown when task starts
-            completed = 'Completed', -- message shown when task completes
-          },
-        })
-      end,
+      opts = {
+        text = {
+          spinner = 'pipe', -- animation shown when tasks are ongoing
+          done = '', -- character shown when all tasks are complete
+          commenced = 'Started', -- message shown when task starts
+          completed = 'Completed', -- message shown when task completes
+        },
+      },
     },
     {
       'lukas-reineke/indent-blankline.nvim',
@@ -318,16 +309,12 @@ M.setup = function()
     {
       'NMAC427/guess-indent.nvim',
       init = keymaps.guess_indent,
-      config = function()
-        require('guess-indent').setup({})
-      end,
+      config = true,
     },
     {
       'max397574/better-escape.nvim',
       event = 'InsertEnter',
-      config = function()
-        require('better_escape').setup({ timeout = 200 })
-      end,
+      opts = { timeout = 200 },
     },
     { 'michaelb/sniprun', cmd = 'SnipRun', build = 'bash ./install.sh' },
     { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
@@ -365,9 +352,8 @@ M.setup = function()
     { 'famiu/bufdelete.nvim', cmd = 'Bdelete' },
     {
       'ekickx/clipboard-image.nvim',
-      config = function()
-        require('clipboard-image').setup({})
-      end,
+      cmd = 'PasteImg',
+      config = true,
     },
   }, { defaults = { lazy = true } })
 end

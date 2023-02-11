@@ -85,12 +85,7 @@ M.setup = function()
       use({
         'glepnir/lspsaga.nvim',
         config = function()
-          local saga = require('lspsaga')
-          saga.init_lsp_saga({
-            code_action_lightbulb = {
-              cache_code_action = false,
-            },
-          })
+          require('lspsaga').setup({})
         end,
       })
       -- Surroundings

@@ -361,25 +361,25 @@ M.defaults = function()
       -- Diagnostics
       ['<space>e'] = {
         function()
-          require('lspsaga.diagnostic').show_cursor_diagnostics()
+          require('lspsaga.diagnostic'):show_diagnostics(arg, 'cursor')
         end,
         'open diagnostics',
       },
       ['<space>E'] = {
         function()
-          require('lspsaga.diagnostic').show_line_diagnostics()
+          require('lspsaga.diagnostic'):show_diagnostics(arg, 'line')
         end,
         'open line diagnostic',
       },
       ['[d'] = {
         function()
-          require('lspsaga.diagnostic').goto_prev()
+          require('lspsaga.diagnostic'):goto_prev()
         end,
         'prev diagnostic',
       },
       [']d'] = {
         function()
-          require('lspsaga.diagnostic').goto_next()
+          require('lspsaga.diagnostic'):goto_next()
         end,
         'next diagnostic',
       },

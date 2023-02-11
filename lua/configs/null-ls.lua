@@ -32,6 +32,7 @@ M.setup = function()
     -- shell scripts
     formatting.shfmt,
     diagnostics.shellcheck,
+    diagnostics.fish,
     formatting.fish_indent,
 
     -- rust

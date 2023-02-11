@@ -27,6 +27,7 @@ M.setup = function()
     -- Setting up LSP
     {
       'neovim/nvim-lspconfig',
+      event = 'BufRead',
       config = function()
         require('lsp').setup()
       end,
@@ -42,6 +43,7 @@ M.setup = function()
     {
       'jose-elias-alvarez/null-ls.nvim',
       init = keymaps.null_ls,
+      event = 'BufRead',
       config = function()
         require('configs.null-ls').setup()
       end,
@@ -55,33 +57,17 @@ M.setup = function()
       config = function()
         require('configs.cmp').setup()
       end,
-    },
-    {
-      'hrsh7th/cmp-buffer', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-nvim-lsp', --[[ after = 'cmp' ]]
-    },
-    {
-      'saadparwaiz1/cmp_luasnip', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-path', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-calc', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-emoji', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-nvim-lsp-signature-help', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-nvim-lsp-document-symbol', --[[ after = 'cmp' ]]
-    },
-    {
-      'hrsh7th/cmp-cmdline', --[[ after = 'cmp' ]]
+      dependencies = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-calc',
+        'hrsh7th/cmp-emoji',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        'hrsh7th/cmp-nvim-lsp-document-symbol',
+        'hrsh7th/cmp-cmdline',
+      },
     },
     -- Snippets
     {
@@ -89,12 +75,10 @@ M.setup = function()
       config = function()
         require('configs.snippets').setup()
       end,
-      -- after = 'cmp',
       dependencies = 'rafamadriz/friendly-snippets',
     },
     {
       'onsails/lspkind-nvim',
-      -- after = 'nvim-cmp',
       config = function()
         require('lspkind').init({})
       end,
@@ -109,13 +93,13 @@ M.setup = function()
     -- Surroundings
     {
       'kylechui/nvim-surround',
+      lazy = false,
       config = function()
         require('nvim-surround').setup()
       end,
     },
     {
       'windwp/nvim-autopairs',
-      -- event = 'InsertEnter',
       config = function()
         require('nvim-autopairs').setup({})
       end,
@@ -124,15 +108,16 @@ M.setup = function()
     -- Telescope
     {
       'nvim-telescope/telescope.nvim',
-      -- module = { 'configs.telescope', 'telescope' },
       cmd = 'Telescope',
       init = keymaps.telescope,
       config = function()
         require('configs.telescope').setup()
       end,
+      dependencies = {
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        { 'nvim-telescope/telescope-live-grep-args.nvim' },
+      },
     },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    { 'nvim-telescope/telescope-live-grep-args.nvim' },
 
     {
       'folke/trouble.nvim',
@@ -147,8 +132,7 @@ M.setup = function()
     {
       'akinsho/nvim-toggleterm.lua',
       cmd = 'ToggleTerm',
-      -- keys = '<C-Space>',
-      -- module = { 'toggleterm', 'configs.toggleterm' },
+      keys = '<C-Space>',
       init = keymaps.toggleterm,
       config = function()
         require('configs.toggleterm').setup()
@@ -158,7 +142,6 @@ M.setup = function()
     -- Git
     {
       'sindrets/diffview.nvim',
-      dependencies = 'nvim-lua/plenary.nvim',
       config = function()
         require('configs.diffview').setup()
       end,
@@ -166,6 +149,7 @@ M.setup = function()
     { 'tpope/vim-fugitive' },
     {
       'lewis6991/gitsigns.nvim',
+      event = 'BufWinEnter',
       config = function()
         require('configs.gitsigns').setup()
       end,
@@ -174,6 +158,7 @@ M.setup = function()
     -- Comments
     {
       'numToStr/Comment.nvim',
+      lazy = false,
       config = function()
         require('configs.comment').setup()
       end,
@@ -190,6 +175,8 @@ M.setup = function()
     {
       'navarasu/onedark.nvim',
       name = 'theme',
+      lazy = false,
+      priority = 1000,
       config = function()
         require('configs.theme').setup()
       end,
@@ -197,14 +184,14 @@ M.setup = function()
     -- Statusline and Bufferline
     {
       'nvim-lualine/lualine.nvim',
-      -- after = 'theme',
+      lazy = false,
       config = function()
         require('configs.statusline').setup()
       end,
     },
     {
       'akinsho/bufferline.nvim',
-      -- after = 'theme',
+      lazy = false,
       init = keymaps.bufferline,
       config = function()
         require('configs.bufferline').setup()
@@ -212,6 +199,7 @@ M.setup = function()
     },
     {
       'j-hui/fidget.nvim',
+      event = 'VeryLazy',
       config = function()
         require('fidget').setup({
           text = {
@@ -225,7 +213,7 @@ M.setup = function()
     },
     {
       'lukas-reineke/indent-blankline.nvim',
-      -- after = { 'theme', 'treesitter' },
+      event = 'VeryLazy',
       config = function()
         require('configs.indent').setup()
       end,
@@ -233,7 +221,6 @@ M.setup = function()
     { 'rcarriga/nvim-notify', init = keymaps.notify },
     {
       'kevinhwang91/nvim-ufo',
-      dependencies = 'kevinhwang91/promise-async',
       init = keymaps.ufo,
       config = function()
         -- vim.o.foldcolumn = '1'
@@ -242,12 +229,12 @@ M.setup = function()
         vim.o.foldenable = true
         require('ufo').setup()
       end,
+      dependencies = 'kevinhwang91/promise-async',
     },
 
     -- Dashboard
     {
       'startup-nvim/startup.nvim',
-      -- after = 'theme',
       config = function()
         require('configs.dashboard')
       end,
@@ -256,6 +243,7 @@ M.setup = function()
     },
     {
       'rmagatti/auto-session',
+      lazy = false,
       config = function()
         vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
@@ -270,7 +258,6 @@ M.setup = function()
     -- Tree Explorer
     {
       'kyazdani42/nvim-tree.lua',
-      -- module = 'nvim-tree',
       init = keymaps.nvim_tree,
       config = function()
         require('configs.nvim-tree').setup()
@@ -280,7 +267,6 @@ M.setup = function()
     {
       'nvim-neo-tree/neo-tree.nvim',
       branch = 'v2.x',
-      -- module = 'neo-tree',
       init = keymaps.neo_tree,
       config = function()
         require('configs.tree').setup()
@@ -291,7 +277,7 @@ M.setup = function()
     -- Which Key
     {
       'folke/which-key.nvim',
-      -- keys = '<Space>',
+      keys = '<Space>',
       config = function()
         require('configs.which-key').setup()
       end,
@@ -301,36 +287,29 @@ M.setup = function()
     {
       'nvim-treesitter/nvim-treesitter',
       name = 'treesitter',
-      event = 'BufEnter',
+      event = 'BufRead',
       config = function()
         require('configs.treesitter').setup()
       end,
       build = ':TSUpdate',
+      dependencies = {
+        {
+          'windwp/nvim-ts-autotag',
+          config = function()
+            require('nvim-ts-autotag').setup()
+          end,
+        },
+        { 'nvim-treesitter/nvim-treesitter-textobjects' },
+        { 'p00f/nvim-ts-rainbow' },
+        { 'JoosepAlviste/nvim-ts-context-commentstring' },
+        {
+          'nvim-treesitter/nvim-treesitter-context',
+          config = function()
+            require('treesitter-context').setup()
+          end,
+        },
+      },
     },
-    {
-      'windwp/nvim-ts-autotag',
-      config = function()
-        require('nvim-ts-autotag').setup()
-      end,
-      -- after = 'treesitter',
-    },
-    {
-      'nvim-treesitter/nvim-treesitter-textobjects', --[[ after = 'treesitter' ]]
-    },
-    {
-      'p00f/nvim-ts-rainbow', --[[ after = 'treesitter' ]]
-    },
-    {
-      'JoosepAlviste/nvim-ts-context-commentstring', --[[ after = 'treesitter' ]]
-    },
-    {
-      'nvim-treesitter/nvim-treesitter-context',
-      config = function()
-        require('treesitter-context').setup()
-      end,
-      -- after = 'treesitter',
-    },
-
     {
       'ahmedkhalf/project.nvim',
       config = function()
@@ -352,7 +331,7 @@ M.setup = function()
       end,
     },
     { 'michaelb/sniprun', cmd = 'SnipRun', build = 'bash ./install.sh' },
-    'dstein64/vim-startuptime',
+    { 'dstein64/vim-startuptime', cmd = 'StartupTime' },
 
     -- Language Specific
     { 'npxbr/glow.nvim', cmd = 'Glow' },
@@ -383,14 +362,14 @@ M.setup = function()
         require('colorizer').setup()
       end,
     },
-    'famiu/bufdelete.nvim',
+    { 'famiu/bufdelete.nvim', cmd = 'Bdelete' },
     {
       'ekickx/clipboard-image.nvim',
       config = function()
         require('clipboard-image').setup({})
       end,
     },
-  })
+  }, { defaults = { lazy = true } })
 end
 
 return M

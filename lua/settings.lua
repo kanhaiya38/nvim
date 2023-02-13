@@ -10,7 +10,7 @@ M.kinds = {
 }
 
 M.servers = {
-  sumneko_lua = { custom_setup = true },
+  lua_ls = { custom_setup = true },
   rust_analyzer = { custom_setup = true },
   clangd = { custom_setup = true },
   tsserver = { custom_setup = true },

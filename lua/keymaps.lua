@@ -82,6 +82,12 @@ M.telescope = function()
   require('utils').set_keymaps({
     mappings = {
       ['<Leader>ff'] = { project_files, 'find_files' },
+      ['<Leader>fo'] = {
+        function()
+          require('telescope.builtin').resume()
+        end,
+        'resume',
+      },
       ['<Leader>fa'] = {
         function()
           require('telescope.builtin').find_files()

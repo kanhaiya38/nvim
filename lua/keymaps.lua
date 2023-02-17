@@ -166,6 +166,15 @@ M.gitsigns = function(bufnr)
   })
 end
 
+M.diffview = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<Space>do'] = { '<Cmd>DiffviewOpen<CR>', 'diff' },
+      ['<Space>dc'] = { '<Cmd>DiffviewClose<CR>', 'close' },
+    },
+  })
+end
+
 M.bufferline = function()
   local go_to_buffer = function(num)
     return function()

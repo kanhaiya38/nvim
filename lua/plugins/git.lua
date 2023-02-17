@@ -25,6 +25,7 @@ local plugins = {
   },
   {
     'sindrets/diffview.nvim',
+    init = require('keymaps').diffview,
     opts = diffview,
     cmd = 'DiffviewOpen',
   },

@@ -19,10 +19,14 @@ local gitsigns = {
 
 ---@type LazySpec
 local plugins = {
-  { 'tpope/vim-fugitive' },
+  {
+    'tpope/vim-fugitive',
+    cmd = { 'G', 'Git' },
+  },
   {
     'sindrets/diffview.nvim',
     opts = diffview,
+    cmd = 'DiffviewOpen',
   },
   {
     'lewis6991/gitsigns.nvim',

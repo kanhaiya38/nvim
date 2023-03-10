@@ -81,8 +81,12 @@ local config = function()
       }),
     }),
     window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered({
+        winhighlight = 'Normal:NormalFloat,CursorLine:PmenuSel,Search:None',
+      }),
+      documentation = cmp.config.window.bordered({
+        winhighlight = 'Normal:NormalFloat,CursorLine:PmenuSel,Search:None',
+      }),
     },
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },

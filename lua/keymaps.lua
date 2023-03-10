@@ -112,6 +112,12 @@ M.telescope = function()
         end,
         'live_grep',
       },
+      ['<Leader>fp'] = {
+        function()
+          require('telescope').extensions.projects.projects({})
+        end,
+        'projects',
+      },
     },
   })
 end

@@ -1,6 +1,7 @@
 local config = function()
   local bl = require('bufferline')
   local kinds = require('settings').kinds.lsp
+  vim.cmd([[autocmd FileType qf set nobuflisted]])
 
   bl.setup({
     options = {

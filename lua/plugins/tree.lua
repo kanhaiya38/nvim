@@ -68,6 +68,7 @@ local plugins = {
     branch = 'v2.x',
     init = require('keymaps').neo_tree,
     config = config,
+    cmd = { 'NeoTreeClose' },
     dependencies = 'MunifTanjim/nui.nvim',
   },
 }

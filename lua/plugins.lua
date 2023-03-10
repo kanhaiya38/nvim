@@ -89,7 +89,7 @@ local plugins = {
       require('auto-session').setup({
         log_level = 'error',
         auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-        pre_save_cmds = { 'NeoTreeClose' },
+        pre_save_cmds = { 'NeoTreeClose', 'DiffviewClose' },
       })
     end,
   },

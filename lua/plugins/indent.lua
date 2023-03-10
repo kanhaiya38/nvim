@@ -2,7 +2,7 @@
 local plugins = {
   {
     'lukas-reineke/indent-blankline.nvim',
-    event = 'VeryLazy',
+    lazy = false,
     opts = {
       filetype_exclude = {
         'help',
@@ -20,6 +20,7 @@ local plugins = {
   },
   {
     'NMAC427/guess-indent.nvim',
+    lazy = false,
     init = require('keymaps').guess_indent,
     config = true,
   },

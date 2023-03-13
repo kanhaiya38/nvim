@@ -21,7 +21,6 @@ M.setup = function()
   require('lazy').setup('plugins', {
     defaults = {
       lazy = true,
-      version = '*',
     },
   })
 end

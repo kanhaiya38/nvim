@@ -2,7 +2,9 @@
 local plugins = {
   {
     'nvim-neorg/neorg',
+    build = ':Neorg sync-parsers',
     ft = 'norg',
+    cmd = 'Neorg',
     opts = {
       -- Tell Neorg what modules to load
       load = {
@@ -11,20 +13,8 @@ local plugins = {
         ['core.norg.dirman'] = { -- Manage your directories with Neorg
           config = {
             workspaces = {
-              home = '~/Kanhaiya/Codes/neorg',
+              home = '~/Kanhaiya/neorg',
             },
-          },
-        },
-        ['core.norg.completion'] = {
-          config = { -- Note that this table is optional and doesn't need to be provided
-            -- Configuration here
-            engine = 'nvim-cmp',
-          },
-        },
-        ['core.gtd.base'] = {
-          config = { -- Note that this table is optional and doesn't need to be provided
-            -- Configuration here
-            workspace = 'home',
           },
         },
       },

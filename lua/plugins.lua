@@ -22,6 +22,11 @@ local plugins = {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
   },
+  {
+    'simrat39/symbols-outline.nvim',
+    cmd = 'SymbolsOutline',
+    config = true,
+  },
 
   {
     'rcarriga/nvim-notify',

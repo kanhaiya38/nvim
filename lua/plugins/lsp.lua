@@ -7,8 +7,12 @@ local plugins = {
     config = function()
       require('lsp').setup()
     end,
-    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
   },
+  {
+    'williamboman/mason.nvim',
+    build = ':MasonUpdate',
+  },
+  'williamboman/mason-lspconfig.nvim',
   {
     'tamago324/nlsp-settings.nvim',
     opts = {

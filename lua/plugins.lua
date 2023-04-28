@@ -141,6 +141,11 @@ local plugins = {
     end,
   },
   {
+    'petertriho/nvim-scrollbar',
+    lazy = false,
+    config = true,
+  },
+  {
     'famiu/bufdelete.nvim',
     cmd = 'Bdelete',
   },

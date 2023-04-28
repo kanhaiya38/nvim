@@ -321,6 +321,24 @@ M.typescript = function()
   })
 end
 
+M.hlslens = function()
+  require('utils').set_keymaps({
+    mappings = {
+      ['<Leader>l'] = { '<Cmd>noh<CR>' },
+      ['*'] = { [[*<Cmd>lua require('hlslens').start()<CR>]] },
+      ['#'] = { [[#<Cmd>lua require('hlslens').start()<CR>]] },
+      ['g*'] = { [[g*<Cmd>lua require('hlslens').start()<CR>]] },
+      ['g#'] = { [[g#<Cmd>lua require('hlslens').start()<CR>]] },
+      ['N'] = {
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+      },
+      ['n'] = {
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+      },
+    },
+  })
+end
+
 M.defaults = function()
   local set_keymaps = require('utils').set_keymaps
   set_keymaps({

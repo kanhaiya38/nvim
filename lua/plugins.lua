@@ -146,6 +146,17 @@ local plugins = {
     config = true,
   },
   {
+    'kevinhwang91/nvim-hlslens',
+    lazy = false,
+    init = keymaps.hlslens,
+    config = function()
+      -- require('hlslens').setup() is not required
+      require('scrollbar.handlers.search').setup({
+        -- hlslens config overrides
+      })
+    end,
+  },
+  {
     'famiu/bufdelete.nvim',
     cmd = 'Bdelete',
   },

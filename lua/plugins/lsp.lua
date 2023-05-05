@@ -4,6 +4,7 @@ local plugins = {
   {
     'neovim/nvim-lspconfig',
     event = 'BufRead',
+    dependencies = 'williamboman/mason-lspconfig.nvim',
     config = function()
       require('lsp').setup()
     end,
@@ -12,8 +13,17 @@ local plugins = {
     'williamboman/mason.nvim',
     build = ':MasonUpdate',
     cmd = 'MasonUpdate',
+    config = true,
   },
-  'williamboman/mason-lspconfig.nvim',
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = 'williamboman/mason.nvim',
+    config = function()
+      require('mason-lspconfig').setup({
+        ensure_installed = require('lsp.utils').get_ensure_installed(),
+      })
+    end,
+  },
   {
     'tamago324/nlsp-settings.nvim',
     opts = {

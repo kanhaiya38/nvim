@@ -21,10 +21,6 @@ M.setup = function()
     end
   end
 
-  require('mason').setup()
-  require('mason-lspconfig').setup({
-    ensure_installed = utils.get_ensure_installed(),
-  })
   setup_servers()
   utils.setup_diagnostics()
 end

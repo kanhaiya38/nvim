@@ -26,6 +26,25 @@ M.setup = function()
       -- try to load one of these colorschemes when starting an installation during startup
       colorscheme = { 'onedark' },
     },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          'editorconfig',
+          'gzip',
+          'man.lua',
+          'matchit',
+          'matchparen',
+          'netrwPlugin',
+          'rplugin',
+          'shada',
+          'spellfile',
+          'tarPlugin',
+          'tohtml',
+          'tutor',
+          'zipPlugin',
+        },
+      },
+    },
   })
 end
 

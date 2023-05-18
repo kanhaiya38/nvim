@@ -57,7 +57,7 @@ M.setup_diagnostics = function()
   local icons = require('icons')
 
   vim.diagnostic.config({
-    virtual_text = { source = true, prefix = icons.misc.Square },
+    virtual_text = { source = true, prefix = icons.misc.Dot },
     float = { source = true },
     signs = true,
     underline = true,

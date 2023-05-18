@@ -1,18 +1,18 @@
 return {
   diagnostic = {
-    Hint = '',
+    Hint = '',
     Info = '',
-    Warning = '',
+    Warning = ' ',
     Error = '',
   },
   git = {
-    Branch = '',
-    GitAdded = '',
-    GitModified = '柳',
-    GitRemoved = ' ',
+    Branch = '',
+    GitAdded = ' ',
+    GitModified = ' ',
+    GitRemoved = ' ',
   },
   misc = {
-    Square = '',
+    Dot = '',
     Lsp = ' ',
     Separator = '▊',
   },

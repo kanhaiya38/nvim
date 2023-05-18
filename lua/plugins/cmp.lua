@@ -68,17 +68,9 @@ local config = function()
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({
-        select = true,
-      }),
-      ['<Tab>'] = cmp.mapping(tab_complete, {
-        'i',
-        's',
-      }),
-      ['<S-Tab>'] = cmp.mapping(s_tab_complete, {
-        'i',
-        's',
-      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<Tab>'] = cmp.mapping(tab_complete, { 'i', 's'}),
+      ['<S-Tab>'] = cmp.mapping(s_tab_complete, { 'i', 's' }),
     }),
     window = {
       completion = cmp.config.window.bordered({

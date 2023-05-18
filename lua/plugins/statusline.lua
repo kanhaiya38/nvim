@@ -3,6 +3,7 @@ local config = function()
   -- Author: shadmansaleh
   -- Credit: glepnir
   local colors = require('onedark.colors')
+  local icons = require('icons')
 
   local conditions = {
     buffer_not_empty = function()
@@ -60,7 +61,7 @@ local config = function()
 
   ins_left({
     function()
-      return '▊'
+      return icons.misc.separator
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -119,7 +120,11 @@ local config = function()
   ins_left({
     'diagnostics',
     sources = { 'nvim_diagnostic' },
-    symbols = { error = ' ', warn = ' ', info = ' ' },
+    symbols = {
+      error = icons.diagnostic.Error,
+      warn = icons.diagnostic.Warning,
+      info = icons.diagnostic.Info,
+    },
     diagnostics_color = {
       color_error = { fg = colors.red },
       color_warn = { fg = colors.yellow },
@@ -152,21 +157,25 @@ local config = function()
       end
       return msg
     end,
-    icon = ' LSP:',
+    icon = icons.misc.Lsp,
     color = { fg = colors.fg, gui = 'bold' },
   })
 
   -- Add components to right sections
   ins_right({
     'branch',
-    icon = '',
+    icon = icons.git.Branch,
     color = { fg = colors.cyan, gui = 'bold' },
   })
 
   ins_right({
     'diff',
     -- Is it me or the symbol for modified us really weird
-    symbols = { added = ' ', modified = '柳 ', removed = ' ' },
+    symbols = {
+      added = icons.git.GitAdded,
+      modified = icons.git.GitModified,
+      removed = icons.git.GitRemoved,
+    },
     diff_color = {
       added = { fg = colors.green },
       modified = { fg = colors.orange },
@@ -183,7 +192,7 @@ local config = function()
 
   ins_right({
     function()
-      return '▊'
+      return icons.misc.separator
     end,
     color = { fg = colors.blue },
     padding = { left = 1 },

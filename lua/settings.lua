@@ -1,12 +1,5 @@
 local M = {}
 
-M.signs = {
-  Hint = '',
-  Info = '',
-  Warning = '',
-  Error = '',
-}
-
 M.servers = {
   lua_ls = { custom_setup = true },
   rust_analyzer = { custom_setup = true },

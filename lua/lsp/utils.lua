@@ -47,8 +47,10 @@ end
 M.get_installed_servers = require('mason-lspconfig').get_installed_servers
 
 M.setup_diagnostics = function()
+  local icons = require('icons')
+
   vim.diagnostic.config({
-    virtual_text = { source = true },
+    virtual_text = { source = true, prefix = icons.misc.Square },
     float = { source = true },
     signs = true,
     underline = true,
@@ -57,8 +59,7 @@ M.setup_diagnostics = function()
   })
 
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
-  local signs = require('settings').signs
-  for type, icon in pairs(signs) do
+  for type, icon in pairs(icons.diagnostic) do
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end

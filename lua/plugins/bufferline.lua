@@ -1,13 +1,13 @@
 local config = function()
   local bl = require('bufferline')
-  local signs = require('settings').signs
+  local icons = require('icons')
   vim.cmd([[autocmd FileType qf set nobuflisted]])
 
   bl.setup({
     options = {
       diagnostics = 'nvim_lsp',
       diagnostics_indicator = function(count, level)
-        local icon = level:match('error') and signs.Error or signs.Warning
+        local icon = level:match('error') and icons.diagnostic.Error or icons.diagnostic.Warning
         return ' ' .. icon .. ' ' .. count
       end,
       numbers = function(opts)
@@ -19,7 +19,7 @@ local config = function()
           text = 'File Explorer',
           highlight = 'Directory',
           text_align = 'left',
-          separator = '▊',
+          separator = icons.misc.separator,
           -- separator = true -- use a "true" to enable the default, or set your own character
         },
       },

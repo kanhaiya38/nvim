@@ -66,6 +66,12 @@ M.lazy = function()
         end,
         'lazy',
       },
+      ['<Leader>lp'] = {
+        function()
+          require('lazy').profile()
+        end,
+        'profile',
+      },
     },
   })
 end

@@ -61,7 +61,7 @@ local config = function()
 
   ins_left({
     function()
-      return icons.misc.separator
+      return icons.misc.Separator
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -192,7 +192,7 @@ local config = function()
 
   ins_right({
     function()
-      return icons.misc.separator
+      return icons.misc.Separator
     end,
     color = { fg = colors.blue },
     padding = { left = 1 },

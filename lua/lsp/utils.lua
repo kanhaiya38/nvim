@@ -1,7 +1,7 @@
 local M = {}
 
 local get_default_capabilities = function()
-  local capabilities = require('cmp_nvim_lsp').default_capabilities({})
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
   capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
@@ -21,16 +21,23 @@ M.default_on_attach = function(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_exec(
-      [[
-    augroup lsp_document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-    ]],
-      false
-    )
+    vim.api.nvim_create_augroup('lsp_document_highlight', {
+      clear = false,
+    })
+    vim.api.nvim_clear_autocmds({
+      buffer = bufnr,
+      group = 'lsp_document_highlight',
+    })
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = 'lsp_document_highlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+      group = 'lsp_document_highlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
   end
 end
 

@@ -1,13 +1,13 @@
 local config = function()
   local bl = require('bufferline')
-  local kinds = require('settings').kinds.lsp
+  local signs = require('settings').signs
   vim.cmd([[autocmd FileType qf set nobuflisted]])
 
   bl.setup({
     options = {
       diagnostics = 'nvim_lsp',
       diagnostics_indicator = function(count, level)
-        local icon = level:match('error') and kinds.error or kinds.warning
+        local icon = level:match('error') and signs.Error or signs.Warning
         return ' ' .. icon .. ' ' .. count
       end,
       numbers = function(opts)

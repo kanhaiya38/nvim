@@ -1,12 +1,10 @@
 local M = {}
 
-M.kinds = {
-  lsp = {
-    hint = '',
-    info = '',
-    warning = '',
-    error = '',
-  },
+M.signs = {
+  Hint = '',
+  Info = '',
+  Warning = '',
+  Error = '',
 }
 
 M.servers = {

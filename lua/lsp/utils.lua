@@ -57,14 +57,7 @@ M.setup_diagnostics = function()
   })
 
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
-  local lsp_kinds = require('settings').kinds.lsp
-  local signs = {
-    Error = lsp_kinds.error,
-    Warning = lsp_kinds.warning,
-    Hint = lsp_kinds.warning,
-    Information = lsp_kinds.info,
-  }
-
+  local signs = require('settings').signs
   for type, icon in pairs(signs) do
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

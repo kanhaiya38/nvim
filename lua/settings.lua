@@ -56,41 +56,12 @@ local setup_notify = function()
   end
 end
 
-local disable_builtins = function()
-  -- disable builtin plugins
-  local disabled_built_ins = {
-    'netrw',
-    'netrwPlugin',
-    'netrwSettings',
-    'netrwFileHandlers',
-    'gzip',
-    'zip',
-    'zipPlugin',
-    'tar',
-    'tarPlugin',
-    'getscript',
-    'getscriptPlugin',
-    'vimball',
-    'vimballPlugin',
-    '2html_plugin',
-    'logipat',
-    'rrhelper',
-    'spellfile_plugin',
-    'matchit',
-  }
-
-  for _, plugin in pairs(disabled_built_ins) do
-    vim.g['loaded_' .. plugin] = 1
-  end
-end
-
 local json_to_jsonc = function()
   vim.cmd([[autocmd BufRead,BufNewFile *.json set filetype=jsonc]])
 end
 
 M.setup = function()
   setup_variables()
-  disable_builtins()
   setup_notify()
   json_to_jsonc()
 end

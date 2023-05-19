@@ -4,7 +4,7 @@ local colors = {
   bg0          = '#23272f', -- '#282c34',
   bg1          = '#1e222a', -- '#31353f',
   bg2          = '#343a45', -- '#393f4a',
-  bg3          = '#363a47', -- '#3b3f4c',
+  bg3          = '#3b3f4c', -- ,
   bg_d         = '#1c2026', -- '#21252b',
   bg_blue      = '#64a9e2', -- '#73b8f1',
   bg_yellow    = '#ebd09c',
@@ -35,6 +35,9 @@ local config = function()
     colors = colors,
     diagnostics = {
       darker = false,
+    },
+    highlights = {
+      ScrollbarColumn = { bg = '$bg3' },
     },
   })
   theme.load()

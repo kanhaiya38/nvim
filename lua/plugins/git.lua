@@ -33,6 +33,10 @@ local plugins = {
     'lewis6991/gitsigns.nvim',
     event = 'BufWinEnter',
     opts = gitsigns,
+    config = function(self, opts)
+      require('gitsigns').setup(opts)
+      require('scrollbar.handlers.gitsigns').setup()
+    end,
   },
 }
 

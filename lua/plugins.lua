@@ -145,8 +145,26 @@ local plugins = {
     lazy = false,
     config = function()
       local settings = require('settings')
+      local colors = require('onedark.colors')
+      local Dash = ' -'
+      local Dot = '󰨓 '
 
       require('scrollbar').setup({
+        handle = {
+          text = '  ',
+          blend = 0,
+          highlight = 'ScrollbarColumn',
+        },
+        marks = {
+          Cursor = { text = Dot, color = colors.blue },
+          Error = { text = { Dot, '󰨓󰨓' } },
+          Warn = { text = { Dot, '󰨓󰨓' } },
+          Info = { text = { Dot, '󰨓󰨓' } },
+          Hint = { text = { Dot, '󰨓󰨓' } },
+          GitAdd = { text = Dash },
+          GitDelete = { text = Dash },
+          GitChange = { text = Dash, color = colors.yellow },
+        },
         excluded_filetypes = {
           settings.ft.lazy,
           settings.ft.mason,

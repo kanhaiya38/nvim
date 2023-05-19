@@ -3,7 +3,7 @@ return {
     Hint = '',
     Info = '',
     Warning = ' ',
-    Error = '',
+    Error = ' ',
   },
   git = {
     Branch = '',

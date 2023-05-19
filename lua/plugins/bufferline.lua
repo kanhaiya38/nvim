@@ -1,6 +1,7 @@
 local config = function()
   local bl = require('bufferline')
   local icons = require('icons')
+  local settings = require('settings')
   vim.cmd([[autocmd FileType qf set nobuflisted]])
 
   bl.setup({
@@ -15,7 +16,7 @@ local config = function()
       end,
       offsets = {
         {
-          filetype = 'neo-tree',
+          filetype = settings.ft.neotree,
           text = 'File Explorer',
           highlight = 'Directory',
           text_align = 'left',

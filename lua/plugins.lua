@@ -143,7 +143,18 @@ local plugins = {
   {
     'petertriho/nvim-scrollbar',
     lazy = false,
-    config = true,
+    config = function()
+      local settings = require('settings')
+
+      require('scrollbar').setup({
+        excluded_filetypes = {
+          settings.ft.lazy,
+          settings.ft.mason,
+          settings.ft.neotree,
+          settings.ft.neotree_popup,
+        },
+      })
+    end,
   },
   {
     'kevinhwang91/nvim-hlslens',

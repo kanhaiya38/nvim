@@ -1,5 +1,13 @@
 local M = {}
 
+M.ft = {
+  neotree = 'neo-tree',
+  neotree_popup = 'neo-tree-popup',
+  help = 'help',
+  mason = 'mason',
+  lazy = 'lazy',
+}
+
 M.servers = {
   lua_ls = { custom_setup = true },
   rust_analyzer = { custom_setup = true },

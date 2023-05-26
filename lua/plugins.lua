@@ -15,6 +15,7 @@ local plugins = {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',
     },
+    init = keymaps.noice,
     config = function()
       require('noice').setup({
         lsp = {
@@ -49,7 +50,6 @@ local plugins = {
     'folke/trouble.nvim',
     cmd = 'Trouble',
     config = true,
-    enabled = false,
   },
   {
     'kevinhwang91/nvim-bqf',
@@ -61,10 +61,6 @@ local plugins = {
     config = true,
   },
 
-  {
-    'rcarriga/nvim-notify',
-    init = keymaps.notify,
-  },
   {
     'j-hui/fidget.nvim',
     event = 'VeryLazy',

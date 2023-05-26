@@ -245,14 +245,14 @@ M.ufo = function()
   })
 end
 
-M.notify = function()
+M.noice = function()
   require('utils').set_keymaps({
     mappings = {
       ['<Space>ad'] = {
         function()
-          require('notify').dismiss()
+          require('noice').cmd('dismiss')
         end,
-        'dismiss notification',
+        'dismiss notifications',
       },
     },
   })

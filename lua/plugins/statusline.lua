@@ -115,9 +115,9 @@ local config = function()
       removed = icons.git.GitRemoved,
     },
     diff_color = {
-      added = { fg = colors.git.add },
-      modified = { fg = colors.git.modified },
-      removed = { fg = colors.git.delete },
+      added = { fg = colors.green },
+      modified = { fg = colors.yellow },
+      removed = { fg = colors.red },
     },
     cond = conditions.hide_in_width,
   }
@@ -135,7 +135,7 @@ local config = function()
       component_separators = '',
       section_separators = '',
       globalstatus = true, -- enable global statusline (have a single statusline
-      theme = 'tokyonight',
+      theme = 'onedark',
     },
     sections = {
       -- these are to remove the defaults

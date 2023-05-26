@@ -9,18 +9,32 @@ local plugins = {
   },
 
   {
-    'glepnir/lspsaga.nvim',
-    event = 'LspAttach',
+    'folke/noice.nvim',
+    event = 'VeryLazy',
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      'nvim-treesitter/nvim-treesitter',
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
     },
-    config = true,
-    opts = {
-      symbol_in_winbar = {
-        enable = false,
-      },
-    },
+    config = function()
+      require('noice').setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+            ['vim.lsp.util.stylize_markdown'] = true,
+            ['cmp.entry.get_documentation'] = true,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+        },
+      })
+    end,
   },
   {
     'utilyre/barbecue.nvim',
@@ -54,6 +68,7 @@ local plugins = {
   {
     'j-hui/fidget.nvim',
     event = 'VeryLazy',
+    enabled = false,
     opts = {
       text = {
         spinner = 'pipe', -- animation shown when tasks are ongoing
@@ -195,6 +210,7 @@ local plugins = {
   },
   {
     'kevinhwang91/nvim-hlslens',
+    enabled = false,
     keys = {
       { '<Leader>l', '<Cmd>noh<CR>' },
       { '*', [[*<Cmd>lua require('hlslens').start()<CR>]] },

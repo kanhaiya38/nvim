@@ -1,25 +1,11 @@
 local M = {}
 
 M.lsp = function(bufnr)
-  local custom_hover = function()
-    local winid = require('ufo').peekFoldedLinesUnderCursor()
-    if not winid then
-      require('lspsaga.hover'):render_hover_doc()
-    end
-  end
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   require('utils').set_keymaps({
     mappings = {
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
       ['gd'] = { vim.lsp.buf.definition, 'declaration' },
-      ['gK'] = {
-        function()
-          require('lspsaga.definition'):peek_definition()
-        end,
-        'definition',
-      },
-      ['K'] = { custom_hover, 'hover' },
+      ['K'] = { vim.lsp.buf.hover, 'hover' },
       ['gI'] = { vim.lsp.buf.implementation, 'implementation' },
       ['gh'] = { vim.lsp.buf.signature_help, 'signature_help' },
       ['<space>wa'] = { vim.lsp.buf.add_workspace_folder, 'add workspace' },
@@ -31,18 +17,8 @@ M.lsp = function(bufnr)
         'list workspace',
       },
       ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
-      ['<space>rn'] = {
-        function()
-          require('lspsaga.rename'):lsp_rename()
-        end,
-        'rename',
-      },
-      ['<space>ca'] = {
-        function()
-          require('lspsaga.codeaction'):code_action()
-        end,
-        'code action',
-      },
+      ['<space>rn'] = { vim.lsp.buf.rename, 'rename' },
+      ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
       ['gR'] = { vim.lsp.buf.references, 'references' },
     },
     opts = { buffer = bufnr },
@@ -163,7 +139,6 @@ M.gitsigns = function(bufnr)
       -- Navigation
       [']c'] = { next_hunk, 'next_hunk', opts = { expr = true } },
       ['[c'] = { prev_hunk, 'prev_hunk', opts = { expr = true } },
-
       -- Actions
       ['<Leader>hs'] = { ':Gitsigns stage_hunk<CR>', 'stage_hunk', mode = { 'n', 'v' } },
       ['<Leader>hr'] = { ':Gitsigns reset_hunk<CR>', 'reset_hunk', mode = { 'n', 'v' } },
@@ -176,7 +151,6 @@ M.gitsigns = function(bufnr)
       ['<Leader>hd'] = { gs.diffthis, 'stage_buffer' },
       ['<Leader>hD'] = { diffthis, 'diffthis' },
       ['<Leader>td'] = { gs.toggle_deleted, 'stage_buffer' },
-
       -- Text object
       ['ih'] = { ':<C-U>Gitsigns select_hunk<CR>', 'stage_hunk', mode = { 'o', 'x' } },
     },
@@ -354,7 +328,6 @@ M.defaults = function()
       ['<C-k>'] = { '<Esc><Cmd>wincmd k<CR>', 'up' },
       ['<C-h>'] = { '<Esc><Cmd>wincmd h<CR>', 'left' },
       ['<C-l>'] = { '<Esc><Cmd>wincmd l<CR>', 'right' },
-
       -- Buffer
       ['<C-q>'] = { '<Cmd>Bdelete<CR>', 'delete buffer' },
     },
@@ -364,30 +337,9 @@ M.defaults = function()
   set_keymaps({
     mappings = {
       -- Diagnostics
-      ['<space>e'] = {
-        function()
-          require('lspsaga.diagnostic'):show_diagnostics(arg, 'cursor')
-        end,
-        'open diagnostics',
-      },
-      ['<space>E'] = {
-        function()
-          require('lspsaga.diagnostic'):show_diagnostics(arg, 'line')
-        end,
-        'open line diagnostic',
-      },
-      ['[d'] = {
-        function()
-          require('lspsaga.diagnostic'):goto_prev()
-        end,
-        'prev diagnostic',
-      },
-      [']d'] = {
-        function()
-          require('lspsaga.diagnostic'):goto_next()
-        end,
-        'next diagnostic',
-      },
+      ['<space>e'] = { vim.diagnostic.open_float, 'open diagnostics' },
+      ['[d'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
+      [']d'] = { vim.diagnostic.goto_next, 'next diagnostic' },
       ['<space>q'] = { vim.diagnostic.setloclist, 'setloclist' },
     },
   })

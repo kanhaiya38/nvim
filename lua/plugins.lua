@@ -12,10 +12,24 @@ local plugins = {
     'glepnir/lspsaga.nvim',
     event = 'LspAttach',
     dependencies = {
-      { 'nvim-tree/nvim-web-devicons' },
-      { 'nvim-treesitter/nvim-treesitter' },
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter',
     },
     config = true,
+    opts = {
+      symbol_in_winbar = {
+        enable = false,
+      },
+    },
+  },
+  {
+    'utilyre/barbecue.nvim',
+    lazy = false,
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {},
   },
   {
     'folke/trouble.nvim',
@@ -203,7 +217,6 @@ local plugins = {
   },
 
   'nvim-lua/plenary.nvim',
-  'kyazdani42/nvim-web-devicons',
 }
 
 return plugins

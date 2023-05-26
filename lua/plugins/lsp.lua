@@ -19,8 +19,13 @@ local plugins = {
     'williamboman/mason-lspconfig.nvim',
     dependencies = 'williamboman/mason.nvim',
     config = function()
+      local ensure_installed = {}
+      local servers = require('settings').servers
+      for key, _ in pairs(servers) do
+        table.insert(ensure_installed, key)
+      end
       require('mason-lspconfig').setup({
-        ensure_installed = require('lsp.utils').get_ensure_installed(),
+        ensure_installed = ensure_installed,
       })
     end,
   },

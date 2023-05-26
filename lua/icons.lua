@@ -7,9 +7,9 @@ return {
   },
   git = {
     Branch = '',
-    GitAdded = ' ',
-    GitModified = ' ',
-    GitRemoved = ' ',
+    GitAdded = ' ',
+    GitModified = ' ',
+    GitRemoved = ' ',
   },
   misc = {
     Dot = '',

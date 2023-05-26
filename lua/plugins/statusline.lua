@@ -1,73 +1,32 @@
+local conditions = {
+  buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+  end,
+  hide_in_width = function()
+    return vim.fn.winwidth(0) > 80
+  end,
+  check_git_workspace = function()
+    local filepath = vim.fn.expand('%:p:h')
+    local gitdir = vim.fn.finddir('.git', filepath .. ';')
+    return gitdir and #gitdir > 0 and #gitdir < #filepath
+  end,
+}
+
 local config = function()
   -- Eviline config for lualine
   -- Author: shadmansaleh
   -- Credit: glepnir
   local colors = require('onedark.colors')
   local icons = require('icons')
-
-  local conditions = {
-    buffer_not_empty = function()
-      return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
-    end,
-    hide_in_width = function()
-      return vim.fn.winwidth(0) > 80
-    end,
-    check_git_workspace = function()
-      local filepath = vim.fn.expand('%:p:h')
-      local gitdir = vim.fn.finddir('.git', filepath .. ';')
-      return gitdir and #gitdir > 0 and #gitdir < #filepath
-    end,
-  }
-
   -- Config
-  local opts = {
-    options = {
-      -- Disable sections and component separators
-      component_separators = '',
-      section_separators = '',
-      globalstatus = true, -- enable global statusline (have a single statusline
-      theme = 'onedark',
-    },
-    sections = {
-      -- these are to remove the defaults
-      lualine_a = {},
-      lualine_b = {},
-      lualine_y = {},
-      lualine_z = {},
-      -- These will be filled later
-      lualine_c = {},
-      lualine_x = {},
-    },
-    inactive_sections = {
-      -- these are to remove the defaults
-      lualine_a = {},
-      lualine_b = {},
-      lualine_y = {},
-      lualine_z = {},
-      lualine_c = {},
-      lualine_x = {},
-    },
-  }
-
-  -- Inserts a component in lualine_c at left section
-  local function ins_left(component)
-    table.insert(opts.sections.lualine_c, component)
-  end
-
-  -- Inserts a component in lualine_x ot right section
-  local function ins_right(component)
-    table.insert(opts.sections.lualine_x, component)
-  end
-
-  ins_left({
+  local separator1 = {
     function()
       return icons.misc.Separator
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
-  })
-
-  ins_left({
+  }
+  local mode = {
     -- mode component
     function()
       return ''
@@ -99,25 +58,16 @@ local config = function()
       return { fg = mode_color[vim.fn.mode()] }
     end,
     padding = { right = 1 },
-  })
+  }
 
-  ins_left({
-    -- filesize component
-    'filesize',
-    cond = conditions.buffer_not_empty,
-  })
-
-  ins_left({
+  local filename = {
     'filename',
     cond = conditions.buffer_not_empty,
     color = { fg = colors.purple, gui = 'bold' },
-  })
-
-  ins_left({ 'location' })
-
-  ins_left({ 'progress', color = { fg = colors.fg, gui = 'bold' } })
-
-  ins_left({
+  }
+  local location = { 'location' }
+  local file_progress = { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+  local diagnostics = {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
     symbols = {
@@ -130,18 +80,9 @@ local config = function()
       color_warn = { fg = colors.yellow },
       color_info = { fg = colors.cyan },
     },
-  })
+  }
 
-  -- Insert mid section. You can make any number of sections in neovim :)
-  -- for lualine it's any number greater then 2
-  ins_left({
-    function()
-      return '%='
-    end,
-  })
-
-  ins_left({
-    -- Lsp server name .
+  local lsp = {
     function()
       local msg = 'No Active Lsp'
       local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -159,16 +100,13 @@ local config = function()
     end,
     icon = icons.misc.Lsp,
     color = { fg = colors.fg, gui = 'bold' },
-  })
-
-  -- Add components to right sections
-  ins_right({
+  }
+  local git = {
     'branch',
     icon = icons.git.Branch,
     color = { fg = colors.cyan, gui = 'bold' },
-  })
-
-  ins_right({
+  }
+  local diff = {
     'diff',
     -- Is it me or the symbol for modified us really weird
     symbols = {
@@ -177,28 +115,66 @@ local config = function()
       removed = icons.git.GitRemoved,
     },
     diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.orange },
-      removed = { fg = colors.red },
+      added = { fg = colors.git.add },
+      modified = { fg = colors.git.modified },
+      removed = { fg = colors.git.delete },
     },
     cond = conditions.hide_in_width,
-  })
-
-  ins_right({
-    'fileformat',
-    fmt = string.upper,
-    color = { fg = colors.green, gui = 'bold' },
-  })
-
-  ins_right({
+  }
+  local separator2 = {
     function()
       return icons.misc.Separator
     end,
     color = { fg = colors.blue },
     padding = { left = 1 },
-  })
+  }
 
-  -- Now don't forget to initialize lualine
+  local opts = {
+    options = {
+      -- Disable sections and component separators
+      component_separators = '',
+      section_separators = '',
+      globalstatus = true, -- enable global statusline (have a single statusline
+      theme = 'tokyonight',
+    },
+    sections = {
+      -- these are to remove the defaults
+      lualine_a = {},
+      lualine_b = {},
+      lualine_y = {},
+      lualine_z = {},
+      -- These will be filled later
+      lualine_c = {
+        separator1,
+        mode,
+        git,
+        diff,
+      },
+      lualine_x = {
+        lsp,
+        {
+          function()
+            return '%='
+          end,
+        },
+        diagnostics,
+        filename,
+        location,
+        file_progress,
+        separator2,
+      },
+    },
+    inactive_sections = {
+      -- these are to remove the defaults
+      lualine_a = {},
+      lualine_b = {},
+      lualine_y = {},
+      lualine_z = {},
+      lualine_c = {},
+      lualine_x = {},
+    },
+  }
+
   require('lualine').setup(opts)
 end
 

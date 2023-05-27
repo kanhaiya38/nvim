@@ -12,6 +12,7 @@ return {
     GitRemoved = ' ',
   },
   misc = {
+    Terminal = '',
     Dot = '',
     Lsp = '',
     Separator = '▊',

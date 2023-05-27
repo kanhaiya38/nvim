@@ -1,3 +1,9 @@
+local conditions = {
+  is_terminal = function()
+    return vim.bo.filetype == 'toggleterm'
+  end,
+}
+
 local config = function()
   local colors = require('onedark.colors')
   local icons = require('icons')
@@ -41,7 +47,12 @@ local config = function()
     padding = { right = 1 },
   }
 
-  local file_progress = { 'progress' }
+  local file_progress = {
+    'progress',
+    cond = function()
+      return not conditions.is_terminal()
+    end,
+  }
   local diagnostics = {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
@@ -111,6 +122,16 @@ local config = function()
     cond = require('lazy.status').has_updates,
     color = { fg = '#ff9e64' },
   }
+  local terminal = {
+    function()
+      if vim.bo.filetype == 'toggleterm' then
+        return 'Terminal ' .. vim.b.toggle_number
+      end
+    end,
+    color = { fg = colors.blue },
+    icon = icons.misc.Terminal,
+    cond = conditions.is_terminal,
+  }
 
   local opts = {
     options = {
@@ -134,7 +155,7 @@ local config = function()
       lualine_a = { separator1 },
       lualine_b = { mode },
       lualine_c = { git_branch, git_diff },
-      lualine_x = { diagnostics, lsp },
+      lualine_x = { diagnostics, lsp, terminal },
       lualine_y = { updates, file_progress },
       lualine_z = { separator2 },
     },

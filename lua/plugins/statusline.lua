@@ -1,9 +1,3 @@
-local conditions = {
-  hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
-  end,
-}
-
 local config = function()
   local colors = require('onedark.colors')
   local icons = require('icons')
@@ -47,14 +41,13 @@ local config = function()
     padding = { right = 1 },
   }
 
-  local location = { 'location' }
   local file_progress = { 'progress' }
   local diagnostics = {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
     symbols = {
       error = icons.diagnostic.Error,
-      warn = icons.diagnostic.Warning,
+      warn = icons.diagnostic.Warn,
       info = icons.diagnostic.Info,
     },
   }
@@ -76,12 +69,12 @@ local config = function()
       return table.concat(buf_client_names, ', ')
     end,
     icon = icons.misc.Lsp,
-    color = { fg = colors.blue, gui = 'bold,italic' },
+    color = { fg = colors.blue },
   }
   local git = {
     'b:gitsigns_head',
     icon = icons.git.Branch,
-    color = { fg = colors.cyan, gui = 'bold' },
+    color = { fg = colors.cyan },
   }
   local diff = {
     'diff',
@@ -105,7 +98,6 @@ local config = function()
       modified = { fg = colors.yellow },
       removed = { fg = colors.red },
     },
-    cond = conditions.hide_in_width,
   }
   local separator2 = {
     function()
@@ -125,27 +117,26 @@ local config = function()
       component_separators = '',
       section_separators = '',
       globalstatus = true,
-      theme = 'onedark',
+      theme = {
+        inactive = {
+          a = { fg = colors.gray, bg = colors.bg, gui = 'bold' },
+          b = { fg = colors.gray, bg = colors.bg },
+          c = { fg = colors.gray, bg = colors.bg1 },
+        },
+        normal = {
+          a = { fg = colors.fg, bg = colors.bg_statusline },
+          b = { fg = colors.fg, bg = colors.bg_statusline },
+          c = { fg = colors.fg, bg = colors.bg_statusline },
+        },
+      },
     },
     sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_y = {},
-      lualine_z = {},
-      lualine_c = {
-        separator1,
-        mode,
-        git,
-        diff,
-      },
-      lualine_x = {
-        diagnostics,
-        lsp,
-        location,
-        updates,
-        file_progress,
-        separator2,
-      },
+      lualine_a = { separator1 },
+      lualine_b = { mode },
+      lualine_c = { git, diff },
+      lualine_x = { diagnostics, lsp },
+      lualine_y = { updates, file_progress },
+      lualine_z = { separator2 },
     },
     inactive_sections = {
       lualine_a = {},

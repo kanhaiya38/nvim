@@ -20,8 +20,6 @@ local config = function()
           text = 'File Explorer',
           highlight = 'Directory',
           text_align = 'left',
-          separator = icons.misc.Separator,
-          -- separator = true -- use a "true" to enable the default, or set your own character
         },
       },
     },

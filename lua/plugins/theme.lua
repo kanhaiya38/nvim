@@ -1,11 +1,11 @@
 -- stylua: ignore
 local colors = {
   black        = '#13151a', -- '#181a1f',
-  bg0          = '#23272f', -- '#282c34',
+  bg0          = '#1e222a', -- '#282c34',
   bg1          = '#1e222a', -- '#31353f',
   bg2          = '#343a45', -- '#393f4a',
   bg3          = '#3b3f4c', -- ,
-  bg_d         = '#1c2026', -- '#21252b',
+  bg_d         = '#191d22', -- '#21252b',
   bg_blue      = '#64a9e2', -- '#73b8f1',
   bg_yellow    = '#ebd09c',
   fg           = '#abb2bf',

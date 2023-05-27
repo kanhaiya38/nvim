@@ -11,25 +11,6 @@ local setup_autocmds = function()
   })
 end
 
-local setup_diagnostics = function()
-  local icons = require('icons')
-
-  vim.diagnostic.config({
-    virtual_text = { source = true, prefix = icons.misc.Dot },
-    float = { source = true },
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = false,
-  })
-
-  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#change-diagnostic-symbols-in-the-sign-column-gutter
-  for type, icon in pairs(icons.diagnostic) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
-end
-
 local get_default_capabilities = function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -89,7 +70,6 @@ end
 
 M.setup = function()
   setup_servers()
-  setup_diagnostics()
   setup_autocmds()
 end
 

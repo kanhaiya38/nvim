@@ -71,12 +71,12 @@ local config = function()
     icon = icons.misc.Lsp,
     color = { fg = colors.blue },
   }
-  local git = {
-    'b:gitsigns_head',
+  local git_branch = {
+    'branch',
     icon = icons.git.Branch,
     color = { fg = colors.cyan },
   }
-  local diff = {
+  local git_diff = {
     'diff',
     source = function()
       local gitsigns = vim.b.gitsigns_status_dict
@@ -133,7 +133,7 @@ local config = function()
     sections = {
       lualine_a = { separator1 },
       lualine_b = { mode },
-      lualine_c = { git, diff },
+      lualine_c = { git_branch, git_diff },
       lualine_x = { diagnostics, lsp },
       lualine_y = { updates, file_progress },
       lualine_z = { separator2 },

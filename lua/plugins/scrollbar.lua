@@ -12,8 +12,8 @@ local plugins = {
       require('scrollbar').setup({
         handle = {
           text = '  ',
-          blend = 0,
-          highlight = 'ScrollbarColumn',
+          blend = 20,
+          color = colors.bg2,
         },
         marks = {
           Cursor = { text = Dot, color = colors.blue },

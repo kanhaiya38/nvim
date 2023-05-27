@@ -37,9 +37,6 @@ local config = function()
     diagnostics = {
       darker = false,
     },
-    highlights = {
-      ScrollbarColumn = { bg = '$bg3' },
-    },
   })
   theme.load()
 end

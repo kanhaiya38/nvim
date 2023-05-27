@@ -133,15 +133,17 @@ local plugins = {
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'HiPhish/nvim-ts-rainbow2' },
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
-      {
-        'nvim-treesitter/nvim-treesitter-context',
-        config = function()
-          require('treesitter-context').setup()
-        end,
-      },
     },
   },
   { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    lazy = false,
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('treesitter-context').setup()
+    end,
+  },
   {
     'Wansmer/treesj',
     keys = { '<space>m', '<space>j', '<space>s' },

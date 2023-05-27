@@ -8,7 +8,7 @@ local config = function()
     options = {
       diagnostics = 'nvim_lsp',
       diagnostics_indicator = function(count, level)
-        local icon = level:match('error') and icons.diagnostic.Error or icons.diagnostic.Warning
+        local icon = level:match('error') and icons.diagnostic.Error or icons.diagnostic.Warn
         return ' ' .. icon .. count
       end,
       numbers = function(opts)

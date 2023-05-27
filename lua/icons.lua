@@ -1,9 +1,9 @@
 return {
   diagnostic = {
     Hint = '',
-    Info = '',
-    Warning = ' ',
-    Error = ' ',
+    Info = '',
+    Warn = ' ',
+    Error = ' ',
   },
   git = {
     Branch = '',
@@ -13,7 +13,15 @@ return {
   },
   misc = {
     Dot = '',
-    Lsp = ' ',
+    Lsp = '',
     Separator = '▊',
+    -- Border = '🭽',
+    BorderTop = '▔',
+    -- Border = '🭾',
+    BorderRight = '▕',
+    -- Border = '🭿',
+    BorderBottom = '▁',
+    -- Border = '🭼',
+    BorderLeft = '▏',
   },
 }

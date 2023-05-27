@@ -47,7 +47,6 @@ local config = function()
     padding = { right = 1 },
   }
 
-  local filename = { 'filename' }
   local location = { 'location' }
   local file_progress = { 'progress' }
   local diagnostics = {
@@ -62,22 +61,22 @@ local config = function()
 
   local lsp = {
     function()
-      local msg = 'No Active Lsp'
-      local buf_ft = vim.bo.filetype
-      local clients = vim.lsp.get_active_clients()
-      if next(clients) == nil then
-        return msg
+      local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+      if buf_clients == 0 then
+        return 'LSP Inactive'
       end
-      for _, client in ipairs(clients) do
-        local filetypes = client.config.filetypes
-        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-          return client.name
+
+      local buf_client_names = {}
+      for _, client in pairs(buf_clients) do
+        if client.name ~= 'null-ls' then
+          table.insert(buf_client_names, client.name)
         end
       end
-      return msg
+
+      return table.concat(buf_client_names, ', ')
     end,
     icon = icons.misc.Lsp,
-    color = { fg = colors.fg, gui = 'bold' },
+    color = { fg = colors.blue, gui = 'bold,italic' },
   }
   local git = {
     'b:gitsigns_head',
@@ -140,10 +139,8 @@ local config = function()
         diff,
       },
       lualine_x = {
-        lsp,
-        '%=',
         diagnostics,
-        filename,
+        lsp,
         location,
         updates,
         file_progress,

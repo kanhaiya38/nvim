@@ -157,10 +157,6 @@ local plugins = {
     event = 'InsertEnter',
     opts = { timeout = 200 },
   },
-  {
-    'dstein64/vim-startuptime',
-    cmd = 'StartupTime',
-  },
 
   -- Utils
   {

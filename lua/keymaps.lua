@@ -301,6 +301,16 @@ M.typescript = function()
   })
 end
 
+M.treesj = {
+  {
+    '<Leader>aj',
+    function()
+      require('treesj').toggle()
+    end,
+    desc = 'treesj toggle',
+  },
+}
+
 M.hlslens = function()
   require('utils').set_keymaps({
     mappings = {

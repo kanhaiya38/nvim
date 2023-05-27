@@ -7,36 +7,6 @@ local plugins = {
     version = '*',
     init = keymaps.lazy,
   },
-
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
-    },
-    init = keymaps.noice,
-    config = function()
-      require('noice').setup({
-        lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-          override = {
-            ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-            ['vim.lsp.util.stylize_markdown'] = true,
-            ['cmp.entry.get_documentation'] = true,
-          },
-        },
-        -- you can enable a preset for easier configuration
-        presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true, -- add a border to hover docs and signature help
-        },
-      })
-    end,
-  },
   {
     'utilyre/barbecue.nvim',
     lazy = false,
@@ -164,40 +134,6 @@ local plugins = {
     event = 'BufRead',
     config = function()
       require('colorizer').setup()
-    end,
-  },
-  {
-    'petertriho/nvim-scrollbar',
-    lazy = false,
-    config = function()
-      local settings = require('settings')
-      local colors = require('onedark.colors')
-      local Dash = ' -'
-      local Dot = '󰨓 '
-
-      require('scrollbar').setup({
-        handle = {
-          text = '  ',
-          blend = 0,
-          highlight = 'ScrollbarColumn',
-        },
-        marks = {
-          Cursor = { text = Dot, color = colors.blue },
-          Error = { text = { Dot, '󰨓󰨓' } },
-          Warn = { text = { Dot, '󰨓󰨓' } },
-          Info = { text = { Dot, '󰨓󰨓' } },
-          Hint = { text = { Dot, '󰨓󰨓' } },
-          GitAdd = { text = Dash },
-          GitDelete = { text = Dash },
-          GitChange = { text = Dash, color = colors.yellow },
-        },
-        excluded_filetypes = {
-          settings.ft.lazy,
-          settings.ft.mason,
-          settings.ft.neotree,
-          settings.ft.neotree_popup,
-        },
-      })
     end,
   },
   {

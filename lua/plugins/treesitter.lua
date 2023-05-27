@@ -133,9 +133,9 @@ local plugins = {
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
       { 'HiPhish/nvim-ts-rainbow2' },
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
+      { 'nvim-treesitter/playground' },
     },
   },
-  { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
   {
     'nvim-treesitter/nvim-treesitter-context',
     lazy = false,
@@ -146,9 +146,11 @@ local plugins = {
   },
   {
     'Wansmer/treesj',
-    keys = { '<space>m', '<space>j', '<space>s' },
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = true,
+    keys = require('keymaps').treesj,
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    opts = {
+      use_default_keymaps = false,
+    },
   },
 }
 

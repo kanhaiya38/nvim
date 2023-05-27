@@ -55,22 +55,12 @@ local setup_variables = function()
   g.startuptime_tries = 5
 end
 
-local setup_notify = function()
-  -- notify
-  local ok, notify = pcall(require, 'notify')
-
-  if ok then
-    vim.notify = notify
-  end
-end
-
 local json_to_jsonc = function()
   vim.cmd([[autocmd BufRead,BufNewFile *.json set filetype=jsonc]])
 end
 
 M.setup = function()
   setup_variables()
-  setup_notify()
   json_to_jsonc()
 end
 

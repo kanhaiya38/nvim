@@ -69,16 +69,12 @@ local config = function()
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ['<Tab>'] = cmp.mapping(tab_complete, { 'i', 's'}),
+      ['<Tab>'] = cmp.mapping(tab_complete, { 'i', 's' }),
       ['<S-Tab>'] = cmp.mapping(s_tab_complete, { 'i', 's' }),
     }),
     window = {
-      completion = cmp.config.window.bordered({
-        winhighlight = 'Normal:NormalFloat,CursorLine:PmenuSel,Search:None',
-      }),
-      documentation = cmp.config.window.bordered({
-        winhighlight = 'Normal:NormalFloat,CursorLine:PmenuSel,Search:None',
-      }),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },

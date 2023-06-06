@@ -2,16 +2,15 @@
 local plugins = {
   {
     'nvim-neorg/neorg',
-    enabled = false,
     build = ':Neorg sync-parsers',
-    ft = 'norg',
-    cmd = 'Neorg',
+    lazy = false,
+    dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       -- Tell Neorg what modules to load
       load = {
         ['core.defaults'] = {}, -- Load all the default modules
-        ['core.norg.concealer'] = {}, -- Allows for use of icons
-        ['core.norg.dirman'] = { -- Manage your directories with Neorg
+        ['core.concealer'] = {}, -- Adds pretty icons to your documents
+        ['core.dirman'] = { -- Manage your directories with Neorg
           config = {
             workspaces = {
               home = '~/Kanhaiya/neorg',

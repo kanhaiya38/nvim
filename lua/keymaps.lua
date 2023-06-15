@@ -104,6 +104,36 @@ M.telescope = function()
   })
 end
 
+---@type LazyKeys[]
+M.refactoring = {
+  {
+    '<leader>rp',
+    function()
+      require('refactoring').debug.printf({ below = false })
+    end,
+  },
+  {
+    '<leader>rv',
+    function()
+      require('refactoring').debug.print_var({ normal = true })
+    end,
+  },
+  {
+    '<leader>rc',
+    function()
+      require('refactoring').debug.cleanup({})
+    end,
+  },
+  {
+
+    '<leader>rv',
+    function()
+      require('refactoring').debug.print_var({})
+    end,
+    mode = 'v',
+  },
+}
+
 M.gitsigns = function(bufnr)
   local gs = package.loaded.gitsigns
 

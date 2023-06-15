@@ -137,6 +137,22 @@ local plugins = {
     end,
   },
   {
+    'ThePrimeagen/refactoring.nvim',
+    keys = keymaps.refactoring,
+    config = function()
+      require('refactoring').setup({
+        print_var_statements = {
+          typescriptreact = { "console.log('%s', %s)" },
+          typescript = { "console.log('%s', %s)" },
+        },
+      })
+    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
+  {
     'kevinhwang91/nvim-hlslens',
     enabled = false,
     keys = {

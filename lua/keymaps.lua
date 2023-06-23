@@ -18,12 +18,30 @@ M.lsp = function(bufnr)
       },
       ['<space>D'] = { vim.lsp.buf.type_definition, 'type definition' },
       ['<space>rn'] = { vim.lsp.buf.rename, 'rename' },
-      ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
+      -- ['<space>ca'] = { vim.lsp.buf.code_action, 'code action' },
       ['gR'] = { vim.lsp.buf.references, 'references' },
     },
     opts = { buffer = bufnr },
   })
 end
+
+---@type LazyKeys[]
+M.lspsaga = {
+  { 'gh', '<cmd>Lspsaga lsp_finder<CR>' },
+  { '<leader>ca', '<cmd>Lspsaga code_action<CR>', mode = { 'n', 'v' } },
+  { 'gr', '<cmd>Lspsaga rename<CR>' },
+  { 'gr', '<cmd>Lspsaga rename ++project<CR>' },
+  { 'gp', '<cmd>Lspsaga peek_definition<CR>' },
+  { 'gd', '<cmd>Lspsaga goto_definition<CR>' },
+  { 'gt', '<cmd>Lspsaga peek_type_definition<CR>' },
+  { 'gt', '<cmd>Lspsaga goto_type_definition<CR>' },
+  { '<leader>sl', '<cmd>Lspsaga show_line_diagnostics<CR>' },
+  { '<leader>sb', '<cmd>Lspsaga show_buf_diagnostics<CR>' },
+  { '<leader>sw', '<cmd>Lspsaga show_workspace_diagnostics<CR>' },
+  { '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>' },
+  { '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>' },
+  { ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>' },
+}
 
 M.null_ls = function()
   require('utils').set_keymaps({

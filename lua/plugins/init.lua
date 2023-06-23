@@ -30,6 +30,19 @@ local plugins = {
     cmd = 'SymbolsOutline',
     config = true,
   },
+  {
+    'glepnir/lspsaga.nvim',
+    event = 'LspAttach',
+    keys = keymaps.lspsaga,
+    config = function()
+      require('lspsaga').setup({
+        symbol_in_winbar = {
+          enable = false,
+        },
+      })
+    end,
+    dependencies = 'nvim-tree/nvim-web-devicons',
+  },
 
   {
     'j-hui/fidget.nvim',

@@ -3,7 +3,6 @@ local plugins = {
   {
     'nvim-neorg/neorg',
     build = ':Neorg sync-parsers',
-    lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       -- Tell Neorg what modules to load

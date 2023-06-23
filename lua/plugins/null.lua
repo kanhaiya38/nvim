@@ -51,6 +51,20 @@ local plugins = {
     event = 'BufRead',
     config = config,
   },
+  {
+    'jay-babu/mason-null-ls.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
+    },
+    config = function()
+      require('mason-null-ls').setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+      })
+    end,
+  },
 }
 
 return plugins

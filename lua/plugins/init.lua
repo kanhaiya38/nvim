@@ -102,12 +102,15 @@ local plugins = {
     'rmagatti/auto-session',
     lazy = false,
     config = function()
-      vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+      vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
       require('auto-session').setup({
         log_level = 'error',
         auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
         pre_save_cmds = { 'NeoTreeClose', 'DiffviewClose' },
+        session_lens = {
+          load_on_setup = false,
+        },
       })
     end,
   },

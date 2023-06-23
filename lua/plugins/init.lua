@@ -5,7 +5,7 @@ local plugins = {
   {
     'folke/lazy.nvim',
     version = '*',
-    init = keymaps.lazy,
+    keys = keymaps.lazy,
   },
   {
     'utilyre/barbecue.nvim',

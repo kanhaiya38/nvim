@@ -51,24 +51,23 @@ M.null_ls = function()
   })
 end
 
-M.lazy = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<Leader>lh'] = {
-        function()
-          require('lazy').home()
-        end,
-        'lazy',
-      },
-      ['<Leader>lp'] = {
-        function()
-          require('lazy').profile()
-        end,
-        'profile',
-      },
-    },
-  })
-end
+---@type LazyKeys[]
+M.lazy = {
+  {
+    '<Leader>lh',
+    function()
+      require('lazy').home()
+    end,
+    desc = 'lazy',
+  },
+  {
+    '<Leader>lp',
+    function()
+      require('lazy').profile()
+    end,
+    desc = 'profile',
+  },
+}
 
 M.telescope = function()
   local project_files = function()

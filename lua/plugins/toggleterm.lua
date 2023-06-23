@@ -18,8 +18,7 @@ local plugins = {
   {
     'akinsho/nvim-toggleterm.lua',
     cmd = 'ToggleTerm',
-    keys = '<C-Space>',
-    init = require('keymaps').toggleterm,
+    keys = require('keymaps').toggleterm,
     config = config,
   },
 }

@@ -9,7 +9,7 @@ local plugins = {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',
     },
-    init = keymaps.noice,
+    keys = keymaps.noice,
     config = function()
       require('noice').setup({
         lsp = {

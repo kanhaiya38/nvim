@@ -47,7 +47,7 @@ end
 local plugins = {
   {
     'jose-elias-alvarez/null-ls.nvim',
-    init = require('keymaps').null_ls,
+    keys = require('keymaps').null_ls,
     event = 'BufRead',
     config = config,
   },

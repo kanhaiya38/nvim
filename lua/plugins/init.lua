@@ -60,7 +60,7 @@ local plugins = {
 
   {
     'kevinhwang91/nvim-ufo',
-    init = keymaps.ufo,
+    keys = keymaps.ufo,
     config = function()
       -- vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value

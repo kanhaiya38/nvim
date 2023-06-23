@@ -2,6 +2,7 @@
 local plugins = {
   {
     'lukas-reineke/indent-blankline.nvim',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
     lazy = false,
     config = function()
       require('indent_blankline').setup({
@@ -19,7 +20,7 @@ local plugins = {
   {
     'NMAC427/guess-indent.nvim',
     lazy = false,
-    init = require('keymaps').guess_indent,
+    keys = require('keymaps').guess_indent,
     config = true,
   },
 }

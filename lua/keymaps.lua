@@ -43,13 +43,10 @@ M.lspsaga = {
   { ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>' },
 }
 
-M.null_ls = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<Space>af'] = { vim.lsp.buf.format, 'format' },
-    },
-  })
-end
+---@type LazyKeys[]
+M.null_ls = {
+  { '<Leader>af', vim.lsp.buf.format, desc = 'format' },
+}
 
 ---@type LazyKeys[]
 M.lazy = {
@@ -260,63 +257,57 @@ M.neo_tree = function()
   })
 end
 
-M.toggleterm = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<Leader>tl'] = {
-        function()
-          require('utils.toggleterm').lazygit()
-        end,
-        'lazygit',
-      },
-    },
-  })
-end
+---@type LazyKeys[]
+M.toggleterm = {
+  { '<C-Space>' },
+  {
+    '<Leader>tl',
+    function()
+      require('utils.toggleterm').lazygit()
+    end,
+    'lazygit',
+  },
+}
 
-M.ufo = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['zR'] = {
-        function()
-          require('ufo').openAllFolds()
-        end,
-        'open folds',
-      },
-      ['zM'] = {
-        function()
-          require('ufo').closeAllFolds()
-        end,
-        'close folds',
-      },
-    },
-  })
-end
+---@type LazyKeys[]
+M.ufo = {
+  {
+    'zR',
+    function()
+      require('ufo').openAllFolds()
+    end,
+    desc = 'open folds',
+  },
+  {
+    'zM',
+    function()
+      require('ufo').closeAllFolds()
+    end,
+    desc = 'close folds',
+  },
+}
 
-M.noice = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<Space>ad'] = {
-        function()
-          require('noice').cmd('dismiss')
-        end,
-        'dismiss notifications',
-      },
-    },
-  })
-end
+---@type LazyKeys[]
+M.noice = {
+  {
+    '<Leader>ad',
+    function()
+      require('noice').cmd('dismiss')
+    end,
+    desc = 'dismiss notifications',
+  },
+}
 
-M.guess_indent = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<Space>ai'] = {
-        function()
-          require('guess-indent').set_from_buffer()
-        end,
-        'guess indent',
-      },
-    },
-  })
-end
+---@type LazyKeys[]
+M.guess_indent = {
+  {
+    '<Leader>ai',
+    function()
+      require('guess-indent').set_from_buffer()
+    end,
+    desc = 'guess indent',
+  },
+}
 
 -- map('n', '<Leader>d', 'm`:silent +g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
 -- map('n', '<Leader>D', 'm`:silent -g/\\m^\\s*$/d<CR>``:noh<CR>', opts)
@@ -358,23 +349,6 @@ M.treesj = {
   },
 }
 
-M.hlslens = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<Leader>l'] = { '<Cmd>noh<CR>' },
-      ['*'] = { [[*<Cmd>lua require('hlslens').start()<CR>]] },
-      ['#'] = { [[#<Cmd>lua require('hlslens').start()<CR>]] },
-      ['g*'] = { [[g*<Cmd>lua require('hlslens').start()<CR>]] },
-      ['g#'] = { [[g#<Cmd>lua require('hlslens').start()<CR>]] },
-      ['N'] = {
-        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-      },
-      ['n'] = {
-        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-      },
-    },
-  })
-end
 
 M.defaults = function()
   local set_keymaps = require('utils').set_keymaps

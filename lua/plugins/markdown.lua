@@ -11,8 +11,8 @@ local plugins = {
   },
   {
     'ekickx/clipboard-image.nvim',
-    cmd = 'PasteImg',
     config = true,
+    keys = require('keymaps').paste_img,
   },
 }
 

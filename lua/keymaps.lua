@@ -351,6 +351,14 @@ M.treesj = {
 }
 
 ---@type LazyKeys[]
+M.paste_img = {
+  {
+
+    '<Leader>ap',
+    '<Cmd>PasteImg<CR>',
+    'paste image',
+  },
+}
 
 M.defaults = function()
   local set_keymaps = require('utils').set_keymaps
@@ -381,7 +389,6 @@ M.defaults = function()
     mappings = {
       -- ['p'] = { '<Cmd>MarkdownPreview<CR>', 'markdown preview' },
       ['<Space>am'] = { '<Cmd>MarkdownPreview<CR>', 'markdown preview' },
-      ['<Space>ap'] = { '<Cmd>PasteImg<CR>', 'paste image' },
       ['<Space>ac'] = { '<Cmd>silent !pandoc -V documentclass=scrreprt % -o %:r.pdf<CR>', 'pandoc' },
     },
   })

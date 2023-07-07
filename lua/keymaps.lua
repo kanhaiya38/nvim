@@ -314,7 +314,7 @@ M.guess_indent = {
 -- map('n', '<Leader>o', '<Cmd>set paste<CR>m`o<Esc>``:set nopaste<CR>', opts)
 -- map('n', '<Leader>O', '<Cmd>set paste<CR>m`O<Esc>``:set nopaste<CR>', opts)
 
-M.typescript = function()
+M.typescript = function(bufnr)
   require('utils').set_keymaps({
     mappings = {
       ['<Leader>ti'] = {
@@ -336,6 +336,7 @@ M.typescript = function()
         'remove unused',
       },
     },
+    opts = { buffer = bufnr },
   })
 end
 
@@ -349,6 +350,7 @@ M.treesj = {
   },
 }
 
+---@type LazyKeys[]
 
 M.defaults = function()
   local set_keymaps = require('utils').set_keymaps

@@ -2,18 +2,15 @@
 local plugins = {
   {
     'lukas-reineke/indent-blankline.nvim',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
     lazy = false,
     config = function()
       require('indent_blankline').setup({
-        {
-          filetype_exclude = require('settings').ft,
-          buftype_exclude = { 'terminal' },
-          space_char_blankline = ' ',
-          show_first_indent_level = false,
-          show_current_context = true,
-          show_current_context_start = true,
-        },
+        filetype_exclude = require('settings').ft,
+        buftype_exclude = { 'terminal' },
+        space_char_blankline = ' ',
+        show_first_indent_level = false,
+        show_current_context = true,
+        show_current_context_start = true,
       })
     end,
   },

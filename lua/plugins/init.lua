@@ -31,7 +31,7 @@ local plugins = {
     config = true,
   },
   {
-    'glepnir/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim',
     event = 'LspAttach',
     keys = keymaps.lspsaga,
     config = function()
@@ -41,7 +41,10 @@ local plugins = {
         },
       })
     end,
-    dependencies = 'nvim-tree/nvim-web-devicons',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
   },
 
   {

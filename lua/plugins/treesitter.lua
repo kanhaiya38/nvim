@@ -23,19 +23,6 @@ local context_commentstring = {
   enable_autocmd = false,
 }
 
-local rainbow = {
-  enable = true,
-  hlgroups = {
-    'rainbowcol1',
-    'rainbowcol2',
-    'rainbowcol3',
-    'rainbowcol4',
-    'rainbowcol5',
-    'rainbowcol6',
-    'rainbowcol7',
-  },
-}
-
 local textobjects = {
   select = {
     enable = true,
@@ -117,7 +104,6 @@ local plugins = {
         -- plugins
         -- autotag = extensions.autotag,
         context_commentstring = context_commentstring,
-        rainbow = rainbow,
         textobjects = textobjects,
         playground = playground,
       })
@@ -131,7 +117,6 @@ local plugins = {
         end,
       },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
-      { 'HiPhish/nvim-ts-rainbow2' },
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
       { 'nvim-treesitter/playground' },
     },
@@ -151,6 +136,35 @@ local plugins = {
     opts = {
       use_default_keymaps = false,
     },
+  },
+  {
+    'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
+    lazy = false,
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      local rainbow_delimiters = require('rainbow-delimiters')
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          commonlisp = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+        blacklist = { 'c', 'cpp' },
+      }
+    end,
   },
 }
 

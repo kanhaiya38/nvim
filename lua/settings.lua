@@ -38,6 +38,7 @@ local setup_variables = function()
   o.updatetime = 100
   o.timeoutlen = 500
   o.undofile = true
+  o.signcolumn = 'auto:1-2'
   cmd('set clipboard+=unnamedplus')
   o.shell = '/usr/bin/fish'
   g.mapleader = ' '

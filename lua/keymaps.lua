@@ -29,7 +29,7 @@ end
 M.lspsaga = {
   { 'gh', '<cmd>Lspsaga lsp_finder<CR>' },
   { '<leader>ca', '<cmd>Lspsaga code_action<CR>', mode = { 'n', 'v' } },
-  { 'gr', '<cmd>Lspsaga rename<CR>' },
+  { '<Leader>rn', '<cmd>Lspsaga rename<CR>' },
   { 'gr', '<cmd>Lspsaga rename ++project<CR>' },
   { 'gp', '<cmd>Lspsaga peek_definition<CR>' },
   { 'gd', '<cmd>Lspsaga goto_definition<CR>' },
@@ -77,14 +77,14 @@ M.telescope = function()
 
   require('utils').set_keymaps({
     mappings = {
-      ['<Leader>ff'] = { project_files, 'find_files' },
+      ['<Leader>fp'] = { project_files, 'find_files' },
       ['<Leader>fo'] = {
         function()
           require('telescope.builtin').resume()
         end,
         'resume',
       },
-      ['<Leader>fa'] = {
+      ['<Leader>ff'] = {
         function()
           require('telescope.builtin').find_files()
         end,
@@ -107,12 +107,6 @@ M.telescope = function()
           require('telescope.builtin').live_grep()
         end,
         'live_grep',
-      },
-      ['<Leader>fp'] = {
-        function()
-          require('telescope').extensions.projects.projects({})
-        end,
-        'projects',
       },
     },
   })

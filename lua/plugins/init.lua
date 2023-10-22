@@ -117,6 +117,26 @@ local plugins = {
       })
     end,
   },
+  {
+    'nvim-pack/nvim-spectre',
+    dependencies = 'nvim-lua/plenary.nvim',
+    cmd = 'Spectre',
+    config = function()
+      require('spectre').setup({
+        find_engine = {
+          ['rg'] = {
+            options = {
+              ['multiline'] = {
+                value = '--multiline',
+                desc = 'Multiline search',
+                icon = '[M]',
+              },
+            },
+          },
+        },
+      })
+    end,
+  },
 
   -- Which Key
   {

@@ -3,6 +3,7 @@ local plugins = {
   {
     'nvim-neorg/neorg',
     build = ':Neorg sync-parsers',
+    cmd = 'Neorg',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       -- Tell Neorg what modules to load
@@ -12,7 +13,7 @@ local plugins = {
         ['core.dirman'] = { -- Manage your directories with Neorg
           config = {
             workspaces = {
-              home = '~/Kanhaiya/neorg',
+              default = '~/Kanhaiya/neorg',
             },
           },
         },

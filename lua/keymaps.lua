@@ -25,7 +25,7 @@ M.lsp = function(bufnr)
   })
 end
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.lspsaga = {
   { 'gh', '<cmd>Lspsaga lsp_finder<CR>' },
   { '<leader>ca', '<cmd>Lspsaga code_action<CR>', mode = { 'n', 'v' } },
@@ -43,12 +43,12 @@ M.lspsaga = {
   { ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>' },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.null_ls = {
   { '<Leader>af', vim.lsp.buf.format, desc = 'format' },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.lazy = {
   {
     '<Leader>lh',
@@ -118,7 +118,7 @@ M.telescope = function()
   })
 end
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.refactoring = {
   {
     '<leader>rp',
@@ -257,7 +257,7 @@ M.neo_tree = function()
   })
 end
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.toggleterm = {
   { '<C-Space>' },
   {
@@ -269,7 +269,7 @@ M.toggleterm = {
   },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.ufo = {
   {
     'zR',
@@ -287,7 +287,7 @@ M.ufo = {
   },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.noice = {
   {
     '<Leader>ad',
@@ -298,7 +298,7 @@ M.noice = {
   },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.guess_indent = {
   {
     '<Leader>ai',
@@ -350,7 +350,7 @@ M.treesj = {
   },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.paste_img = {
   {
 

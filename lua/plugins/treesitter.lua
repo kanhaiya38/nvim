@@ -117,7 +117,7 @@ local plugins = {
         end,
       },
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
-      { 'JoosepAlviste/nvim-ts-context-commentstring' },
+      { 'JoosepAlviste/nvim-ts-context-commentstring', name = 'context-comment' },
       { 'nvim-treesitter/playground' },
     },
   },

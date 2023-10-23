@@ -1,3 +1,13 @@
+local ls = require('luasnip')
+
+local s = ls.snippet
+local sn = ls.snippet_node
+local t = ls.text_node
+local f = ls.function_node
+local d = ls.dynamic_node
+local i = ls.insert_node
+local l = require('luasnip.extras').lambda
+
 local const_filename = {
   t('const '),
   l(l.TM_FILENAME:match('(.*)%..*'), {}),
@@ -13,7 +23,6 @@ local use_state = {
   end, { 1 }),
   t('] = useState'),
   d(3, function(args)
-    vim.pretty_print(args[1][1])
     if args[1][1] ~= '' then
       print('equal')
       return sn(nil, {})

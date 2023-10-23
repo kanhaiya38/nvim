@@ -1,3 +1,10 @@
+local ls = require('luasnip')
+
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+local l = require('luasnip.extras').lambda
+
 local export_default_as = {
   t('export { default as '),
   l(l._1, { 1 }),
@@ -28,18 +35,6 @@ local export_all_from = {
   t("'"),
 }
 
-local console_log = {
-  t("console.log('"),
-  l(l._1, { 1 }),
-  t("', "),
-  i(1, 'val'),
-  t(');'),
-}
-
-local here = {
-  t("console.log('here');"),
-}
-
 local af = {
   t('async function '),
   i(1, 'name'),
@@ -57,7 +52,5 @@ return {
   s('eas', export_all_as),
   s('eaf', export_all_from),
   s('ias', import_all_as),
-  s('clo', console_log),
-  s('here', here),
   s('af', af),
 }

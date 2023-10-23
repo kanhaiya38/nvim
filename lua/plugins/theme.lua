@@ -29,11 +29,16 @@ local colors = {
   diff_text    = '#2c5372',
 }
 
+local highlights = {
+  SagaNormal = { bg = '$bg0' },
+}
+
 local config = function()
   local theme = require('onedark')
 
   theme.setup({
     colors = colors,
+    highlights = highlights,
     diagnostics = {
       darker = false,
     },

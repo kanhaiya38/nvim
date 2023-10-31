@@ -27,7 +27,7 @@ local plugins = {
     'sindrets/diffview.nvim',
     init = require('keymaps').diffview,
     opts = diffview,
-    cmd = { 'DiffviewOpen', 'DiffviewClose' },
+    cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewFileHistory' },
   },
   {
     'lewis6991/gitsigns.nvim',

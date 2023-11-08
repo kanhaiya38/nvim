@@ -34,7 +34,6 @@ end
 M.on_save = function(cmd)
   vim.validate({ cmd = { cmd, 'string' } })
   vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '*/loan/*.ts',
     desc = 'on save',
     callback = function()
       -- require('toggleterm').exec(cmd, 9, nil, nil, nil, nil, nil)

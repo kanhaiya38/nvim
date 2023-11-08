@@ -46,7 +46,7 @@ end
 ---@type LazySpec
 local plugins = {
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     keys = require('keymaps').null_ls,
     event = 'BufRead',
     config = config,
@@ -60,7 +60,6 @@ local plugins = {
     },
     config = function()
       require('mason-null-ls').setup({
-        ensure_installed = nil,
         automatic_installation = true,
       })
     end,

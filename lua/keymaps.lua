@@ -1,8 +1,18 @@
 local M = {}
 
+local lsp_format = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name == 'null-ls'
+    end,
+    bufnr = bufnr,
+  })
+end
+
 M.lsp = function(bufnr)
   require('utils').set_keymaps({
     mappings = {
+      ['<space>af'] = { lsp_format, desc = 'format' },
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
       ['gd'] = { vim.lsp.buf.definition, 'declaration' },
       ['K'] = { vim.lsp.buf.hover, 'hover' },
@@ -41,11 +51,6 @@ M.lspsaga = {
   { '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>' },
   { '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>' },
   { ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>' },
-}
-
----@type LazyKeysSpec[]
-M.null_ls = {
-  { '<Leader>af', vim.lsp.buf.format, desc = 'format' },
 }
 
 ---@type LazyKeysSpec[]

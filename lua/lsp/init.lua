@@ -22,10 +22,6 @@ local get_default_capabilities = function()
 end
 
 local default_on_attach = function(client, bufnr)
-  -- Disable language server formatting
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
-
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', {

@@ -58,9 +58,9 @@ end
 local plugins = {
   {
     'nvim-neo-tree/neo-tree.nvim',
-    init = require('keymaps').neo_tree,
     config = config,
-    cmd = { 'NeoTreeClose' },
+    keys = require('keymaps').neo_tree,
+    cmd = { 'Neotree' },
     dependencies = 'MunifTanjim/nui.nvim',
   },
 }

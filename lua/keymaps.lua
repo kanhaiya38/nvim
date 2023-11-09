@@ -242,19 +242,10 @@ M.bufferline = function()
   })
 end
 
-M.neo_tree = function()
-  require('utils').set_keymaps({
-    mappings = {
-      ['<C-n>'] = {
-        function()
-          require('neo-tree.command').execute({ toggle = true, reveal = true })
-        end,
-        'tree toggle',
-      },
-    },
-    mode = { 'n', 'i', 't' },
-  })
-end
+---@type LazyKeysSpec[]
+M.neo_tree = {
+  { '<C-n>', '<Cmd>Neotree toggle<CR>' },
+}
 
 ---@type LazyKeysSpec[]
 M.toggleterm = {

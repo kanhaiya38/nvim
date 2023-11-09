@@ -40,7 +40,9 @@ local config = function()
       },
     },
     filesystem = {
-      follow_current_file = true, -- This will find and focus the file in the active buffer every
+      follow_current_file = {
+        enabled = true,
+      },
       window = {
         mappings = {
           ['l'] = 'open',
@@ -65,7 +67,6 @@ end
 local plugins = {
   {
     'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
     init = require('keymaps').neo_tree,
     config = config,
     cmd = { 'NeoTreeClose' },

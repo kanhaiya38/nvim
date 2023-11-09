@@ -24,7 +24,7 @@ local config = function()
   require('neo-tree').setup({
     close_if_last_window = true,
     window = {
-      width = 30,
+      width = 36,
       mappings = {
         ['f'] = function()
           vim.api.nvim_exec('Neotree focus filesystem left', true)

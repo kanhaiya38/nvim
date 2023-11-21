@@ -34,6 +34,13 @@ local plugins = {
     init = require('keymaps').bufferline,
     config = config,
   },
+  {
+    'axkirillov/hbac.nvim',
+    lazy = false,
+    opts = {
+      threshold = 7,
+    },
+  },
 }
 
 return plugins

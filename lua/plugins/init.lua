@@ -28,7 +28,9 @@ local plugins = {
   {
     'simrat39/symbols-outline.nvim',
     cmd = 'SymbolsOutline',
-    config = true,
+    opts = {
+      autofold_depth = 2,
+    },
   },
   {
     'nvimdev/lspsaga.nvim',

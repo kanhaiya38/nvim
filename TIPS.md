@@ -15,6 +15,9 @@
 
 ## Quickfix
 
+1. Press <Tab> or <S-Tab> to toggle the selection of item
+2. Press zn(selected) or zN(not selected) will create new quickfix list
+
 ## Search and Replace
 
 - [https://vim.fandom.com/wiki/Search_and_replace](fandom)

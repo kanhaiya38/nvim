@@ -122,7 +122,7 @@ local plugins = {
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
-    lazy = false,
+    cmd = {'TSContextEnable', 'TSContextToggle'},
     dependencies = 'nvim-treesitter/nvim-treesitter',
     config = function()
       require('treesitter-context').setup({

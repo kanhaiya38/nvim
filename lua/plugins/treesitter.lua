@@ -18,10 +18,6 @@ local incremental_selection = {
   },
 }
 
-local context_commentstring = {
-  enable = true,
-}
-
 local textobjects = {
   select = {
     enable = true,
@@ -102,7 +98,6 @@ local plugins = {
         incremental_selection = incremental_selection,
         -- plugins
         -- autotag = extensions.autotag,
-        context_commentstring = context_commentstring,
         textobjects = textobjects,
         playground = playground,
       })

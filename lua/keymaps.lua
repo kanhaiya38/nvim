@@ -308,22 +308,12 @@ M.typescript = function(bufnr)
   require('utils').set_keymaps({
     mappings = {
       ['<Leader>ti'] = {
-        function()
-          require('typescript').actions.addMissingImports()
-        end,
+        '<Cmd>TSToolsAddMissingImports<CR>',
         'add missing imports',
       },
       ['<Leader>to'] = {
-        function()
-          require('typescript').actions.organizeImports()
-        end,
+        '<Cmd>TSToolsOrganizeImports<CR>',
         'organize imports',
-      },
-      ['<Leader>tr'] = {
-        function()
-          require('typescript').actions.removeUnused()
-        end,
-        'remove unused',
       },
     },
     opts = { buffer = bufnr },

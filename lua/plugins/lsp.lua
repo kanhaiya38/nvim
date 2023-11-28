@@ -43,7 +43,10 @@ local plugins = {
   { 'folke/neodev.nvim' },
   { 'simrat39/rust-tools.nvim' },
   { 'p00f/clangd_extensions.nvim' },
-  { 'jose-elias-alvarez/typescript.nvim' },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  },
   'b0o/schemastore.nvim', -- jsonls
 }
 

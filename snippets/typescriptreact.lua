@@ -39,7 +39,39 @@ local use_state = {
   t(')'),
 }
 
+local react_component = {
+  t('export const '),
+  i(1, 'Component'),
+  t({
+    ' = () => {',
+    '\treturn ',
+  }),
+  i(0, '<></>'),
+  t({ '', '};' }),
+}
+
+local react_component_props = {
+  t('interface '),
+  f(function(args)
+    return args[1][1] .. 'Props'
+  end, { 1 }),
+  t({ ' {', '\t' }),
+  i(2, 'props'),
+  t({ '', '};', '', 'export const ' }),
+  i(1, 'Component'),
+  t(': React.FC<'),
+  f(function(args)
+    return args[1][1] .. 'Props'
+  end, { 1 }),
+  t('> = ('),
+  t(') => {', '', '\treturn '),
+  i(0, '<></>'),
+  t({ '', '};' }),
+}
+
 return {
   s('cf', const_filename),
   s('uss', use_state),
+  s('rc', react_component),
+  s('rcp', react_component_props),
 }

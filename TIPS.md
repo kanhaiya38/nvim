@@ -17,6 +17,9 @@
 
 1. Press <Tab> or <S-Tab> to toggle the selection of item
 2. Press zn(selected) or zN(not selected) will create new quickfix list
+3. Reopen quickfix :copen
+4. :colder and :cnewer to navigate through your quickfix lists.
+5. :chistory to show your quickfix lists.
 
 ## Search and Replace
 
@@ -30,9 +33,10 @@
 ## TODO
 
 - [ ] refresh neovim config without restart
-- [ ] Search and Replace
 - [ ] keymap to go to props to edit
 - [ ] telescope exclude some files or directories e.g. patches
-- [ ] console.log variable keymap
 - [ ] snippets list
 - [ ] typescript enums
+- [ ] Auto extract obj params in function
+- [ ] While renaming sometimes I need to clear complete name
+

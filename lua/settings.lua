@@ -21,6 +21,7 @@ M.servers = {
   cssls = {},
   dockerls = {},
   bashls = {},
+  tailwindcss = { disabled = true },
 }
 
 local setup_variables = function()

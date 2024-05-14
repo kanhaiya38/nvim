@@ -56,7 +56,9 @@ local setup_servers = function()
       capabilities = default_capabilities,
       on_attach = default_on_attach,
     }
-    if server_config and server_config.custom_setup then
+    if server_config and server_config.disabled then
+      vim.print(server .. ' disabled')
+    elseif server_config and server_config.custom_setup then
       require('lsp.servers.' .. server).setup(server_opts)
     else
       lspconfig[server].setup(server_opts)

@@ -19,7 +19,14 @@ local plugins = {
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',
-    config = true,
+    opts = {
+      padding = false,
+      cycle_results = false,
+      width = 60,
+      action_keys = {
+        toggle_fold = { 'l', 'h' },
+      },
+    },
   },
   {
     'kevinhwang91/nvim-bqf',

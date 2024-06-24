@@ -16,6 +16,13 @@ local incremental_selection = {
     scope_incremental = '<Tab>',
     node_decremental = '<S-Tab>',
   },
+  is_supported = function()
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == 'c' then
+      return false
+    end
+    return true
+  end,
 }
 
 local textobjects = {

@@ -4,7 +4,9 @@ local plugins = {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     lazy = false,
-    config = true,
+    config = function()
+      require('ibl').setup({ exclude = { filetypes = { 'noice' } } })
+    end,
   },
   {
     'NMAC427/guess-indent.nvim',

@@ -44,6 +44,11 @@ local plugins = {
   { 'simrat39/rust-tools.nvim' },
   { 'p00f/clangd_extensions.nvim' },
   { 'jose-elias-alvarez/typescript.nvim' },
+  {
+    'luckasRanarison/tailwind-tools.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {}, -- your configuration
+  },
   'b0o/schemastore.nvim', -- jsonls
 }
 

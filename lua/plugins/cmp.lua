@@ -7,6 +7,7 @@ local entry_format = function(entry, vim_item)
   return require('lspkind').cmp_format({
     mode = 'symbol',
     maxwidth = 50,
+    before = require('tailwind-tools.cmp').lspkind_format,
     menu = {
       buffer = '[Buffer]',
       nvim_lsp = '[LSP]',
@@ -123,6 +124,7 @@ local plugins = {
       'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-cmdline',
       'onsails/lspkind-nvim',
+      'luckasRanarison/tailwind-tools.nvim',
     },
   },
 }

@@ -16,6 +16,7 @@ local incremental_selection = {
     scope_incremental = '<Tab>',
     node_decremental = '<S-Tab>',
   },
+  -- This disables incremental selection in command mode, as this plugin causes issues in command mode.
   is_supported = function()
     local mode = vim.api.nvim_get_mode().mode
     if mode == 'c' then

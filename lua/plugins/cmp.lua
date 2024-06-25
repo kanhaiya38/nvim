@@ -52,6 +52,7 @@ local config = function()
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
+      { name = 'copilot' },
     }, {
       { name = 'path' },
       { name = 'buffer' },
@@ -126,6 +127,19 @@ local plugins = {
       'onsails/lspkind-nvim',
       'luckasRanarison/tailwind-tools.nvim',
     },
+  },
+  {
+    'onsails/lspkind-nvim',
+    config = function()
+      local lspkind = require('lspkind')
+      lspkind.init({
+        symbol_map = {
+          Copilot = '',
+        },
+      })
+
+      vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
+    end,
   },
 }
 

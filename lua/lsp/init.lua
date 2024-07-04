@@ -61,6 +61,11 @@ local setup_servers = function()
     elseif server_config and server_config.custom_setup then
       require('lsp.servers.' .. server).setup(server_opts)
     else
+      if server_config and server_config.opts then
+        for k, v in pairs(server_config.opts) do
+          server_opts[k] = v
+        end
+      end
       lspconfig[server].setup(server_opts)
     end
   end

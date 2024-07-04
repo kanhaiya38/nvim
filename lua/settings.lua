@@ -9,6 +9,7 @@ M.ft = {
   noice = 'noice',
 }
 
+--- @type { [string]: { disabled: boolean, custom_setup: boolean, opts: any } }
 M.servers = {
   lua_ls = { custom_setup = true },
   rust_analyzer = { custom_setup = true },
@@ -22,7 +23,11 @@ M.servers = {
   cssls = {},
   dockerls = {},
   bashls = {},
-  tailwindcss = { disabled = true },
+  tailwindcss = {
+    opts = {
+      filetypes = { 'html', 'javascriptreact', 'typescriptreact' },
+    },
+  },
 }
 
 local setup_variables = function()

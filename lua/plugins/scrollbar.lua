@@ -30,6 +30,7 @@ local plugins = {
           settings.ft.mason,
           settings.ft.neotree,
           settings.ft.neotree_popup,
+          settings.ft.noice,
         },
       })
     end,

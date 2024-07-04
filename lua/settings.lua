@@ -6,6 +6,7 @@ M.ft = {
   help = 'help',
   mason = 'mason',
   lazy = 'lazy',
+  noice = 'noice',
 }
 
 M.servers = {

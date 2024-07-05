@@ -50,6 +50,11 @@ local plugins = {
     opts = {}, -- your configuration
   },
   'b0o/schemastore.nvim', -- jsonls
+  {
+    'dmmulroy/tsc.nvim',
+    config = true,
+    cmd = 'TSC',
+  },
 }
 
 return plugins

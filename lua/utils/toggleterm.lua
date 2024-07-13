@@ -4,6 +4,8 @@ local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
   cmd = string.format('lazygit -ucf %s/lazygit.yml', vim.fn.stdpath('config')),
   direction = 'float',
+  hidden = true,
+  display_name = 'Lazygit',
   count = 98,
 })
 

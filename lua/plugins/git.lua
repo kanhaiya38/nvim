@@ -14,7 +14,6 @@ local diffview = {
 local gitsigns = {
   current_line_blame = true,
   on_attach = require('keymaps').gitsigns,
-  yadm = { enable = true },
 }
 
 ---@type LazySpec

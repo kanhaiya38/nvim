@@ -9,12 +9,9 @@ local config = function()
     diagnostics.selene,
 
     -- js
-    formatting.prettierd,
 
     -- python
-    formatting.black,
     diagnostics.flake8,
-    formatting.isort,
 
     -- c/c++
     formatting.clang_format.with({
@@ -28,13 +25,8 @@ local config = function()
     }),
 
     -- shell scripts
-    formatting.shfmt,
     diagnostics.shellcheck,
     diagnostics.fish,
-    formatting.fish_indent,
-
-    -- rust
-    -- formatting.rustfmt, // use rust-tools
   }
 
   null.setup({

@@ -1,18 +1,14 @@
 local M = {}
 
-local lsp_format = function(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      return client.name == 'null-ls'
-    end,
-    bufnr = bufnr,
-  })
-end
-
 M.lsp = function(bufnr)
   require('utils').set_keymaps({
     mappings = {
-      ['<space>af'] = { lsp_format, desc = 'format' },
+      ['<space>af'] = {
+        function()
+          require('conform').format()
+        end,
+        desc = 'format',
+      },
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
       ['gd'] = { vim.lsp.buf.definition, 'declaration' },
       ['K'] = { vim.lsp.buf.hover, 'hover' },

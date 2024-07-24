@@ -7,6 +7,7 @@ M.ft = {
   mason = 'mason',
   lazy = 'lazy',
   noice = 'noice',
+  ssr = 'ssr',
 }
 
 --- @type { [string]: { disabled: boolean, custom_setup: boolean, opts: any } }

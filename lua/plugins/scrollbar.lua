@@ -31,6 +31,7 @@ local plugins = {
           settings.ft.neotree,
           settings.ft.neotree_popup,
           settings.ft.noice,
+          settings.ft.ssr,
         },
       })
     end,

@@ -126,9 +126,11 @@ local plugins = {
       })
     end,
   },
+  -- ditching nvim-spectre for grug-far for now
   {
     'nvim-pack/nvim-spectre',
     dependencies = 'nvim-lua/plenary.nvim',
+    enabled = false,
     cmd = 'Spectre',
     config = function()
       require('spectre').setup({
@@ -144,6 +146,14 @@ local plugins = {
           },
         },
       })
+    end,
+  },
+
+  {
+    'MagicDuck/grug-far.nvim',
+    cmd = 'GrugFar',
+    config = function()
+      require('grug-far').setup({})
     end,
   },
 

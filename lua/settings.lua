@@ -50,6 +50,7 @@ local setup_variables = function()
   cmd('set clipboard+=unnamedplus')
   o.shell = '/usr/bin/fish'
   g.mapleader = ' '
+  g.maplocalleader = ' '
   o.termguicolors = true
 
   cmd([[ set runtimepath-=/usr/share/vim/vimfiles ]])

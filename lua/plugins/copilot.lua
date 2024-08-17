@@ -28,6 +28,34 @@ local plugins = {
       })
     end,
   },
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
+    cmd = { 'CopilotChat' },
+    keys = {
+      {
+        '<leader>cb',
+        function()
+          local input = vim.fn.input('Quick Chat: ')
+          if input ~= '' then
+            require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
+          end
+        end,
+        desc = 'CopilotChat - Quick chat',
+      },
+    },
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' },
+      { 'nvim-lua/plenary.nvim' },
+    },
+    opts = {
+      mappings = {
+        reset = {
+          normal = '<leader>r',
+        },
+      },
+    },
+  },
 }
 
 return plugins

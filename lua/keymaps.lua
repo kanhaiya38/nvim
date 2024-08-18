@@ -3,12 +3,12 @@ local M = {}
 M.lsp = function(bufnr)
   require('utils').set_keymaps({
     mappings = {
-      ['<space>af'] = {
-        function()
-          require('conform').format()
-        end,
-        desc = 'format',
-      },
+      -- ['<space>af'] = {
+      --   function()
+      --     require('conform').format()
+      --   end,
+      --   desc = 'format',
+      -- },
       ['gD'] = { vim.lsp.buf.declaration, 'declaration' },
       ['gd'] = { vim.lsp.buf.definition, 'declaration' },
       ['K'] = { vim.lsp.buf.hover, 'hover' },

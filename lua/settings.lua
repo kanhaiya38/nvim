@@ -15,7 +15,7 @@ M.servers = {
   lua_ls = { custom_setup = true },
   rust_analyzer = { custom_setup = true },
   clangd = { custom_setup = true },
-  tsserver = { custom_setup = true },
+  ts_ls = { custom_setup = true },
   pyright = {},
   yamlls = {},
   eslint = {},

@@ -48,6 +48,7 @@ local plugins = {
       { 'zbirenbaum/copilot.lua' },
       { 'nvim-lua/plenary.nvim' },
     },
+    build = 'make tiktoken',
     opts = {
       mappings = {
         reset = {

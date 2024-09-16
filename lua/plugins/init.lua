@@ -113,18 +113,18 @@ local plugins = {
   {
     'rmagatti/auto-session',
     lazy = false,
-    config = function()
+    init = function()
       vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
-
-      require('auto-session').setup({
-        log_level = 'error',
-        auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-        pre_save_cmds = { 'Neotree close', 'DiffviewClose' },
-        session_lens = {
-          load_on_setup = false,
-        },
-      })
     end,
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      pre_save_cmds = { 'Neotree close', 'DiffviewClose' },
+      session_lens = {
+        load_on_setup = false,
+      },
+    },
   },
   -- ditching nvim-spectre for grug-far for now
   {

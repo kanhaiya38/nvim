@@ -1,11 +1,9 @@
 local config = function()
   local null = require('null-ls')
-  local formatting = null.builtins.formatting
   local diagnostics = null.builtins.diagnostics
 
   local sources = {
     -- lua
-    formatting.stylua,
     diagnostics.selene,
 
     -- js
@@ -14,10 +12,6 @@ local config = function()
     diagnostics.flake8,
 
     -- c/c++
-    formatting.clang_format.with({
-      extra_args = { '-style=file', '--fallback-style=Google' },
-    }),
-
     -- markdown
     diagnostics.markdownlint,
     diagnostics.vale.with({
@@ -25,7 +19,6 @@ local config = function()
     }),
 
     -- shell scripts
-    diagnostics.shellcheck,
     diagnostics.fish,
   }
 

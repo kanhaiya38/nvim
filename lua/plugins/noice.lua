@@ -28,6 +28,26 @@ local plugins = {
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = true, -- add a border to hover docs and signature help
         },
+        routes = {
+          {
+            filter = {
+              event = 'msg_show',
+              any = {
+                { find = 'written' },
+                { find = '; after #%d+' },
+                { find = '; before #%d+' },
+              },
+            },
+            opts = { skip = true },
+          },
+          {
+            filter = {
+              event = 'notify',
+              find = 'No information available',
+            },
+            opts = { skip = true },
+          },
+        },
       })
     end,
   },
